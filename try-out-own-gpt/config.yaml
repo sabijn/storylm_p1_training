@@ -1,0 +1,32 @@
+model:
+  block_size: 256
+  n_layer: 6
+  n_head: 6
+  n_embd: 384
+  dropout: 0.2
+
+training:
+  batch_size: 32
+  learning_rate: 3e-4
+  max_iters: 15000
+  eval_interval: 500
+  eval_iters: 200
+  seed: 359
+
+inference:
+  max_new_tokens: 500
+
+tokens:
+  eos_token: "<|endoftext|>"
+  bos_token: "<|begin_of_text|>"
+
+wandb:
+  entity: "sabijn-leiden-university"
+  project: "storytimelm-pretraining"
+  architecture: "karpathy"
+  dataset: "chiscor+sftw"
+
+paths:
+  data_file: "/local/perdijks/datasets/ChiSCor_master_df.csv"
+  output_model_base: "/local/perdijks/training_gpt/trained_models"
+  logging_path: "/local/perdijks/training_gpt"
