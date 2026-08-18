@@ -2,7 +2,6 @@
 slurm_output/
 slurm_scripts/
 checkpoints/
-data/
 
 # MAC-OS specific
 .DS_STORE
