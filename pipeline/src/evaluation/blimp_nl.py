@@ -39,7 +39,6 @@ def evaluate_blimp_subset(model, tokenizer, subset_name, subset_data, device, no
         good_sent = example["sentence_good"]
         bad_sent = example["sentence_bad"]
         phenomenon = example.get("linguistic_phenomenon", subset_name)
-
         good_score = sentence_logprob(model, tokenizer, good_sent, device, normalize_by_length)
         bad_score = sentence_logprob(model, tokenizer, bad_sent, device, normalize_by_length)
 

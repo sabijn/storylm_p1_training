@@ -27,6 +27,7 @@ def write_corpus(dataset, output_file: str) -> str:
 
 def train_sentencepiece(corpus_file: str, model_prefix: str, tok_cfg: dict) -> str:
     os.makedirs(Path(model_prefix).parent, exist_ok=True)
+    special = tok_cfg["special_tokens"]
     spm.SentencePieceTrainer.train(
         input=corpus_file,
         model_prefix=model_prefix,
@@ -35,11 +36,17 @@ def train_sentencepiece(corpus_file: str, model_prefix: str, tok_cfg: dict) -> s
         character_coverage=tok_cfg.get("character_coverage", 0.9995),
         input_sentence_size=tok_cfg.get("input_sentence_size", 0),
         shuffle_input_sentence=True,
-        # fixed ids so every tokenizer trained by this pipeline agrees on special tokens
+        # fixed ids AND matching piece strings, so the HF wrapper's bos/eos/pad/unk
+        # tokens always resolve to real vocab entries instead of being silently
+        # registered as new added tokens past the end of the model's embedding table
         pad_id=0,
         unk_id=1,
         bos_id=2,
         eos_id=3,
+        pad_piece=special["pad"],
+        unk_piece=special["unk"],
+        bos_piece=special["bos"],
+        eos_piece=special["eos"],
     )
     return f"{model_prefix}.model"
 

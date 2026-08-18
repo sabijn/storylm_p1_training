@@ -21,7 +21,7 @@ data:
 
 training:
   output_dir: /scratch-shared/sperdijk/storylm_p1_training/models/base_gpt2_20m_16k
-  num_train_epochs: 3
+  num_train_epochs: 5
   per_device_train_batch_size: 32
   per_device_eval_batch_size: 32
   gradient_accumulation_steps: 1
