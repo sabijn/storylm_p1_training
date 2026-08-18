@@ -1,0 +1,44 @@
+architecture: llama
+
+# Common size fields map directly onto LlamaConfig. Same 20M-ish sizing as
+# model_base_gpt2.yaml, so the two architectures are directly comparable.
+model:
+  hidden_size: 384
+  intermediate_size: 768
+  num_attention_heads: 6
+  num_hidden_layers: 6
+  max_position_embeddings: 256
+  extra:
+    rms_norm_eps: 1.0e-6
+    # num_key_value_heads: 2   # uncomment to enable grouped-query attention
+
+tokenizer:
+  path: /local/perdijks/storylm_pipeline/tokenizers/tokenizer_16k_nl
+
+data:
+  config: data_base.yaml   # resolved relative to this file's directory
+
+training:
+  output_dir: /local/perdijks/storylm_pipeline/models/base_llama_20m
+  num_train_epochs: 3
+  per_device_train_batch_size: 32
+  per_device_eval_batch_size: 32
+  gradient_accumulation_steps: 1
+  learning_rate: 3e-4
+  weight_decay: 0.01
+  warmup_ratio: 0.03
+  lr_scheduler_type: cosine
+  eval_strategy: steps
+  eval_steps: 500
+  save_strategy: steps
+  save_steps: 500
+  save_total_limit: 3
+  logging_steps: 50
+  seed: 359
+  bf16: true
+
+wandb:
+  entity: sabijn-leiden-university
+  project: storytimelm-pretraining
+  run_name: base_llama_20m
+  tags: [base, llama, 20m]

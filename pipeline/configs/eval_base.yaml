@@ -1,0 +1,21 @@
+model:
+  path: /local/perdijks/storylm_pipeline/models/base_gpt2_20m/final
+  tokenizer_path: /local/perdijks/storylm_pipeline/models/base_gpt2_20m/final
+
+data:
+  config: data_base.yaml   # resolved relative to this file's directory
+  split: test               # dev | test
+
+eval_batch_size: 16
+
+paths:
+  output_dir: /local/perdijks/storylm_pipeline/results/base_gpt2_20m
+
+wandb:
+  entity: sabijn-leiden-university
+  project: storytimelm-pretraining
+  run_name: eval_base_gpt2_20m
+  tags: [eval, base]
+
+blimp:
+  normalize_by_length: true

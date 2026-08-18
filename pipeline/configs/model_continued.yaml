@@ -1,0 +1,33 @@
+# Loads a saved base model and continues pretraining it on data_continued.yaml.
+# No `model:` block here — architecture and sizes come from the checkpoint.
+base_model:
+  path: /local/perdijks/storylm_pipeline/models/base_gpt2_20m/final
+  tokenizer_path: /local/perdijks/storylm_pipeline/models/base_gpt2_20m/final
+
+data:
+  config: data_continued.yaml   # resolved relative to this file's directory
+
+training:
+  output_dir: /local/perdijks/storylm_pipeline/models/continued_chiscor
+  num_train_epochs: 3
+  per_device_train_batch_size: 32
+  per_device_eval_batch_size: 32
+  gradient_accumulation_steps: 1
+  learning_rate: 1e-4
+  weight_decay: 0.01
+  warmup_ratio: 0.03
+  lr_scheduler_type: cosine
+  eval_strategy: steps
+  eval_steps: 200
+  save_strategy: steps
+  save_steps: 200
+  save_total_limit: 3
+  logging_steps: 20
+  seed: 359
+  bf16: true
+
+wandb:
+  entity: sabijn-leiden-university
+  project: storytimelm-pretraining
+  run_name: continued_chiscor
+  tags: [continued, chiscor]

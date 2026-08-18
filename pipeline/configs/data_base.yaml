@@ -1,0 +1,15 @@
+# Data used to pretrain the base model from scratch, and (by default) to train the tokenizer.
+sources:
+  - name: babylm_nl
+    type: hf
+    hf_name: "BabyLM-community/babylm-nld"
+    split: train
+    text_column: text
+
+split:
+  dev_fraction: 0.05
+  test_fraction: 0.05
+  seed: 42
+
+paths:
+  output_dir: /local/perdijks/storylm_pipeline/data/base_pretrain

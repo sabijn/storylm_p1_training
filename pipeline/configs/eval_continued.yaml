@@ -1,0 +1,21 @@
+model:
+  path: /local/perdijks/storylm_pipeline/models/continued_chiscor/final
+  tokenizer_path: /local/perdijks/storylm_pipeline/models/continued_chiscor/final
+
+data:
+  config: data_continued.yaml   # resolved relative to this file's directory
+  split: test                    # dev | test
+
+eval_batch_size: 16
+
+paths:
+  output_dir: /local/perdijks/storylm_pipeline/results/continued_chiscor
+
+wandb:
+  entity: sabijn-leiden-university
+  project: storytimelm-pretraining
+  run_name: eval_continued_chiscor
+  tags: [eval, continued]
+
+blimp:
+  normalize_by_length: true

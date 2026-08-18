@@ -57,6 +57,7 @@ def train_tokenizer(
     model_file = f"{model_prefix}.model"
     vocab_file = f"{model_prefix}.vocab"
     print(f"Tokenizer saved: {model_file}, {vocab_file}")
+    
     return model_file
 
 
