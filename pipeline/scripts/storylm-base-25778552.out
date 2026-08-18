@@ -1,221 +1,0 @@
-============================================================================================== 
-Warning! Mixing Conda and module environments may lead to corruption of the
-user environment. 
-We do not recommend users mixing those two environments unless absolutely
-necessary. Note that 
-SURF does not provide any support for Conda environment.
-For more information, please refer to our software policy page:
-https://servicedesk.surf.nl/wiki/display/WIKI/Software+policy+Snellius#SoftwarepolicySnellius-UseofAnacondaandMinicondaenvironmentsonSnellius 
-
-Remember that many packages have already been installed on the system and can
-be loaded using 
-the 'module load <package__name>' command. If you are uncertain if a package is
-already available 
-on the system, please use 'module avail' or 'module spider' to search for it.
-============================================================================================== 
-Preparing data from 1 source(s)...
-Saving the dataset (0/2 shards):   0%|          | 0/274149 [00:00<?, ? examples/s]Saving the dataset (0/2 shards):   0%|          | 1000/274149 [00:00<00:39, 6849.97 examples/s]Saving the dataset (0/2 shards):   1%|▏         | 4000/274149 [00:00<00:18, 14364.79 examples/s]Saving the dataset (0/2 shards):   4%|▎         | 10000/274149 [00:00<00:09, 27154.09 examples/s]Saving the dataset (0/2 shards):   8%|▊         | 21000/274149 [00:00<00:05, 50107.56 examples/s]Saving the dataset (0/2 shards):  15%|█▍        | 40000/274149 [00:00<00:02, 89572.14 examples/s]Saving the dataset (0/2 shards):  23%|██▎       | 62000/274149 [00:00<00:01, 125500.49 examples/s]Saving the dataset (0/2 shards):  31%|███       | 84000/274149 [00:00<00:01, 151459.93 examples/s]Saving the dataset (0/2 shards):  40%|███▉      | 109000/274149 [00:00<00:00, 177641.10 examples/s]Saving the dataset (0/2 shards):  48%|████▊     | 132000/274149 [00:01<00:00, 191460.95 examples/s]Saving the dataset (1/2 shards):  50%|█████     | 137075/274149 [00:01<00:00, 191460.95 examples/s]Saving the dataset (1/2 shards):  58%|█████▊    | 158075/274149 [00:01<00:01, 86714.79 examples/s] Saving the dataset (1/2 shards):  65%|██████▍   | 177075/274149 [00:01<00:00, 99944.32 examples/s]Saving the dataset (1/2 shards):  72%|███████▏  | 198075/274149 [00:01<00:00, 117133.64 examples/s]Saving the dataset (1/2 shards):  83%|████████▎ | 227075/274149 [00:01<00:00, 148874.38 examples/s]Saving the dataset (1/2 shards):  95%|█████████▍| 260075/274149 [00:02<00:00, 166293.27 examples/s]Saving the dataset (2/2 shards): 100%|██████████| 274149/274149 [00:02<00:00, 166293.27 examples/s]Saving the dataset (2/2 shards): 100%|██████████| 274149/274149 [00:02<00:00, 123833.30 examples/s]
-Saving the dataset (0/1 shards):   0%|          | 0/15231 [00:00<?, ? examples/s]Saving the dataset (0/1 shards): 100%|██████████| 15231/15231 [00:00<00:00, 138410.37 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 15231/15231 [00:00<00:00, 138410.37 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 15231/15231 [00:00<00:00, 136080.02 examples/s]
-Saving the dataset (0/1 shards):   0%|          | 0/15231 [00:00<?, ? examples/s]Saving the dataset (0/1 shards):  59%|█████▉    | 9000/15231 [00:00<00:00, 20110.51 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 15231/15231 [00:00<00:00, 20110.51 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 15231/15231 [00:00<00:00, 32057.24 examples/s]
-  train: 274,149 examples
-  dev: 15,231 examples
-  test: 15,231 examples
-Saved prepared dataset to /scratch-shared/sperdijk/storylm_p1_training/data/base_pretrain
-Traceback (most recent call last):
-  File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/scripts/02_train_tokenizer.py", line 8, in <module>
-    import sentencepiece as spm
-ModuleNotFoundError: No module named 'sentencepiece'
-E0818 13:06:52.334000 3426289 /gpfs/home1/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/api.py:988] failed (exitcode: 1) local_rank: 0 (pid: 3426311) of binary: /home/sperdijk/.conda/envs/babylm2026/bin/python3.12
-Traceback (most recent call last):
-  File "/home/sperdijk/.conda/envs/babylm2026/bin/torchrun", line 6, in <module>
-    sys.exit(main())
-             ^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 367, in wrapper
-    return f(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/run.py", line 1016, in main
-    run(args)
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/run.py", line 1007, in run
-    elastic_launch(
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 191, in __call__
-    return launch_agent(self._config, self._entrypoint, list(args))
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 371, in launch_agent
-    raise ChildFailedError(
-torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
-============================================================
-scripts/02_train_tokenizer.py FAILED
-------------------------------------------------------------
-Failures:
-  <NO_OTHER_FAILURES>
-------------------------------------------------------------
-Root Cause (first observed failure):
-[0]:
-  time      : 2026-08-18_13:06:52
-  host      : gcn106.local.snellius.surf.nl
-  rank      : 0 (local_rank: 0)
-  exitcode  : 1 (pid: 3426311) 
-  error_file: <N/A>
-  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
-============================================================
-Traceback (most recent call last):
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/utils/hub.py", line 437, in cached_files
-    hf_hub_download(
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 84, in _inner_fn
-    validate_repo_id(arg_value)
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 132, in validate_repo_id
-    raise HFValidationError(
-huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/scratch-shared/sperdijk/storylm_p1_training/tokenizers/tokenizer_16k_nl'. Use `repo_type` argument if needed.
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/models/auto/tokenization_auto.py", line 694, in from_pretrained
-    config = AutoConfig.from_pretrained(
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/models/auto/configuration_auto.py", line 374, in from_pretrained
-    config_dict, unused_kwargs = PreTrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
-                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/configuration_utils.py", line 685, in get_config_dict
-    config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
-                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/configuration_utils.py", line 740, in _get_config_dict
-    resolved_config_file = cached_file(
-                           ^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/utils/hub.py", line 293, in cached_file
-    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/utils/hub.py", line 488, in cached_files
-    raise OSError(f"{e}") from e
-OSError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/scratch-shared/sperdijk/storylm_p1_training/tokenizers/tokenizer_16k_nl'. Use `repo_type` argument if needed.
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/utils/hub.py", line 437, in cached_files
-    hf_hub_download(
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 84, in _inner_fn
-    validate_repo_id(arg_value)
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 132, in validate_repo_id
-    raise HFValidationError(
-huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/scratch-shared/sperdijk/storylm_p1_training/tokenizers/tokenizer_16k_nl'. Use `repo_type` argument if needed.
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/scripts/03_train_base_model.py", line 75, in <module>
-    main()
-  File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/scripts/03_train_base_model.py", line 26, in main
-    tokenizer = AutoTokenizer.from_pretrained(cfg["tokenizer"]["path"])
-                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/models/auto/tokenization_auto.py", line 698, in from_pretrained
-    config = PreTrainedConfig.from_pretrained(pretrained_model_name_or_path, **kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/configuration_utils.py", line 644, in from_pretrained
-    config_dict, kwargs = cls.get_config_dict(pretrained_model_name_or_path, **kwargs)
-                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/configuration_utils.py", line 685, in get_config_dict
-    config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
-                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/configuration_utils.py", line 740, in _get_config_dict
-    resolved_config_file = cached_file(
-                           ^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/utils/hub.py", line 293, in cached_file
-    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/utils/hub.py", line 488, in cached_files
-    raise OSError(f"{e}") from e
-OSError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/scratch-shared/sperdijk/storylm_p1_training/tokenizers/tokenizer_16k_nl'. Use `repo_type` argument if needed.
-E0818 13:07:04.123000 3426312 /gpfs/home1/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/api.py:988] failed (exitcode: 1) local_rank: 0 (pid: 3426328) of binary: /home/sperdijk/.conda/envs/babylm2026/bin/python3.12
-Traceback (most recent call last):
-  File "/home/sperdijk/.conda/envs/babylm2026/bin/torchrun", line 6, in <module>
-    sys.exit(main())
-             ^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 367, in wrapper
-    return f(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/run.py", line 1016, in main
-    run(args)
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/run.py", line 1007, in run
-    elastic_launch(
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 191, in __call__
-    return launch_agent(self._config, self._entrypoint, list(args))
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 371, in launch_agent
-    raise ChildFailedError(
-torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
-============================================================
-scripts/03_train_base_model.py FAILED
-------------------------------------------------------------
-Failures:
-  <NO_OTHER_FAILURES>
-------------------------------------------------------------
-Root Cause (first observed failure):
-[0]:
-  time      : 2026-08-18_13:07:04
-  host      : gcn106.local.snellius.surf.nl
-  rank      : 0 (local_rank: 0)
-  exitcode  : 1 (pid: 3426328) 
-  error_file: <N/A>
-  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
-============================================================
-Loading model from /scratch-shared/sperdijk/storylm_p1_training/models/base_gpt2_20m_16k/final...
-Traceback (most recent call last):
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/utils/hub.py", line 437, in cached_files
-    hf_hub_download(
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 84, in _inner_fn
-    validate_repo_id(arg_value)
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 132, in validate_repo_id
-    raise HFValidationError(
-huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/scratch-shared/sperdijk/storylm_p1_training/models/base_gpt2_20m_16k/final'. Use `repo_type` argument if needed.
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/scripts/05_evaluate_model.py", line 88, in <module>
-    main()
-  File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/scripts/05_evaluate_model.py", line 30, in main
-    model = AutoModelForCausalLM.from_pretrained(model_dir)
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/models/auto/auto_factory.py", line 289, in from_pretrained
-    resolved_config_file = cached_file(
-                           ^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/utils/hub.py", line 293, in cached_file
-    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/utils/hub.py", line 488, in cached_files
-    raise OSError(f"{e}") from e
-OSError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/scratch-shared/sperdijk/storylm_p1_training/models/base_gpt2_20m_16k/final'. Use `repo_type` argument if needed.
-E0818 13:07:12.079000 3426344 /gpfs/home1/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/api.py:988] failed (exitcode: 1) local_rank: 0 (pid: 3426368) of binary: /home/sperdijk/.conda/envs/babylm2026/bin/python3.12
-Traceback (most recent call last):
-  File "/home/sperdijk/.conda/envs/babylm2026/bin/torchrun", line 6, in <module>
-    sys.exit(main())
-             ^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 367, in wrapper
-    return f(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/run.py", line 1016, in main
-    run(args)
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/run.py", line 1007, in run
-    elastic_launch(
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 191, in __call__
-    return launch_agent(self._config, self._entrypoint, list(args))
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 371, in launch_agent
-    raise ChildFailedError(
-torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
-============================================================
-scripts/05_evaluate_model.py FAILED
-------------------------------------------------------------
-Failures:
-  <NO_OTHER_FAILURES>
-------------------------------------------------------------
-Root Cause (first observed failure):
-[0]:
-  time      : 2026-08-18_13:07:12
-  host      : gcn106.local.snellius.surf.nl
-  rank      : 0 (local_rank: 0)
-  exitcode  : 1 (pid: 3426368) 
-  error_file: <N/A>
-  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
-============================================================
