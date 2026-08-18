@@ -3,7 +3,18 @@
 ## Directories
 |- archive              Old code used to play around, kept around for safety reasons.   
 |- try-out-own-gpt      Code to build/train a gpt-like model from scratch and evaluate it on multiple benchmarks.  
-|- pipeline             HF-Trainer pipeline: tokenizer training, data prep (train/dev/test split), from-scratch base model training (GPT2/Llama, configurable via yaml), continued pretraining, and evaluation (val loss/perplexity + BLIMP-NL), logged to W&B.  
+|- pipeline             HF-Trainer pipeline: tokenizer training, data prep (train/dev/test split), from-scratch base model training (GPT2/Llama, configurable via yaml), continued pretraining, and evaluation (val loss/perplexity + BLIMP-NL), logged to W&B.
+
+## Researched combinations
+| Architecture | Model size    | Hidden size (model_dim, d_size) | Intermediate size             | Attention heads | Transformer layers    | Tokenizer size | Tokenizer data |
+| --------     | --------      | -------                         | --------                      | -------         | -------               | -------        | -------        |
+| GPT-2        | 20M           | 384                             |  768                          | 6               | 6                     | 16k            | BabyLM         |
+| GPT-2        | 20M           | 384                             |  768                          | 6               | 6                     | 16k            | Composite      |
+| GPT-2        | 20M           | 384                             |  768                          | 6               | 6                     | 32k            | BabyLM         |
+| Llama        | 20M           | 384                             |  768                          | 6               | 6                     | 16k            | BabyLM         |
+| --------     | --------      | -------                         | --------                      | -------         | -------               | -------        | -------        |
+| Architecture | 60M           | 512                             |  1024                         | 8               | 16                    | Tokenizer size | Tokenizer data |
+| Architecture | 180M          | 768                             |  1792                         | 12              | 24                    | Tokenizer size | Tokenizer data |
 
 ## Log
 ### Thursday August 13th 2026 & Friday August 14th 2026

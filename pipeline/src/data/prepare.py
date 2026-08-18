@@ -1,4 +1,5 @@
 from typing import Any
+import os
 
 from datasets import DatasetDict, concatenate_datasets, load_from_disk
 
@@ -30,6 +31,9 @@ def prepare_and_split(data_cfg: dict[str, Any]) -> DatasetDict:
 
 
 def save_prepared(dataset_dict: DatasetDict, output_dir: str) -> None:
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+    
     dataset_dict.save_to_disk(output_dir)
 
 

@@ -2,19 +2,19 @@ tokenizer:
   vocab_size: 16000
   model_type: bpe        # bpe | unigram
   character_coverage: 0.9995  # 0.9995 handles Dutch accented chars (é, ë, ij)
-  input_sentence_size: 5000000
+  input_sentence_size: 5000000 # max amount of sentences, if bigger than sampled
   special_tokens:
     pad: "<pad>"
     unk: "<unk>"
-    bos: "<s>"
-    eos: "</s>"
+    bos: "<bos>"
+    eos: "</eos>"
 
 # Trains only on the "train" split of an already-prepared dataset (see
 # scripts/01_prepare_data.py), so tokenizer training never sees dev/test text.
 data:
-  prepared_dataset_dir: /local/perdijks/storylm_pipeline/data/base_pretrain
+  prepared_dataset_dir: /scratch-shared/sperdijk/storylm_p1_training/data/base_pretrain
   split: train
 
 paths:
-  corpus_file: /local/perdijks/storylm_pipeline/corpora/base_pretrain_train.txt
-  output_dir: /local/perdijks/storylm_pipeline/tokenizers/tokenizer_16k_nl
+  corpus_file: /scratch-shared/sperdijk/storylm_p1_training/corpora/base_pretrain_train.txt
+  output_dir: /scratch-shared/sperdijk/storylm_p1_training/tokenizers/tokenizer_16k_nl

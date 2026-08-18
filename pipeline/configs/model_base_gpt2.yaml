@@ -14,13 +14,13 @@ model:
     attn_pdrop: 0.1
 
 tokenizer:
-  path: /local/perdijks/storylm_pipeline/tokenizers/tokenizer_16k_nl
+  path: /scratch-shared/sperdijk/storylm_p1_training/tokenizers/tokenizer_16k_nl
 
 data:
   config: data_base.yaml   # resolved relative to this file's directory
 
 training:
-  output_dir: /local/perdijks/storylm_pipeline/models/base_gpt2_20m
+  output_dir: /scratch-shared/sperdijk/storylm_p1_training/models/base_gpt2_20m_16k
   num_train_epochs: 3
   per_device_train_batch_size: 32
   per_device_eval_batch_size: 32
@@ -41,5 +41,5 @@ training:
 wandb:
   entity: sabijn-leiden-university
   project: storytimelm-pretraining
-  run_name: base_gpt2_20m
-  tags: [base, gpt2, 20m]
+  run_name: base_gpt2_20m_tok_16k
+  tags: [base, gpt2, 20m, tok_16k]
