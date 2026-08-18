@@ -8,9 +8,9 @@
 ## Researched combinations
 | Architecture | Model size    | Hidden size (model_dim, d_size) | Intermediate size             | Attention heads | Transformer layers    | Tokenizer size | Tokenizer data |
 | --------     | --------      | -------                         | --------                      | -------         | -------               | -------        | -------        |
-| GPT-2        | 20M           | 384                             |  768                          | 6               | 6                     | 16k            | BabyLM         |
-| GPT-2        | 20M           | 384                             |  768                          | 6               | 6                     | 16k            | Composite      |
-| GPT-2        | 20M           | 384                             |  768                          | 6               | 6                     | 32k            | BabyLM         |
+| GPT-2        | 60M           | 384                             |  768                          | 6               | 6                     | 16k            | BabyLM         |
+| GPT-2        | 60M           | 384                             |  768                          | 6               | 6                     | 16k            | Composite      |
+| GPT-2        | 60M           | 384                             |  768                          | 6               | 6                     | 32k            | BabyLM         |
 | Llama        | 20M           | 384                             |  768                          | 6               | 6                     | 16k            | BabyLM         |
 | --------     | --------      | -------                         | --------                      | -------         | -------               | -------        | -------        |
 | Architecture | 60M           | 512                             |  1024                         | 8               | 16                    | Tokenizer size | Tokenizer data |

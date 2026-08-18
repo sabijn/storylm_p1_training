@@ -1,0 +1,1073 @@
+============================================================================================== 
+Warning! Mixing Conda and module environments may lead to corruption of the
+user environment. 
+We do not recommend users mixing those two environments unless absolutely
+necessary. Note that 
+SURF does not provide any support for Conda environment.
+For more information, please refer to our software policy page:
+https://servicedesk.surf.nl/wiki/display/WIKI/Software+policy+Snellius#SoftwarepolicySnellius-UseofAnacondaandMinicondaenvironmentsonSnellius 
+
+Remember that many packages have already been installed on the system and can
+be loaded using 
+the 'module load <package__name>' command. If you are uncertain if a package is
+already available 
+on the system, please use 'module avail' or 'module spider' to search for it.
+============================================================================================== 
+Preparing data from 1 source(s)...
+Saving the dataset (0/2 shards):   0%|          | 0/274149 [00:00<?, ? examples/s]Saving the dataset (0/2 shards):   0%|          | 1000/274149 [00:00<01:18, 3483.67 examples/s]Saving the dataset (0/2 shards):   1%|          | 2000/274149 [00:00<00:56, 4778.71 examples/s]Saving the dataset (0/2 shards):   1%|▏         | 4000/274149 [00:00<00:36, 7499.90 examples/s]Saving the dataset (0/2 shards):   3%|▎         | 7000/274149 [00:00<00:24, 11086.13 examples/s]Saving the dataset (0/2 shards):   4%|▎         | 10000/274149 [00:00<00:19, 13812.92 examples/s]Saving the dataset (0/2 shards):   5%|▌         | 14000/274149 [00:01<00:13, 18584.29 examples/s]Saving the dataset (0/2 shards):   7%|▋         | 19000/274149 [00:01<00:10, 25032.25 examples/s]Saving the dataset (0/2 shards):  10%|▉         | 27000/274149 [00:01<00:07, 31476.71 examples/s]Saving the dataset (0/2 shards):  14%|█▍        | 38000/274149 [00:01<00:05, 46525.71 examples/s]Saving the dataset (0/2 shards):  20%|██        | 56000/274149 [00:01<00:02, 76613.43 examples/s]Saving the dataset (0/2 shards):  27%|██▋       | 75000/274149 [00:01<00:01, 101517.23 examples/s]Saving the dataset (0/2 shards):  32%|███▏      | 89000/274149 [00:01<00:01, 110089.75 examples/s]Saving the dataset (0/2 shards):  40%|████      | 110000/274149 [00:01<00:01, 135106.84 examples/s]Saving the dataset (0/2 shards):  50%|████▉     | 136000/274149 [00:02<00:00, 166763.95 examples/s]Saving the dataset (1/2 shards):  50%|█████     | 137075/274149 [00:02<00:00, 166763.95 examples/s]Saving the dataset (1/2 shards):  59%|█████▉    | 162075/274149 [00:03<00:02, 47103.89 examples/s] Saving the dataset (1/2 shards):  65%|██████▍   | 178075/274149 [00:03<00:01, 56887.17 examples/s]Saving the dataset (1/2 shards):  74%|███████▎  | 202075/274149 [00:03<00:00, 77003.63 examples/s]Saving the dataset (1/2 shards):  80%|███████▉  | 219075/274149 [00:03<00:00, 88132.29 examples/s]Saving the dataset (1/2 shards):  89%|████████▉ | 245075/274149 [00:03<00:00, 115142.99 examples/s]Saving the dataset (1/2 shards):  98%|█████████▊| 268075/274149 [00:03<00:00, 134227.01 examples/s]Saving the dataset (2/2 shards): 100%|██████████| 274149/274149 [00:04<00:00, 134227.01 examples/s]Saving the dataset (2/2 shards): 100%|██████████| 274149/274149 [00:04<00:00, 58657.74 examples/s] 
+Saving the dataset (0/1 shards):   0%|          | 0/15231 [00:00<?, ? examples/s]Saving the dataset (0/1 shards):  66%|██████▌   | 10000/15231 [00:00<00:00, 13972.43 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 15231/15231 [00:00<00:00, 13972.43 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 15231/15231 [00:00<00:00, 20533.14 examples/s]
+Saving the dataset (0/1 shards):   0%|          | 0/15231 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 15231/15231 [00:00<00:00, 170242.81 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 15231/15231 [00:00<00:00, 169876.57 examples/s]
+  train: 274,149 examples
+  dev: 15,231 examples
+  test: 15,231 examples
+Saved prepared dataset to /scratch-shared/sperdijk/storylm_p1_training/data/base_pretrain
+Loading prepared dataset from /scratch-shared/sperdijk/storylm_p1_training/data/base_pretrain...
+Wrote 274,149 lines to /scratch-shared/sperdijk/storylm_p1_training/corpora/base_pretrain_train.txt
+Training 16000-vocab SentencePiece bpe tokenizer...
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1787060333.822220  253029 sentencepiece_trainer.cc:105] Starts training with : 
+trainer_spec {
+  input: /scratch-shared/sperdijk/storylm_p1_training/corpora/base_pretrain_train.txt
+  input_format: 
+  model_prefix: /scratch-shared/sperdijk/storylm_p1_training/tokenizers/tokenizer_16k_nl/sentencepiece
+  model_type: BPE
+  vocab_size: 16000
+  self_test_sample_size: 0
+  character_coverage: 0.9995
+  input_sentence_size: 5000000
+  shuffle_input_sentence: 1
+  seed_sentencepiece_size: 1000000
+  shrinking_factor: 0.75
+  max_sentence_length: 4192
+  num_threads: 16
+  num_sub_iterations: 2
+  max_sentencepiece_length: 16
+  split_by_unicode_script: 1
+  split_by_number: 1
+  split_by_whitespace: 1
+  split_digits: 0
+  pretokenization_delimiter: 
+  treat_whitespace_as_suffix: 0
+  allow_whitespace_only_pieces: 0
+  required_chars: 
+  byte_fallback: 0
+  vocabulary_output_piece_score: 1
+  train_extremely_large_corpus: 0
+  seed_sentencepieces_file: 
+  hard_vocab_limit: 1
+  use_all_vocab: 0
+  unk_id: 1
+  bos_id: 2
+  eos_id: 3
+  pad_id: 0
+  unk_piece: <unk>
+  bos_piece: <s>
+  eos_piece: </s>
+  pad_piece: <pad>
+  unk_surface:  ⁇ 
+  enable_differential_privacy: 0
+  differential_privacy_noise_level: 0
+  differential_privacy_clipping_threshold: 0
+}
+normalizer_spec {
+  name: nmt_nfkc
+  add_dummy_prefix: 1
+  remove_extra_whitespaces: 1
+  escape_whitespaces: 1
+  normalization_rule_tsv: 
+}
+denormalizer_spec {}
+I0000 00:00:1787060333.822360  253029 trainer_interface.cc:364] SentenceIterator is not specified. Using MultiFileSentenceIterator.
+I0000 00:00:1787060333.827502  253029 trainer_interface.cc:193] Loading corpus: /scratch-shared/sperdijk/storylm_p1_training/corpora/base_pretrain_train.txt
+W0000 00:00:1787060333.827542  253029 trainer_interface.cc:393] Found too long line (6952 > 4192).
+W0000 00:00:1787060333.827548  253029 trainer_interface.cc:395] Too long lines are skipped in the training.
+W0000 00:00:1787060333.827552  253029 trainer_interface.cc:396] The maximum length can be changed with --max_sentence_length=<size> flag.
+I0000 00:00:1787060334.389366  253029 trainer_interface.cc:422] Loaded all 258129 sentences
+I0000 00:00:1787060334.389408  253029 trainer_interface.cc:429] Skipped 16020 too long sentences.
+I0000 00:00:1787060334.389835  253029 trainer_interface.cc:440] Adding meta_piece: <pad>
+I0000 00:00:1787060334.389843  253029 trainer_interface.cc:440] Adding meta_piece: <unk>
+I0000 00:00:1787060334.389847  253029 trainer_interface.cc:440] Adding meta_piece: <s>
+I0000 00:00:1787060334.389851  253029 trainer_interface.cc:440] Adding meta_piece: </s>
+I0000 00:00:1787060334.389879  253029 trainer_interface.cc:445] Normalizing sentences...
+I0000 00:00:1787060336.067708  253029 trainer_interface.cc:555] all chars count=103326792
+I0000 00:00:1787060336.067981  253029 trainer_interface.cc:566] Done: 99.9535% characters are covered.
+I0000 00:00:1787060336.068001  253029 trainer_interface.cc:578] Alphabet size=86
+I0000 00:00:1787060336.068007  253029 trainer_interface.cc:579] Final character coverage=0.999535
+I0000 00:00:1787060338.566452  253029 trainer_interface.cc:609] Done! preprocessed 258129 sentences.
+I0000 00:00:1787060338.566579  253029 trainer_interface.cc:615] Tokenizing input sentences with whitespace: 258129
+I0000 00:00:1787060340.283984  253029 trainer_interface.cc:626] Done! 709147
+I0000 00:00:1787060341.733719  253029 bpe_model_trainer.cc:321] Added: freq=584704 size=20 all=4625 active=4537 piece=▁b
+I0000 00:00:1787060341.876329  253029 bpe_model_trainer.cc:321] Added: freq=339849 size=40 all=5988 active=5900 piece=▁D
+I0000 00:00:1787060342.012365  253029 bpe_model_trainer.cc:321] Added: freq=212025 size=60 all=7667 active=7579 piece=▁st
+I0000 00:00:1787060342.111578  253029 bpe_model_trainer.cc:321] Added: freq=168732 size=80 all=9545 active=9457 piece=▁M
+I0000 00:00:1787060342.176362  253029 bpe_model_trainer.cc:321] Added: freq=135127 size=100 all=11342 active=11254 piece=ver
+I0000 00:00:1787060342.248508  253029 bpe_model_trainer.cc:321] Added: freq=107580 size=120 all=13599 active=13511 piece=id
+I0000 00:00:1787060342.312867  253029 bpe_model_trainer.cc:321] Added: freq=90243 size=140 all=15702 active=15614 piece=op
+I0000 00:00:1787060342.351791  253029 bpe_model_trainer.cc:321] Added: freq=78277 size=160 all=17386 active=17298 piece=ot
+I0000 00:00:1787060342.394940  253029 bpe_model_trainer.cc:321] Added: freq=66190 size=180 all=19589 active=19501 piece=▁zo
+I0000 00:00:1787060342.428018  253029 bpe_model_trainer.cc:321] Added: freq=58620 size=200 all=21564 active=21476 piece=▁re
+I0000 00:00:1787060342.459840  253029 bpe_model_trainer.cc:321] Added: freq=51252 size=220 all=23571 active=23483 piece=▁heeft
+I0000 00:00:1787060342.486496  253029 bpe_model_trainer.cc:321] Added: freq=44622 size=240 all=25391 active=25303 piece=ip
+I0000 00:00:1787060342.514197  253029 bpe_model_trainer.cc:321] Added: freq=40912 size=260 all=27110 active=27022 piece=.'
+I0000 00:00:1787060342.544409  253029 bpe_model_trainer.cc:321] Added: freq=37218 size=280 all=29111 active=29023 piece=CHILD
+I0000 00:00:1787060342.568410  253029 bpe_model_trainer.cc:321] Added: freq=34135 size=300 all=31325 active=31237 piece=▁had
+I0000 00:00:1787060342.593363  253029 bpe_model_trainer.cc:321] Added: freq=31153 size=320 all=33714 active=33626 piece=▁goed
+I0000 00:00:1787060342.604281  253029 bpe_model_trainer.cc:321] Added: freq=28906 size=340 all=34682 active=34594 piece=amen
+I0000 00:00:1787060342.623113  253029 bpe_model_trainer.cc:321] Added: freq=27155 size=360 all=36645 active=36557 piece=▁zich
+I0000 00:00:1787060342.641771  253029 bpe_model_trainer.cc:321] Added: freq=25160 size=380 all=38636 active=38548 piece=▁ter
+I0000 00:00:1787060342.654880  253029 bpe_model_trainer.cc:321] Added: freq=24127 size=400 all=40584 active=40496 piece=▁ben
+I0000 00:00:1787060342.669849  253029 bpe_model_trainer.cc:321] Added: freq=22653 size=420 all=42653 active=42565 piece=▁andere
+I0000 00:00:1787060342.682588  253029 bpe_model_trainer.cc:321] Added: freq=21306 size=440 all=44226 active=44138 piece=▁komt
+I0000 00:00:1787060342.699523  253029 bpe_model_trainer.cc:321] Added: freq=19975 size=460 all=46121 active=46033 piece=gens
+I0000 00:00:1787060342.715589  253029 bpe_model_trainer.cc:321] Added: freq=19022 size=480 all=47845 active=47757 piece=onden
+I0000 00:00:1787060342.732119  253029 bpe_model_trainer.cc:321] Added: freq=17214 size=500 all=49361 active=49273 piece=ader
+I0000 00:00:1787060342.742817  253029 bpe_model_trainer.cc:321] Added: freq=16444 size=520 all=50922 active=50834 piece=ilm
+I0000 00:00:1787060342.755957  253029 bpe_model_trainer.cc:321] Added: freq=15780 size=540 all=53196 active=53108 piece=mand
+I0000 00:00:1787060342.765210  253029 bpe_model_trainer.cc:321] Added: freq=14897 size=560 all=54854 active=54766 piece=▁werk
+I0000 00:00:1787060342.776735  253029 bpe_model_trainer.cc:321] Added: freq=14453 size=580 all=56417 active=56329 piece=▁dus
+I0000 00:00:1787060342.788267  253029 bpe_model_trainer.cc:321] Added: freq=13788 size=600 all=57845 active=57757 piece=▁kn
+I0000 00:00:1787060342.795808  253029 bpe_model_trainer.cc:321] Added: freq=13260 size=620 all=59335 active=59247 piece=ellen
+I0000 00:00:1787060342.804237  253029 bpe_model_trainer.cc:321] Added: freq=12690 size=640 all=61206 active=61118 piece=▁ar
+I0000 00:00:1787060342.811067  253029 bpe_model_trainer.cc:321] Added: freq=12247 size=660 all=62561 active=62473 piece=▁film
+I0000 00:00:1787060342.818734  253029 bpe_model_trainer.cc:321] Added: freq=11860 size=680 all=63869 active=63781 piece=▁Van
+I0000 00:00:1787060342.829936  253029 bpe_model_trainer.cc:321] Added: freq=11247 size=700 all=65891 active=65803 piece=▁geh
+I0000 00:00:1787060342.837770  253029 bpe_model_trainer.cc:321] Added: freq=10733 size=720 all=67505 active=67417 piece=▁Br
+I0000 00:00:1787060342.845488  253029 bpe_model_trainer.cc:321] Added: freq=10373 size=740 all=68806 active=68718 piece=▁6
+I0000 00:00:1787060342.851633  253029 bpe_model_trainer.cc:321] Added: freq=10033 size=760 all=70185 active=70097 piece=▁tre
+I0000 00:00:1787060342.857462  253029 bpe_model_trainer.cc:321] Added: freq=9743 size=780 all=71254 active=71166 piece=uin
+I0000 00:00:1787060342.866367  253029 bpe_model_trainer.cc:321] Added: freq=9360 size=800 all=72951 active=72863 piece=▁want
+I0000 00:00:1787060342.871325  253029 bpe_model_trainer.cc:321] Added: freq=9076 size=820 all=74012 active=73924 piece=oms
+I0000 00:00:1787060342.878460  253029 bpe_model_trainer.cc:321] Added: freq=8841 size=840 all=75799 active=75711 piece=elde
+I0000 00:00:1787060342.885442  253029 bpe_model_trainer.cc:321] Added: freq=8573 size=860 all=77186 active=77098 piece=iz
+I0000 00:00:1787060342.892038  253029 bpe_model_trainer.cc:321] Added: freq=8363 size=880 all=78944 active=78856 piece=unt
+I0000 00:00:1787060342.897842  253029 bpe_model_trainer.cc:321] Added: freq=8134 size=900 all=80489 active=80401 piece=▁zij
+I0000 00:00:1787060342.903529  253029 bpe_model_trainer.cc:321] Added: freq=7892 size=920 all=81454 active=81366 piece=▁kr
+I0000 00:00:1787060342.910713  253029 bpe_model_trainer.cc:321] Added: freq=7663 size=940 all=83030 active=82942 piece=▁tra
+I0000 00:00:1787060342.916300  253029 bpe_model_trainer.cc:321] Added: freq=7501 size=960 all=84427 active=84339 piece=iss
+I0000 00:00:1787060342.920028  253029 bpe_model_trainer.cc:321] Added: freq=7367 size=980 all=85459 active=85371 piece=▁vraagt
+I0000 00:00:1787060342.925659  253029 bpe_model_trainer.cc:321] Added: freq=7194 size=1000 all=86590 active=86502 piece=▁wij
+I0000 00:00:1787060342.929971  253029 bpe_model_trainer.cc:321] Added: freq=7018 size=1020 all=87509 active=87421 piece=gd
+I0000 00:00:1787060342.935196  253029 bpe_model_trainer.cc:321] Added: freq=6899 size=1040 all=88196 active=88108 piece=imedia
+I0000 00:00:1787060342.939180  253029 bpe_model_trainer.cc:321] Added: freq=6795 size=1060 all=89349 active=89261 piece=ans
+I0000 00:00:1787060342.946955  253029 bpe_model_trainer.cc:321] Added: freq=6585 size=1080 all=91772 active=91684 piece=▁the
+I0000 00:00:1787060342.951535  253029 bpe_model_trainer.cc:321] Added: freq=6408 size=1100 all=92765 active=92677 piece=▁Fran
+I0000 00:00:1787060342.957472  253029 bpe_model_trainer.cc:321] Added: freq=6198 size=1120 all=93989 active=93901 piece=▁heen
+I0000 00:00:1787060342.962362  253029 bpe_model_trainer.cc:321] Added: freq=6077 size=1140 all=95557 active=95469 piece=▁ongeveer
+I0000 00:00:1787060342.966027  253029 bpe_model_trainer.cc:321] Added: freq=5938 size=1160 all=96372 active=96284 piece=▁politie
+I0000 00:00:1787060342.969726  253029 bpe_model_trainer.cc:321] Added: freq=5805 size=1180 all=97126 active=97038 piece=▁foto
+I0000 00:00:1787060342.974085  253029 bpe_model_trainer.cc:321] Added: freq=5665 size=1200 all=98391 active=98303 piece=▁elke
+I0000 00:00:1787060342.979030  253029 bpe_model_trainer.cc:321] Added: freq=5548 size=1220 all=99394 active=99306 piece=▁stemmen
+I0000 00:00:1787060342.981829  253029 bpe_model_trainer.cc:321] Added: freq=5459 size=1240 all=100250 active=100162 piece=▁ruim
+I0000 00:00:1787060342.985810  253029 bpe_model_trainer.cc:321] Added: freq=5395 size=1260 all=101366 active=101278 piece=▁lijkt
+I0000 00:00:1787060342.989708  253029 bpe_model_trainer.cc:321] Added: freq=5244 size=1280 all=102048 active=101960 piece=aur
+I0000 00:00:1787060342.995496  253029 bpe_model_trainer.cc:321] Added: freq=5111 size=1300 all=103842 active=103754 piece=▁ja
+I0000 00:00:1787060342.998004  253029 bpe_model_trainer.cc:321] Added: freq=5029 size=1320 all=104546 active=104458 piece=reken
+I0000 00:00:1787060343.001975  253029 bpe_model_trainer.cc:321] Added: freq=4971 size=1340 all=105566 active=105478 piece=slag
+I0000 00:00:1787060343.006975  253029 bpe_model_trainer.cc:321] Added: freq=4847 size=1360 all=106566 active=106478 piece=raf
+I0000 00:00:1787060343.012238  253029 bpe_model_trainer.cc:321] Added: freq=4728 size=1380 all=107920 active=107832 piece=▁grootste
+I0000 00:00:1787060343.016021  253029 bpe_model_trainer.cc:321] Added: freq=4650 size=1400 all=109123 active=109035 piece=▁Re
+I0000 00:00:1787060343.019878  253029 bpe_model_trainer.cc:321] Added: freq=4573 size=1420 all=110552 active=110464 piece=gem
+I0000 00:00:1787060343.023248  253029 bpe_model_trainer.cc:321] Added: freq=4491 size=1440 all=111392 active=111304 piece=▁16
+I0000 00:00:1787060343.027517  253029 bpe_model_trainer.cc:321] Added: freq=4412 size=1460 all=112669 active=112581 piece=▁manier
+I0000 00:00:1787060343.031750  253029 bpe_model_trainer.cc:321] Added: freq=4347 size=1480 all=113923 active=113835 piece=▁sc
+I0000 00:00:1787060343.035745  253029 bpe_model_trainer.cc:321] Added: freq=4278 size=1500 all=114632 active=114544 piece=stof
+I0000 00:00:1787060343.040951  253029 bpe_model_trainer.cc:321] Added: freq=4195 size=1520 all=115745 active=115657 piece=▁Ben
+I0000 00:00:1787060343.043833  253029 bpe_model_trainer.cc:321] Added: freq=4147 size=1540 all=116744 active=116656 piece=Maar
+I0000 00:00:1787060343.048228  253029 bpe_model_trainer.cc:321] Added: freq=4080 size=1560 all=117786 active=117698 piece=rek
+I0000 00:00:1787060343.052011  253029 bpe_model_trainer.cc:321] Added: freq=4005 size=1580 all=118991 active=118903 piece=zaam
+I0000 00:00:1787060343.055440  253029 bpe_model_trainer.cc:321] Added: freq=3921 size=1600 all=119662 active=119574 piece=ern
+I0000 00:00:1787060343.059027  253029 bpe_model_trainer.cc:321] Added: freq=3836 size=1620 all=120565 active=120477 piece=osten
+I0000 00:00:1787060343.062835  253029 bpe_model_trainer.cc:321] Added: freq=3789 size=1640 all=121874 active=121786 piece=indelijk
+I0000 00:00:1787060343.065779  253029 bpe_model_trainer.cc:321] Added: freq=3738 size=1660 all=122926 active=122838 piece=▁valt
+I0000 00:00:1787060343.068169  253029 bpe_model_trainer.cc:321] Added: freq=3687 size=1680 all=123872 active=123784 piece=▁bren
+I0000 00:00:1787060343.072166  253029 bpe_model_trainer.cc:321] Added: freq=3629 size=1700 all=125122 active=125034 piece=▁waarin
+I0000 00:00:1787060343.075562  253029 bpe_model_trainer.cc:321] Added: freq=3579 size=1720 all=126196 active=126108 piece=old
+I0000 00:00:1787060343.078205  253029 bpe_model_trainer.cc:321] Added: freq=3544 size=1740 all=127268 active=127180 piece=▁dorp
+I0000 00:00:1787060343.082051  253029 bpe_model_trainer.cc:321] Added: freq=3481 size=1760 all=128475 active=128387 piece=▁,
+I0000 00:00:1787060343.085328  253029 bpe_model_trainer.cc:321] Added: freq=3419 size=1780 all=129207 active=129119 piece=▁schrijf
+I0000 00:00:1787060343.087984  253029 bpe_model_trainer.cc:321] Added: freq=3365 size=1800 all=129753 active=129665 piece=▁don
+I0000 00:00:1787060343.091840  253029 bpe_model_trainer.cc:321] Added: freq=3296 size=1820 all=130515 active=130427 piece=ese
+I0000 00:00:1787060343.095449  253029 bpe_model_trainer.cc:321] Added: freq=3252 size=1840 all=131686 active=131598 piece=sche
+I0000 00:00:1787060343.098542  253029 bpe_model_trainer.cc:321] Added: freq=3212 size=1860 all=132817 active=132729 piece=▁reger
+I0000 00:00:1787060343.102050  253029 bpe_model_trainer.cc:321] Added: freq=3170 size=1880 all=133791 active=133703 piece=▁hulp
+I0000 00:00:1787060343.104563  253029 bpe_model_trainer.cc:321] Added: freq=3130 size=1900 all=134604 active=134516 piece=rak
+I0000 00:00:1787060343.106730  253029 bpe_model_trainer.cc:321] Added: freq=3102 size=1920 all=135420 active=135332 piece=urt
+I0000 00:00:1787060343.110181  253029 bpe_model_trainer.cc:321] Added: freq=3067 size=1940 all=136814 active=136726 piece=▁neus
+I0000 00:00:1787060343.113578  253029 bpe_model_trainer.cc:321] Added: freq=3005 size=1960 all=137628 active=137540 piece=yn
+I0000 00:00:1787060343.117868  253029 bpe_model_trainer.cc:321] Added: freq=2959 size=1980 all=138988 active=138900 piece=werpen
+I0000 00:00:1787060343.120554  253029 bpe_model_trainer.cc:321] Added: freq=2916 size=2000 all=139656 active=139568 piece=▁ontw
+I0000 00:00:1787060343.122702  253029 bpe_model_trainer.cc:321] Added: freq=2875 size=2020 all=140199 active=140111 piece=red
+I0000 00:00:1787060343.125820  253029 bpe_model_trainer.cc:321] Added: freq=2835 size=2040 all=141344 active=141256 piece=▁vakantie
+I0000 00:00:1787060343.129479  253029 bpe_model_trainer.cc:321] Added: freq=2783 size=2060 all=142489 active=142401 piece=kens
+I0000 00:00:1787060343.132163  253029 bpe_model_trainer.cc:321] Added: freq=2748 size=2080 all=143458 active=143370 piece=leg
+I0000 00:00:1787060343.134307  253029 bpe_model_trainer.cc:321] Added: freq=2715 size=2100 all=144196 active=144108 piece=▁100
+I0000 00:00:1787060343.137296  253029 bpe_model_trainer.cc:321] Added: freq=2679 size=2120 all=145438 active=145350 piece=▁eruit
+I0000 00:00:1787060343.139012  253029 bpe_model_trainer.cc:321] Added: freq=2639 size=2140 all=145850 active=145762 piece=Hoe
+I0000 00:00:1787060343.140803  253029 bpe_model_trainer.cc:321] Added: freq=2608 size=2160 all=146365 active=146277 piece=▁ving
+I0000 00:00:1787060343.144335  253029 bpe_model_trainer.cc:321] Added: freq=2578 size=2180 all=147334 active=147246 piece=▁gebouwd
+I0000 00:00:1787060343.146703  253029 bpe_model_trainer.cc:321] Added: freq=2552 size=2200 all=148253 active=148165 piece=chn
+I0000 00:00:1787060343.149794  253029 bpe_model_trainer.cc:321] Added: freq=2526 size=2220 all=149351 active=149263 piece=▁rec
+I0000 00:00:1787060343.152448  253029 bpe_model_trainer.cc:321] Added: freq=2484 size=2240 all=149984 active=149896 piece=▁kregen
+I0000 00:00:1787060343.155621  253029 bpe_model_trainer.cc:321] Added: freq=2448 size=2260 all=151114 active=151026 piece=▁steen
+I0000 00:00:1787060343.159000  253029 bpe_model_trainer.cc:321] Added: freq=2421 size=2280 all=152169 active=152081 piece=ruis
+I0000 00:00:1787060343.162344  253029 bpe_model_trainer.cc:321] Added: freq=2389 size=2300 all=153411 active=153323 piece=ars
+I0000 00:00:1787060343.164581  253029 bpe_model_trainer.cc:321] Added: freq=2364 size=2320 all=154207 active=154119 piece=▁fab
+I0000 00:00:1787060343.166774  253029 bpe_model_trainer.cc:321] Added: freq=2342 size=2340 all=155112 active=155024 piece=cus
+I0000 00:00:1787060343.169028  253029 bpe_model_trainer.cc:321] Added: freq=2316 size=2360 all=155861 active=155773 piece=okk
+I0000 00:00:1787060343.171479  253029 bpe_model_trainer.cc:321] Added: freq=2286 size=2380 all=156662 active=156574 piece=▁huil
+I0000 00:00:1787060343.173627  253029 bpe_model_trainer.cc:321] Added: freq=2259 size=2400 all=157414 active=157326 piece=Die
+I0000 00:00:1787060343.176020  253029 bpe_model_trainer.cc:321] Added: freq=2232 size=2420 all=158418 active=158330 piece=uari
+I0000 00:00:1787060343.178213  253029 bpe_model_trainer.cc:321] Added: freq=2201 size=2440 all=158940 active=158852 piece=aus
+I0000 00:00:1787060343.181122  253029 bpe_model_trainer.cc:321] Added: freq=2176 size=2460 all=160002 active=159914 piece=euren
+I0000 00:00:1787060343.184254  253029 bpe_model_trainer.cc:321] Added: freq=2153 size=2480 all=161170 active=161082 piece=▁bekende
+I0000 00:00:1787060343.186134  253029 bpe_model_trainer.cc:321] Added: freq=2128 size=2500 all=161814 active=161726 piece=▁bezoek
+I0000 00:00:1787060343.187780  253029 bpe_model_trainer.cc:321] Added: freq=2111 size=2520 all=162547 active=162459 piece=anc
+I0000 00:00:1787060343.190173  253029 bpe_model_trainer.cc:321] Added: freq=2090 size=2540 all=163444 active=163356 piece=atte
+I0000 00:00:1787060343.191874  253029 bpe_model_trainer.cc:321] Added: freq=2070 size=2560 all=163863 active=163775 piece=versiteit
+I0000 00:00:1787060343.193474  253029 bpe_model_trainer.cc:321] Added: freq=2047 size=2580 all=164285 active=164197 piece=▁Engeland
+I0000 00:00:1787060343.196400  253029 bpe_model_trainer.cc:321] Added: freq=2033 size=2600 all=164866 active=164778 piece=▁gewonnen
+I0000 00:00:1787060343.198804  253029 bpe_model_trainer.cc:321] Added: freq=1998 size=2620 all=165294 active=165206 piece=uke
+I0000 00:00:1787060343.201669  253029 bpe_model_trainer.cc:321] Added: freq=1974 size=2640 all=166551 active=166463 piece=uli
+I0000 00:00:1787060343.203692  253029 bpe_model_trainer.cc:321] Added: freq=1960 size=2660 all=167352 active=167264 piece=zetten
+I0000 00:00:1787060343.205668  253029 bpe_model_trainer.cc:321] Added: freq=1944 size=2680 all=167931 active=167843 piece=▁meerdere
+I0000 00:00:1787060343.207980  253029 bpe_model_trainer.cc:321] Added: freq=1927 size=2700 all=168882 active=168794 piece=St
+I0000 00:00:1787060343.210381  253029 bpe_model_trainer.cc:321] Added: freq=1907 size=2720 all=169718 active=169630 piece=inkrijk
+I0000 00:00:1787060343.212164  253029 bpe_model_trainer.cc:321] Added: freq=1897 size=2740 all=170385 active=170297 piece=pjes
+I0000 00:00:1787060343.214659  253029 bpe_model_trainer.cc:321] Added: freq=1878 size=2760 all=170787 active=170699 piece=pril
+I0000 00:00:1787060343.216230  253029 bpe_model_trainer.cc:321] Added: freq=1862 size=2780 all=171384 active=171296 piece=▁waarmee
+I0000 00:00:1787060343.217994  253029 bpe_model_trainer.cc:321] Added: freq=1846 size=2800 all=172062 active=171974 piece=▁kleren
+I0000 00:00:1787060343.220263  253029 bpe_model_trainer.cc:321] Added: freq=1831 size=2820 all=172757 active=172669 piece=fd
+I0000 00:00:1787060343.222425  253029 bpe_model_trainer.cc:321] Added: freq=1814 size=2840 all=173453 active=173365 piece=izer
+I0000 00:00:1787060343.224391  253029 bpe_model_trainer.cc:321] Added: freq=1796 size=2860 all=174119 active=174031 piece=▁producten
+I0000 00:00:1787060343.226074  253029 bpe_model_trainer.cc:321] Added: freq=1777 size=2880 all=174790 active=174702 piece=▁Tijd
+I0000 00:00:1787060343.228105  253029 bpe_model_trainer.cc:321] Added: freq=1756 size=2900 all=175466 active=175378 piece=▁mening
+I0000 00:00:1787060343.229966  253029 bpe_model_trainer.cc:321] Added: freq=1740 size=2920 all=176021 active=175933 piece=kn
+I0000 00:00:1787060343.232084  253029 bpe_model_trainer.cc:321] Added: freq=1729 size=2940 all=177028 active=176940 piece=▁Bas
+I0000 00:00:1787060343.234615  253029 bpe_model_trainer.cc:321] Added: freq=1715 size=2960 all=177895 active=177807 piece=ument
+I0000 00:00:1787060343.236007  253029 bpe_model_trainer.cc:321] Added: freq=1698 size=2980 all=178307 active=178219 piece=bus
+I0000 00:00:1787060343.238127  253029 bpe_model_trainer.cc:321] Added: freq=1685 size=3000 all=179111 active=179023 piece=IJN
+I0000 00:00:1787060343.240147  253029 bpe_model_trainer.cc:321] Added: freq=1672 size=3020 all=179951 active=179863 piece=roep
+I0000 00:00:1787060343.242055  253029 bpe_model_trainer.cc:321] Added: freq=1657 size=3040 all=180685 active=180597 piece=▁kleding
+I0000 00:00:1787060343.244172  253029 bpe_model_trainer.cc:321] Added: freq=1640 size=3060 all=181597 active=181509 piece=eet
+I0000 00:00:1787060343.245814  253029 bpe_model_trainer.cc:321] Added: freq=1625 size=3080 all=182065 active=181977 piece=ure
+I0000 00:00:1787060343.248109  253029 bpe_model_trainer.cc:321] Added: freq=1615 size=3100 all=182861 active=182773 piece=▁techn
+I0000 00:00:1787060343.249823  253029 bpe_model_trainer.cc:321] Added: freq=1602 size=3120 all=183515 active=183427 piece=ammer
+I0000 00:00:1787060343.251717  253029 bpe_model_trainer.cc:321] Added: freq=1586 size=3140 all=184179 active=184091 piece=rein
+I0000 00:00:1787060343.253768  253029 bpe_model_trainer.cc:321] Added: freq=1573 size=3160 all=185059 active=184971 piece=▁spoor
+I0000 00:00:1787060343.255781  253029 bpe_model_trainer.cc:321] Added: freq=1558 size=3180 all=185875 active=185787 piece=60
+I0000 00:00:1787060343.257442  253029 bpe_model_trainer.cc:321] Added: freq=1545 size=3200 all=186615 active=186527 piece=ice
+I0000 00:00:1787060343.259583  253029 bpe_model_trainer.cc:321] Added: freq=1536 size=3220 all=187480 active=187392 piece=ilde
+I0000 00:00:1787060343.261323  253029 bpe_model_trainer.cc:321] Added: freq=1518 size=3240 all=188070 active=187982 piece=amera
+I0000 00:00:1787060343.263806  253029 bpe_model_trainer.cc:321] Added: freq=1506 size=3260 all=188840 active=188752 piece=ikke
+I0000 00:00:1787060343.265085  253029 bpe_model_trainer.cc:321] Added: freq=1494 size=3280 all=189306 active=189218 piece=▁Vroeger
+I0000 00:00:1787060343.267750  253029 bpe_model_trainer.cc:321] Added: freq=1483 size=3300 all=190048 active=189960 piece=iste
+I0000 00:00:1787060343.269580  253029 bpe_model_trainer.cc:321] Added: freq=1473 size=3320 all=190675 active=190587 piece=rijd
+I0000 00:00:1787060343.271671  253029 bpe_model_trainer.cc:321] Added: freq=1463 size=3340 all=191281 active=191193 piece=▁probeerde
+I0000 00:00:1787060343.273300  253029 bpe_model_trainer.cc:321] Added: freq=1450 size=3360 all=191865 active=191777 piece=▁schat
+I0000 00:00:1787060343.275423  253029 bpe_model_trainer.cc:321] Added: freq=1437 size=3380 all=192649 active=192561 piece=elingen
+I0000 00:00:1787060343.278070  253029 bpe_model_trainer.cc:321] Added: freq=1425 size=3400 all=193458 active=193370 piece=▁wink
+I0000 00:00:1787060343.279358  253029 bpe_model_trainer.cc:321] Added: freq=1416 size=3420 all=193963 active=193875 piece=▁4.
+I0000 00:00:1787060343.280766  253029 bpe_model_trainer.cc:321] Added: freq=1407 size=3440 all=194483 active=194395 piece=▁zonne
+I0000 00:00:1787060343.282825  253029 bpe_model_trainer.cc:321] Added: freq=1395 size=3460 all=195237 active=195149 piece=▁schreef
+I0000 00:00:1787060343.284230  253029 bpe_model_trainer.cc:321] Added: freq=1385 size=3480 all=195752 active=195664 piece=▁tru
+I0000 00:00:1787060343.286312  253029 bpe_model_trainer.cc:321] Added: freq=1374 size=3500 all=196344 active=196256 piece=gezien
+I0000 00:00:1787060343.288324  253029 bpe_model_trainer.cc:321] Added: freq=1366 size=3520 all=197167 active=197079 piece=zig
+I0000 00:00:1787060343.289804  253029 bpe_model_trainer.cc:321] Added: freq=1359 size=3540 all=197836 active=197748 piece=▁slaat
+I0000 00:00:1787060343.291765  253029 bpe_model_trainer.cc:321] Added: freq=1348 size=3560 all=198666 active=198578 piece=ijm
+I0000 00:00:1787060343.293791  253029 bpe_model_trainer.cc:321] Added: freq=1340 size=3580 all=199590 active=199502 piece=gere
+I0000 00:00:1787060343.295959  253029 bpe_model_trainer.cc:321] Added: freq=1322 size=3600 all=200163 active=200075 piece=▁Hieronder
+I0000 00:00:1787060343.297820  253029 bpe_model_trainer.cc:321] Added: freq=1314 size=3620 all=200966 active=200878 piece=vloed
+I0000 00:00:1787060343.299364  253029 bpe_model_trainer.cc:321] Added: freq=1308 size=3640 all=201588 active=201500 piece=▁talen
+I0000 00:00:1787060343.300738  253029 bpe_model_trainer.cc:321] Added: freq=1300 size=3660 all=201994 active=201906 piece=▁zette
+I0000 00:00:1787060343.301961  253029 bpe_model_trainer.cc:321] Added: freq=1293 size=3680 all=202452 active=202364 piece=hel
+I0000 00:00:1787060343.304076  253029 bpe_model_trainer.cc:321] Added: freq=1284 size=3700 all=203235 active=203147 piece=▁Groot
+I0000 00:00:1787060343.305395  253029 bpe_model_trainer.cc:321] Added: freq=1277 size=3720 all=203765 active=203677 piece=80
+I0000 00:00:1787060343.307098  253029 bpe_model_trainer.cc:321] Added: freq=1270 size=3740 all=204401 active=204313 piece=ftig
+I0000 00:00:1787060343.308633  253029 bpe_model_trainer.cc:321] Added: freq=1262 size=3760 all=205020 active=204932 piece=▁muis
+I0000 00:00:1787060343.310095  253029 bpe_model_trainer.cc:321] Added: freq=1254 size=3780 all=205655 active=205567 piece=▁dierentuin
+I0000 00:00:1787060343.311994  253029 bpe_model_trainer.cc:321] Added: freq=1246 size=3800 all=206468 active=206380 piece=▁antwoordt
+I0000 00:00:1787060343.313917  253029 bpe_model_trainer.cc:321] Added: freq=1236 size=3820 all=207253 active=207165 piece=▁snap
+I0000 00:00:1787060343.315381  253029 bpe_model_trainer.cc:321] Added: freq=1222 size=3840 all=207668 active=207580 piece=▁grij
+I0000 00:00:1787060343.317244  253029 bpe_model_trainer.cc:321] Added: freq=1213 size=3860 all=208596 active=208508 piece=▁beelden
+I0000 00:00:1787060343.318996  253029 bpe_model_trainer.cc:321] Added: freq=1200 size=3880 all=209114 active=209026 piece=▁zuur
+I0000 00:00:1787060343.320353  253029 bpe_model_trainer.cc:321] Added: freq=1193 size=3900 all=209605 active=209517 piece=▁dre
+I0000 00:00:1787060343.322170  253029 bpe_model_trainer.cc:321] Added: freq=1182 size=3920 all=210248 active=210160 piece=▁koffie
+I0000 00:00:1787060343.323476  253029 bpe_model_trainer.cc:321] Added: freq=1173 size=3940 all=210661 active=210573 piece=7)
+I0000 00:00:1787060343.325462  253029 bpe_model_trainer.cc:321] Added: freq=1164 size=3960 all=211334 active=211246 piece=zier
+I0000 00:00:1787060343.326950  253029 bpe_model_trainer.cc:321] Added: freq=1159 size=3980 all=211906 active=211818 piece=▁meen
+I0000 00:00:1787060343.329056  253029 bpe_model_trainer.cc:321] Added: freq=1151 size=4000 all=212648 active=212560 piece=ikel
+I0000 00:00:1787060343.330749  253029 bpe_model_trainer.cc:321] Added: freq=1144 size=4020 all=213478 active=213390 piece=etting
+I0000 00:00:1787060343.332128  253029 bpe_model_trainer.cc:321] Added: freq=1138 size=4040 all=214043 active=213955 piece=▁kies
+I0000 00:00:1787060343.333270  253029 bpe_model_trainer.cc:321] Added: freq=1131 size=4060 all=214453 active=214365 piece=ount
+I0000 00:00:1787060343.334470  253029 bpe_model_trainer.cc:321] Added: freq=1126 size=4080 all=214829 active=214741 piece=▁alweer
+I0000 00:00:1787060343.336077  253029 bpe_model_trainer.cc:321] Added: freq=1117 size=4100 all=215431 active=215343 piece=▁acteur
+I0000 00:00:1787060343.338047  253029 bpe_model_trainer.cc:321] Added: freq=1107 size=4120 all=216261 active=216173 piece=▁HEB
+I0000 00:00:1787060343.339469  253029 bpe_model_trainer.cc:321] Added: freq=1101 size=4140 all=216888 active=216800 piece=▁momp
+I0000 00:00:1787060343.340420  253029 bpe_model_trainer.cc:321] Added: freq=1097 size=4160 all=217323 active=217235 piece=▁springt
+I0000 00:00:1787060343.341386  253029 bpe_model_trainer.cc:321] Added: freq=1091 size=4180 all=217747 active=217659 piece=merken
+I0000 00:00:1787060343.342662  253029 bpe_model_trainer.cc:321] Added: freq=1084 size=4200 all=218111 active=218023 piece=▁veroor
+I0000 00:00:1787060343.344658  253029 bpe_model_trainer.cc:321] Added: freq=1079 size=4220 all=218970 active=218882 piece=▁wen
+I0000 00:00:1787060343.346299  253029 bpe_model_trainer.cc:321] Added: freq=1074 size=4240 all=219630 active=219542 piece=ooppunt
+I0000 00:00:1787060343.347627  253029 bpe_model_trainer.cc:321] Added: freq=1068 size=4260 all=220158 active=220070 piece=▁besp
+I0000 00:00:1787060343.349472  253029 bpe_model_trainer.cc:321] Added: freq=1060 size=4280 all=220844 active=220756 piece=▁2023
+I0000 00:00:1787060343.350668  253029 bpe_model_trainer.cc:321] Added: freq=1054 size=4300 all=221214 active=221126 piece=lim
+I0000 00:00:1787060343.352052  253029 bpe_model_trainer.cc:321] Added: freq=1045 size=4320 all=221783 active=221695 piece=▁Lou
+I0000 00:00:1787060343.354028  253029 bpe_model_trainer.cc:321] Added: freq=1036 size=4340 all=222623 active=222535 piece=▁juffrouw
+I0000 00:00:1787060343.355114  253029 bpe_model_trainer.cc:321] Added: freq=1028 size=4360 all=222923 active=222835 piece=-18
+I0000 00:00:1787060343.356537  253029 bpe_model_trainer.cc:321] Added: freq=1022 size=4380 all=223497 active=223409 piece=▁ZIJN
+I0000 00:00:1787060343.357694  253029 bpe_model_trainer.cc:321] Added: freq=1017 size=4400 all=223971 active=223883 piece=▁centimeter
+I0000 00:00:1787060343.359785  253029 bpe_model_trainer.cc:321] Added: freq=1011 size=4420 all=224909 active=224821 piece=▁taart
+I0000 00:00:1787060343.360833  253029 bpe_model_trainer.cc:321] Added: freq=1005 size=4440 all=225257 active=225169 piece=▁wapen
+I0000 00:00:1787060343.362227  253029 bpe_model_trainer.cc:321] Added: freq=1000 size=4460 all=225825 active=225737 piece=▁Victor
+I0000 00:00:1787060343.363331  253029 bpe_model_trainer.cc:321] Added: freq=997 size=4480 all=226352 active=226264 piece=▁temperatuur
+I0000 00:00:1787060343.364889  253029 bpe_model_trainer.cc:321] Added: freq=990 size=4500 all=226949 active=226861 piece=▁Mir
+I0000 00:00:1787060343.366729  253029 bpe_model_trainer.cc:321] Added: freq=986 size=4520 all=227653 active=227565 piece=Weet
+I0000 00:00:1787060343.368106  253029 bpe_model_trainer.cc:321] Added: freq=982 size=4540 all=228138 active=228050 piece=namelijk
+I0000 00:00:1787060343.369478  253029 bpe_model_trainer.cc:321] Added: freq=974 size=4560 all=228706 active=228618 piece=▁poten
+I0000 00:00:1787060343.373057  253029 bpe_model_trainer.cc:321] Added: freq=969 size=4580 all=229225 active=229137 piece=▁vrijdag
+I0000 00:00:1787060343.375330  253029 bpe_model_trainer.cc:321] Added: freq=960 size=4600 all=230055 active=229967 piece=▁Water
+I0000 00:00:1787060343.377131  253029 bpe_model_trainer.cc:321] Added: freq=954 size=4620 all=230868 active=230780 piece=▁Puck
+I0000 00:00:1787060343.378494  253029 bpe_model_trainer.cc:321] Added: freq=948 size=4640 all=231549 active=231461 piece=▁haren
+I0000 00:00:1787060343.379819  253029 bpe_model_trainer.cc:321] Added: freq=941 size=4660 all=232163 active=232075 piece=zus
+I0000 00:00:1787060343.381645  253029 bpe_model_trainer.cc:321] Added: freq=933 size=4680 all=232840 active=232752 piece=▁Mexico
+I0000 00:00:1787060343.383033  253029 bpe_model_trainer.cc:321] Added: freq=929 size=4700 all=233594 active=233506 piece=▁vergelijken
+I0000 00:00:1787060343.383795  253029 bpe_model_trainer.cc:321] Added: freq=925 size=4720 all=233860 active=233772 piece=▁middelbare
+I0000 00:00:1787060343.385033  253029 bpe_model_trainer.cc:321] Added: freq=918 size=4740 all=234297 active=234209 piece=▁Neem
+I0000 00:00:1787060343.386015  253029 bpe_model_trainer.cc:321] Added: freq=914 size=4760 all=234628 active=234540 piece=▁voornamelijk
+I0000 00:00:1787060343.387268  253029 bpe_model_trainer.cc:321] Added: freq=910 size=4780 all=235173 active=235085 piece=▁fluisterde
+I0000 00:00:1787060343.388753  253029 bpe_model_trainer.cc:321] Added: freq=902 size=4800 all=235813 active=235725 piece=▁Rond
+I0000 00:00:1787060343.390195  253029 bpe_model_trainer.cc:321] Added: freq=897 size=4820 all=236446 active=236358 piece=aring
+I0000 00:00:1787060343.391269  253029 bpe_model_trainer.cc:321] Added: freq=892 size=4840 all=236909 active=236821 piece=▁mel
+I0000 00:00:1787060343.392351  253029 bpe_model_trainer.cc:321] Added: freq=887 size=4860 all=237322 active=237234 piece=igit
+I0000 00:00:1787060343.393595  253029 bpe_model_trainer.cc:321] Added: freq=880 size=4880 all=237660 active=237572 piece=▁Nikki
+I0000 00:00:1787060343.394947  253029 bpe_model_trainer.cc:321] Added: freq=877 size=4900 all=238345 active=238257 piece=▁Vlaam
+I0000 00:00:1787060343.396009  253029 bpe_model_trainer.cc:321] Added: freq=872 size=4920 all=238835 active=238747 piece=▁Portug
+I0000 00:00:1787060343.396889  253029 bpe_model_trainer.cc:321] Added: freq=868 size=4940 all=239225 active=239137 piece=▁Azië
+I0000 00:00:1787060343.398036  253029 bpe_model_trainer.cc:321] Added: freq=863 size=4960 all=239726 active=239638 piece=istan
+I0000 00:00:1787060343.399363  253029 bpe_model_trainer.cc:321] Added: freq=860 size=4980 all=240463 active=240375 piece=andid
+I0000 00:00:1787060343.400260  253029 bpe_model_trainer.cc:321] Added: freq=854 size=5000 all=240681 active=240593 piece=▁Film
+I0000 00:00:1787060343.401238  253029 bpe_model_trainer.cc:321] Added: freq=850 size=5020 all=241076 active=240988 piece=▁Hendrik
+I0000 00:00:1787060343.402489  253029 bpe_model_trainer.cc:321] Added: freq=845 size=5040 all=241610 active=241522 piece=▁dief
+I0000 00:00:1787060343.403781  253029 bpe_model_trainer.cc:321] Added: freq=840 size=5060 all=242239 active=242151 piece=ugen
+I0000 00:00:1787060343.405176  253029 bpe_model_trainer.cc:321] Added: freq=837 size=5080 all=242945 active=242857 piece=▁Sorry
+I0000 00:00:1787060343.406257  253029 bpe_model_trainer.cc:321] Added: freq=832 size=5100 all=243402 active=243314 piece=onds
+I0000 00:00:1787060343.407469  253029 bpe_model_trainer.cc:321] Added: freq=829 size=5120 all=244006 active=243918 piece=▁gewicht
+I0000 00:00:1787060343.409086  253029 bpe_model_trainer.cc:321] Added: freq=823 size=5140 all=244537 active=244449 piece=nemers
+I0000 00:00:1787060343.410422  253029 bpe_model_trainer.cc:321] Added: freq=818 size=5160 all=244952 active=244864 piece=▁gebruikte
+I0000 00:00:1787060343.411604  253029 bpe_model_trainer.cc:321] Added: freq=815 size=5180 all=245563 active=245475 piece=▁luister
+I0000 00:00:1787060343.412691  253029 bpe_model_trainer.cc:321] Added: freq=810 size=5200 all=246009 active=245921 piece=ba
+I0000 00:00:1787060343.413926  253029 bpe_model_trainer.cc:321] Added: freq=807 size=5220 all=246536 active=246448 piece=ooft
+I0000 00:00:1787060343.415499  253029 bpe_model_trainer.cc:321] Added: freq=802 size=5240 all=247174 active=247086 piece=▁las
+I0000 00:00:1787060343.416567  253029 bpe_model_trainer.cc:321] Added: freq=798 size=5260 all=247643 active=247555 piece=wijzen
+I0000 00:00:1787060343.417735  253029 bpe_model_trainer.cc:321] Added: freq=794 size=5280 all=248024 active=247936 piece=▁Gre
+I0000 00:00:1787060343.419239  253029 bpe_model_trainer.cc:321] Added: freq=789 size=5300 all=248749 active=248661 piece=▁lukte
+I0000 00:00:1787060343.420079  253029 bpe_model_trainer.cc:321] Added: freq=785 size=5320 all=248995 active=248907 piece=▁bezoekers
+I0000 00:00:1787060343.421311  253029 bpe_model_trainer.cc:321] Added: freq=781 size=5340 all=249595 active=249507 piece=▁gelezen
+I0000 00:00:1787060343.422682  253029 bpe_model_trainer.cc:321] Added: freq=777 size=5360 all=250213 active=250125 piece=▁voorwerpen
+I0000 00:00:1787060343.423594  253029 bpe_model_trainer.cc:321] Added: freq=773 size=5380 all=250571 active=250483 piece=gegeven
+I0000 00:00:1787060343.425673  253029 bpe_model_trainer.cc:321] Added: freq=767 size=5400 all=251517 active=251429 piece=▁expl
+I0000 00:00:1787060343.426599  253029 bpe_model_trainer.cc:321] Added: freq=762 size=5420 all=251977 active=251889 piece=▁Teddie
+I0000 00:00:1787060343.427596  253029 bpe_model_trainer.cc:321] Added: freq=759 size=5440 all=252520 active=252432 piece=▁briefje
+I0000 00:00:1787060343.428637  253029 bpe_model_trainer.cc:321] Added: freq=754 size=5460 all=252920 active=252832 piece=oscoop
+I0000 00:00:1787060343.429673  253029 bpe_model_trainer.cc:321] Added: freq=750 size=5480 all=253295 active=253207 piece=▁...(
+I0000 00:00:1787060343.431013  253029 bpe_model_trainer.cc:321] Added: freq=746 size=5500 all=253850 active=253762 piece=▁genaamd
+I0000 00:00:1787060343.432233  253029 bpe_model_trainer.cc:321] Added: freq=741 size=5520 all=254214 active=254126 piece=▁internationale
+I0000 00:00:1787060343.433208  253029 bpe_model_trainer.cc:321] Added: freq=737 size=5540 all=254510 active=254422 piece=▁reageren
+I0000 00:00:1787060343.434305  253029 bpe_model_trainer.cc:321] Added: freq=732 size=5560 all=255022 active=254934 piece=22
+I0000 00:00:1787060343.435430  253029 bpe_model_trainer.cc:321] Added: freq=729 size=5580 all=255622 active=255534 piece=FT
+I0000 00:00:1787060343.436831  253029 bpe_model_trainer.cc:321] Added: freq=726 size=5600 all=256198 active=256110 piece=kelijke
+I0000 00:00:1787060343.437743  253029 bpe_model_trainer.cc:321] Added: freq=722 size=5620 all=256496 active=256408 piece=▁afgele
+I0000 00:00:1787060343.439116  253029 bpe_model_trainer.cc:321] Added: freq=719 size=5640 all=256930 active=256842 piece=▁Sanne
+I0000 00:00:1787060343.440213  253029 bpe_model_trainer.cc:321] Added: freq=714 size=5660 all=257304 active=257216 piece=pak
+I0000 00:00:1787060343.441614  253029 bpe_model_trainer.cc:321] Added: freq=710 size=5680 all=257896 active=257808 piece=raft
+I0000 00:00:1787060343.442771  253029 bpe_model_trainer.cc:321] Added: freq=708 size=5700 all=258597 active=258509 piece=▁rare
+I0000 00:00:1787060343.443626  253029 bpe_model_trainer.cc:321] Added: freq=706 size=5720 all=259093 active=259005 piece=▁trouwen
+I0000 00:00:1787060343.444601  253029 bpe_model_trainer.cc:321] Added: freq=703 size=5740 all=259553 active=259465 piece=▁sign
+I0000 00:00:1787060343.445536  253029 bpe_model_trainer.cc:321] Added: freq=699 size=5760 all=260062 active=259974 piece=Doe
+I0000 00:00:1787060343.446639  253029 bpe_model_trainer.cc:321] Added: freq=697 size=5780 all=260319 active=260231 piece=▁populaire
+I0000 00:00:1787060343.447400  253029 bpe_model_trainer.cc:321] Added: freq=693 size=5800 all=260591 active=260503 piece=▁toeg
+I0000 00:00:1787060343.448552  253029 bpe_model_trainer.cc:321] Added: freq=690 size=5820 all=261176 active=261088 piece=istof
+I0000 00:00:1787060343.449687  253029 bpe_model_trainer.cc:321] Added: freq=686 size=5840 all=261733 active=261645 piece=ua
+I0000 00:00:1787060343.450992  253029 bpe_model_trainer.cc:321] Added: freq=682 size=5860 all=262223 active=262135 piece=uh
+I0000 00:00:1787060343.452981  253029 bpe_model_trainer.cc:321] Added: freq=679 size=5880 all=262927 active=262839 piece=▁wetenschappers
+I0000 00:00:1787060343.454173  253029 bpe_model_trainer.cc:321] Added: freq=675 size=5900 all=263430 active=263342 piece=passen
+I0000 00:00:1787060343.455192  253029 bpe_model_trainer.cc:321] Added: freq=670 size=5920 all=263686 active=263598 piece=schoenen
+I0000 00:00:1787060343.456332  253029 bpe_model_trainer.cc:321] Added: freq=666 size=5940 all=264053 active=263965 piece=▁enthousia
+I0000 00:00:1787060343.457277  253029 bpe_model_trainer.cc:321] Added: freq=663 size=5960 all=264497 active=264409 piece=▁vide
+I0000 00:00:1787060343.458226  253029 bpe_model_trainer.cc:321] Added: freq=659 size=5980 all=264876 active=264788 piece=rix
+I0000 00:00:1787060343.459219  253029 bpe_model_trainer.cc:321] Added: freq=656 size=6000 all=265318 active=265230 piece=▁180
+I0000 00:00:1787060343.459999  253029 bpe_model_trainer.cc:321] Added: freq=653 size=6020 all=265765 active=265677 piece=inger
+I0000 00:00:1787060343.461388  253029 bpe_model_trainer.cc:321] Added: freq=649 size=6040 all=266331 active=266243 piece=▁Lilly
+I0000 00:00:1787060343.462309  253029 bpe_model_trainer.cc:321] Added: freq=647 size=6060 all=266749 active=266661 piece=rogramma
+I0000 00:00:1787060343.463371  253029 bpe_model_trainer.cc:321] Added: freq=644 size=6080 all=267228 active=267140 piece=▁uitsp
+I0000 00:00:1787060343.464720  253029 bpe_model_trainer.cc:321] Added: freq=640 size=6100 all=267772 active=267684 piece=17
+I0000 00:00:1787060343.466090  253029 bpe_model_trainer.cc:321] Added: freq=638 size=6120 all=268430 active=268342 piece=▁materialen
+I0000 00:00:1787060343.467100  253029 bpe_model_trainer.cc:321] Added: freq=634 size=6140 all=268894 active=268806 piece=▁VR
+I0000 00:00:1787060343.467854  253029 bpe_model_trainer.cc:321] Added: freq=632 size=6160 all=269144 active=269056 piece=▁gevolgen
+I0000 00:00:1787060343.469036  253029 bpe_model_trainer.cc:321] Added: freq=629 size=6180 all=269717 active=269629 piece=blijven
+I0000 00:00:1787060343.470049  253029 bpe_model_trainer.cc:321] Added: freq=626 size=6200 all=270049 active=269961 piece=▁Friesland
+I0000 00:00:1787060343.470970  253029 bpe_model_trainer.cc:321] Added: freq=623 size=6220 all=270372 active=270284 piece=▁kolon
+I0000 00:00:1787060343.472198  253029 bpe_model_trainer.cc:321] Added: freq=619 size=6240 all=270969 active=270881 piece=oloog
+I0000 00:00:1787060343.473378  253029 bpe_model_trainer.cc:321] Added: freq=617 size=6260 all=271545 active=271457 piece=▁verdwijnen
+I0000 00:00:1787060343.474430  253029 bpe_model_trainer.cc:321] Added: freq=614 size=6280 all=272010 active=271922 piece=▁zeiden
+I0000 00:00:1787060343.475229  253029 bpe_model_trainer.cc:321] Added: freq=611 size=6300 all=272356 active=272268 piece=▁makkelijker
+I0000 00:00:1787060343.476202  253029 bpe_model_trainer.cc:321] Added: freq=607 size=6320 all=272700 active=272612 piece=iënt
+I0000 00:00:1787060343.476871  253029 bpe_model_trainer.cc:321] Added: freq=606 size=6340 all=273048 active=272960 piece=▁Lut
+I0000 00:00:1787060343.477720  253029 bpe_model_trainer.cc:321] Added: freq=604 size=6360 all=273367 active=273279 piece=genda
+I0000 00:00:1787060343.478464  253029 bpe_model_trainer.cc:321] Added: freq=602 size=6380 all=273700 active=273612 piece=holieke
+I0000 00:00:1787060343.479406  253029 bpe_model_trainer.cc:321] Added: freq=599 size=6400 all=274060 active=273972 piece=▁Iedere
+I0000 00:00:1787060343.480450  253029 bpe_model_trainer.cc:321] Added: freq=596 size=6420 all=274324 active=274236 piece=oosten
+I0000 00:00:1787060343.481541  253029 bpe_model_trainer.cc:321] Added: freq=593 size=6440 all=274763 active=274675 piece=▁grafiek
+I0000 00:00:1787060343.482289  253029 bpe_model_trainer.cc:321] Added: freq=591 size=6460 all=275047 active=274959 piece=genten
+I0000 00:00:1787060343.483365  253029 bpe_model_trainer.cc:321] Added: freq=588 size=6480 all=275634 active=275546 piece=▁Ro
+I0000 00:00:1787060343.484286  253029 bpe_model_trainer.cc:321] Added: freq=586 size=6500 all=275980 active=275892 piece=▁omroep
+I0000 00:00:1787060343.485551  253029 bpe_model_trainer.cc:321] Added: freq=583 size=6520 all=276527 active=276439 piece=▁Streep
+I0000 00:00:1787060343.486378  253029 bpe_model_trainer.cc:321] Added: freq=581 size=6540 all=276837 active=276749 piece=▁ramen
+I0000 00:00:1787060343.487154  253029 bpe_model_trainer.cc:321] Added: freq=578 size=6560 all=277135 active=277047 piece=▁oorzaak
+I0000 00:00:1787060343.488389  253029 bpe_model_trainer.cc:321] Added: freq=575 size=6580 all=277665 active=277577 piece=▁event
+I0000 00:00:1787060343.489199  253029 bpe_model_trainer.cc:321] Added: freq=573 size=6600 all=278084 active=277996 piece=arije
+I0000 00:00:1787060343.490330  253029 bpe_model_trainer.cc:321] Added: freq=571 size=6620 all=278615 active=278527 piece=▁tweeling
+I0000 00:00:1787060343.491279  253029 bpe_model_trainer.cc:321] Added: freq=568 size=6640 all=279044 active=278956 piece=▁Video
+I0000 00:00:1787060343.492304  253029 bpe_model_trainer.cc:321] Added: freq=565 size=6660 all=279428 active=279340 piece=▁lot
+I0000 00:00:1787060343.493646  253029 bpe_model_trainer.cc:321] Added: freq=564 size=6680 all=280278 active=280190 piece=▁symbool
+I0000 00:00:1787060343.494486  253029 bpe_model_trainer.cc:321] Added: freq=562 size=6700 all=280623 active=280535 piece=▁Emma
+I0000 00:00:1787060343.495380  253029 bpe_model_trainer.cc:321] Added: freq=559 size=6720 all=280925 active=280837 piece=▁for
+I0000 00:00:1787060343.496213  253029 bpe_model_trainer.cc:321] Added: freq=556 size=6740 all=281206 active=281118 piece=47
+I0000 00:00:1787060343.497225  253029 bpe_model_trainer.cc:321] Added: freq=554 size=6760 all=281722 active=281634 piece=Vol
+I0000 00:00:1787060343.498205  253029 bpe_model_trainer.cc:321] Added: freq=552 size=6780 all=282097 active=282009 piece=▁bon
+I0000 00:00:1787060343.499381  253029 bpe_model_trainer.cc:321] Added: freq=549 size=6800 all=282718 active=282630 piece=▁haat
+I0000 00:00:1787060343.500467  253029 bpe_model_trainer.cc:321] Added: freq=546 size=6820 all=283206 active=283118 piece=▁onm
+I0000 00:00:1787060343.501463  253029 bpe_model_trainer.cc:321] Added: freq=544 size=6840 all=283744 active=283656 piece=▁Straks
+I0000 00:00:1787060343.502076  253029 bpe_model_trainer.cc:321] Added: freq=543 size=6860 all=284014 active=283926 piece=▁ontvangen
+I0000 00:00:1787060343.502949  253029 bpe_model_trainer.cc:321] Added: freq=541 size=6880 all=284517 active=284429 piece=▁spook
+I0000 00:00:1787060343.503876  253029 bpe_model_trainer.cc:321] Added: freq=538 size=6900 all=284884 active=284796 piece=kru
+I0000 00:00:1787060343.504576  253029 bpe_model_trainer.cc:321] Added: freq=536 size=6920 all=285185 active=285097 piece=uiver
+I0000 00:00:1787060343.505360  253029 bpe_model_trainer.cc:321] Added: freq=534 size=6940 all=285481 active=285393 piece=▁karakt
+I0000 00:00:1787060343.506343  253029 bpe_model_trainer.cc:321] Added: freq=531 size=6960 all=285861 active=285773 piece=▁lood
+I0000 00:00:1787060343.507408  253029 bpe_model_trainer.cc:321] Added: freq=528 size=6980 all=286225 active=286137 piece=beerd
+I0000 00:00:1787060343.508372  253029 bpe_model_trainer.cc:321] Added: freq=527 size=7000 all=286633 active=286545 piece=▁Songfestival
+I0000 00:00:1787060343.509321  253029 bpe_model_trainer.cc:321] Added: freq=524 size=7020 all=286926 active=286838 piece=▁Rad
+I0000 00:00:1787060343.510563  253029 bpe_model_trainer.cc:321] Added: freq=522 size=7040 all=287434 active=287346 piece=▁mail
+I0000 00:00:1787060343.511461  253029 bpe_model_trainer.cc:321] Added: freq=520 size=7060 all=287785 active=287697 piece=▁ser
+I0000 00:00:1787060343.512255  253029 bpe_model_trainer.cc:321] Added: freq=518 size=7080 all=288132 active=288044 piece=▁Drake
+I0000 00:00:1787060343.513129  253029 bpe_model_trainer.cc:321] Added: freq=516 size=7100 all=288636 active=288548 piece=nij
+I0000 00:00:1787060343.514314  253029 bpe_model_trainer.cc:321] Added: freq=514 size=7120 all=289213 active=289125 piece=▁Bern
+I0000 00:00:1787060343.515303  253029 bpe_model_trainer.cc:321] Added: freq=512 size=7140 all=289772 active=289684 piece=ijdt
+I0000 00:00:1787060343.515978  253029 bpe_model_trainer.cc:321] Added: freq=511 size=7160 all=290008 active=289920 piece=▁natuurgebied
+I0000 00:00:1787060343.516751  253029 bpe_model_trainer.cc:321] Added: freq=509 size=7180 all=290214 active=290126 piece=▁Noordzee
+I0000 00:00:1787060343.517543  253029 bpe_model_trainer.cc:321] Added: freq=507 size=7200 all=290513 active=290425 piece=▁gekke
+I0000 00:00:1787060343.518337  253029 bpe_model_trainer.cc:321] Added: freq=505 size=7220 all=291011 active=290923 piece=▁Schotland
+I0000 00:00:1787060343.518871  253029 bpe_model_trainer.cc:321] Added: freq=503 size=7240 all=291161 active=291073 piece=▁bewust
+I0000 00:00:1787060343.519799  253029 bpe_model_trainer.cc:321] Added: freq=501 size=7260 all=291660 active=291572 piece=▁shirt
+I0000 00:00:1787060343.520634  253029 bpe_model_trainer.cc:321] Added: freq=499 size=7280 all=291998 active=291910 piece=▁Joden
+I0000 00:00:1787060343.521212  253029 bpe_model_trainer.cc:321] Added: freq=497 size=7300 all=292260 active=292172 piece=42.
+I0000 00:00:1787060343.522182  253029 bpe_model_trainer.cc:321] Added: freq=496 size=7320 all=292776 active=292688 piece=▁King
+I0000 00:00:1787060343.522938  253029 bpe_model_trainer.cc:321] Added: freq=494 size=7340 all=293028 active=292940 piece=▁Tru
+I0000 00:00:1787060343.523736  253029 bpe_model_trainer.cc:321] Added: freq=493 size=7360 all=293467 active=293379 piece=▁bliksem
+I0000 00:00:1787060343.524645  253029 bpe_model_trainer.cc:321] Added: freq=491 size=7380 all=293817 active=293729 piece=rekenen
+I0000 00:00:1787060343.525560  253029 bpe_model_trainer.cc:321] Added: freq=489 size=7400 all=294329 active=294241 piece=▁ass
+I0000 00:00:1787060343.526329  253029 bpe_model_trainer.cc:321] Added: freq=487 size=7420 all=294647 active=294559 piece=▁Walt
+I0000 00:00:1787060343.527283  253029 bpe_model_trainer.cc:321] Added: freq=485 size=7440 all=295075 active=294987 piece=▁Leen
+I0000 00:00:1787060343.528139  253029 bpe_model_trainer.cc:321] Added: freq=483 size=7460 all=295458 active=295370 piece=34
+I0000 00:00:1787060343.529118  253029 bpe_model_trainer.cc:321] Added: freq=481 size=7480 all=295854 active=295766 piece=▁molen
+I0000 00:00:1787060343.530078  253029 bpe_model_trainer.cc:321] Added: freq=479 size=7500 all=296313 active=296225 piece=ulance
+I0000 00:00:1787060343.530769  253029 bpe_model_trainer.cc:321] Added: freq=477 size=7520 all=296501 active=296413 piece=▁agenten
+I0000 00:00:1787060343.531554  253029 bpe_model_trainer.cc:321] Added: freq=475 size=7540 all=296799 active=296711 piece=▁gilt
+I0000 00:00:1787060343.532263  253029 bpe_model_trainer.cc:321] Added: freq=474 size=7560 all=297145 active=297057 piece=▁raakten
+I0000 00:00:1787060343.533125  253029 bpe_model_trainer.cc:321] Added: freq=472 size=7580 all=297591 active=297503 piece=▁RT
+I0000 00:00:1787060343.534058  253029 bpe_model_trainer.cc:321] Added: freq=471 size=7600 all=298028 active=297940 piece=▁Heil
+I0000 00:00:1787060343.534592  253029 bpe_model_trainer.cc:321] Added: freq=469 size=7620 all=298250 active=298162 piece=ures
+I0000 00:00:1787060343.535731  253029 bpe_model_trainer.cc:321] Added: freq=467 size=7640 all=298736 active=298648 piece=▁compl
+I0000 00:00:1787060343.536388  253029 bpe_model_trainer.cc:321] Added: freq=465 size=7660 all=298988 active=298900 piece=schrijving
+I0000 00:00:1787060343.537677  253029 bpe_model_trainer.cc:321] Added: freq=463 size=7680 all=299463 active=299375 piece=▁haak
+I0000 00:00:1787060343.538495  253029 bpe_model_trainer.cc:321] Added: freq=461 size=7700 all=299697 active=299609 piece=▁ontdekte
+I0000 00:00:1787060343.539491  253029 bpe_model_trainer.cc:321] Added: freq=459 size=7720 all=300214 active=300126 piece=▁geë
+I0000 00:00:1787060343.539975  253029 bpe_model_trainer.cc:321] Added: freq=457 size=7740 all=300387 active=300299 piece=▁Ag
+I0000 00:00:1787060343.541179  253029 bpe_model_trainer.cc:321] Added: freq=455 size=7760 all=301013 active=300925 piece=▁seks
+I0000 00:00:1787060343.541894  253029 bpe_model_trainer.cc:321] Added: freq=454 size=7780 all=301381 active=301293 piece=▁wetten
+I0000 00:00:1787060343.542656  253029 bpe_model_trainer.cc:321] Added: freq=453 size=7800 all=301711 active=301623 piece=▁lukken
+I0000 00:00:1787060343.543359  253029 bpe_model_trainer.cc:321] Added: freq=451 size=7820 all=302033 active=301945 piece=aj
+I0000 00:00:1787060343.544238  253029 bpe_model_trainer.cc:321] Added: freq=450 size=7840 all=302406 active=302318 piece=▁reeks
+I0000 00:00:1787060343.545261  253029 bpe_model_trainer.cc:321] Added: freq=448 size=7860 all=302913 active=302825 piece=▁Tante
+I0000 00:00:1787060343.546032  253029 bpe_model_trainer.cc:321] Added: freq=446 size=7880 all=303259 active=303171 piece=▁gekn
+I0000 00:00:1787060343.547040  253029 bpe_model_trainer.cc:321] Added: freq=445 size=7900 all=303775 active=303687 piece=▁tweeën
+I0000 00:00:1787060343.547827  253029 bpe_model_trainer.cc:321] Added: freq=443 size=7920 all=304118 active=304030 piece=icus
+I0000 00:00:1787060343.548614  253029 bpe_model_trainer.cc:321] Added: freq=442 size=7940 all=304468 active=304380 piece=▁mythologie
+I0000 00:00:1787060343.549156  253029 bpe_model_trainer.cc:321] Added: freq=440 size=7960 all=304634 active=304546 piece=▁JA
+I0000 00:00:1787060343.550159  253029 bpe_model_trainer.cc:321] Added: freq=439 size=7980 all=305089 active=305001 piece=▁bedrag
+I0000 00:00:1787060343.551196  253029 bpe_model_trainer.cc:321] Added: freq=437 size=8000 all=305614 active=305526 piece=▁Ele
+I0000 00:00:1787060343.551759  253029 bpe_model_trainer.cc:321] Added: freq=435 size=8020 all=305795 active=305707 piece=KER
+I0000 00:00:1787060343.552521  253029 bpe_model_trainer.cc:321] Added: freq=433 size=8040 all=306039 active=305951 piece=aster
+I0000 00:00:1787060343.553396  253029 bpe_model_trainer.cc:321] Added: freq=432 size=8060 all=306499 active=306411 piece=▁toetsen
+I0000 00:00:1787060343.554405  253029 bpe_model_trainer.cc:321] Added: freq=430 size=8080 all=306903 active=306815 piece=▁Jones
+I0000 00:00:1787060343.554992  253029 bpe_model_trainer.cc:321] Added: freq=428 size=8100 all=307167 active=307079 piece=HI
+I0000 00:00:1787060343.556075  253029 bpe_model_trainer.cc:321] Added: freq=427 size=8120 all=307747 active=307659 piece=▁prett
+I0000 00:00:1787060343.556618  253029 bpe_model_trainer.cc:321] Added: freq=426 size=8140 all=308047 active=307959 piece=▁Junior
+I0000 00:00:1787060343.557161  253029 bpe_model_trainer.cc:321] Added: freq=425 size=8160 all=308280 active=308192 piece=▁sommen
+I0000 00:00:1787060343.558127  253029 bpe_model_trainer.cc:321] Added: freq=423 size=8180 all=308647 active=308559 piece=▁merkt
+I0000 00:00:1787060343.559118  253029 bpe_model_trainer.cc:321] Added: freq=421 size=8200 all=309025 active=308937 piece=craft
+I0000 00:00:1787060343.559984  253029 bpe_model_trainer.cc:321] Added: freq=420 size=8220 all=309390 active=309302 piece=▁ontstonden
+I0000 00:00:1787060343.560694  253029 bpe_model_trainer.cc:321] Added: freq=418 size=8240 all=309633 active=309545 piece=▁giech
+I0000 00:00:1787060343.561420  253029 bpe_model_trainer.cc:321] Added: freq=416 size=8260 all=309872 active=309784 piece=zië
+I0000 00:00:1787060343.562415  253029 bpe_model_trainer.cc:321] Added: freq=414 size=8280 all=310172 active=310084 piece=auwen
+I0000 00:00:1787060343.562945  253029 bpe_model_trainer.cc:321] Added: freq=413 size=8300 all=310372 active=310284 piece=▁gebeurtenis
+I0000 00:00:1787060343.564403  253029 bpe_model_trainer.cc:321] Added: freq=411 size=8320 all=311015 active=310927 piece=▁wijze
+I0000 00:00:1787060343.565250  253029 bpe_model_trainer.cc:321] Added: freq=409 size=8340 all=311415 active=311327 piece=▁Tar
+I0000 00:00:1787060343.566161  253029 bpe_model_trainer.cc:321] Added: freq=408 size=8360 all=311905 active=311817 piece=wicht
+I0000 00:00:1787060343.566951  253029 bpe_model_trainer.cc:321] Added: freq=407 size=8380 all=312322 active=312234 piece=▁Flevol
+I0000 00:00:1787060343.567719  253029 bpe_model_trainer.cc:321] Added: freq=405 size=8400 all=312572 active=312484 piece=stige
+I0000 00:00:1787060343.568341  253029 bpe_model_trainer.cc:321] Added: freq=404 size=8420 all=312860 active=312772 piece=▁gereden
+I0000 00:00:1787060343.569297  253029 bpe_model_trainer.cc:321] Added: freq=402 size=8440 all=313255 active=313167 piece=▁lol
+I0000 00:00:1787060343.570175  253029 bpe_model_trainer.cc:321] Added: freq=401 size=8460 all=313637 active=313549 piece=▁Ooster
+I0000 00:00:1787060343.571198  253029 bpe_model_trainer.cc:321] Added: freq=399 size=8480 all=314151 active=314063 piece=▁ha
+I0000 00:00:1787060343.571973  253029 bpe_model_trainer.cc:321] Added: freq=398 size=8500 all=314500 active=314412 piece=uïn
+I0000 00:00:1787060343.572853  253029 bpe_model_trainer.cc:321] Added: freq=397 size=8520 all=314839 active=314751 piece=▁plaf
+I0000 00:00:1787060343.573679  253029 bpe_model_trainer.cc:321] Added: freq=395 size=8540 all=315097 active=315009 piece=▁Post
+I0000 00:00:1787060343.574234  253029 bpe_model_trainer.cc:321] Added: freq=394 size=8560 all=315350 active=315262 piece=▁lijk
+I0000 00:00:1787060343.574766  253029 bpe_model_trainer.cc:321] Added: freq=393 size=8580 all=315606 active=315518 piece=▁Form
+I0000 00:00:1787060343.575564  253029 bpe_model_trainer.cc:321] Added: freq=392 size=8600 all=315961 active=315873 piece=kanaal
+I0000 00:00:1787060343.576330  253029 bpe_model_trainer.cc:321] Added: freq=391 size=8620 all=316258 active=316170 piece=▁oceaan
+I0000 00:00:1787060343.577149  253029 bpe_model_trainer.cc:321] Added: freq=390 size=8640 all=316717 active=316629 piece=diensten
+I0000 00:00:1787060343.578260  253029 bpe_model_trainer.cc:321] Added: freq=388 size=8660 all=317132 active=317044 piece=wand
+I0000 00:00:1787060343.579073  253029 bpe_model_trainer.cc:321] Added: freq=387 size=8680 all=317506 active=317418 piece=▁HEEFT
+I0000 00:00:1787060343.579662  253029 bpe_model_trainer.cc:321] Added: freq=386 size=8700 all=317802 active=317714 piece=reeks
+I0000 00:00:1787060343.580289  253029 bpe_model_trainer.cc:321] Added: freq=385 size=8720 all=318058 active=317970 piece=▁komst
+I0000 00:00:1787060343.580895  253029 bpe_model_trainer.cc:321] Added: freq=384 size=8740 all=318317 active=318229 piece=▁diploma
+I0000 00:00:1787060343.581833  253029 bpe_model_trainer.cc:321] Added: freq=383 size=8760 all=318794 active=318706 piece=▁versier
+I0000 00:00:1787060343.582818  253029 bpe_model_trainer.cc:321] Added: freq=382 size=8780 all=319301 active=319213 piece=▁wijzen
+I0000 00:00:1787060343.583456  253029 bpe_model_trainer.cc:321] Added: freq=381 size=8800 all=319448 active=319360 piece=▁fantasie
+I0000 00:00:1787060343.584167  253029 bpe_model_trainer.cc:321] Added: freq=379 size=8820 all=319647 active=319559 piece=loze
+I0000 00:00:1787060343.584841  253029 bpe_model_trainer.cc:321] Added: freq=378 size=8840 all=319830 active=319742 piece=▁onderkant
+I0000 00:00:1787060343.585281  253029 bpe_model_trainer.cc:321] Added: freq=377 size=8860 all=320020 active=319932 piece=▁Argentinië
+I0000 00:00:1787060343.585908  253029 bpe_model_trainer.cc:321] Added: freq=376 size=8880 all=320286 active=320198 piece=▁bovenste
+I0000 00:00:1787060343.586583  253029 bpe_model_trainer.cc:321] Added: freq=375 size=8900 all=320560 active=320472 piece=▁ingezet
+I0000 00:00:1787060343.587287  253029 bpe_model_trainer.cc:321] Added: freq=373 size=8920 all=320824 active=320736 piece=rood
+I0000 00:00:1787060343.588200  253029 bpe_model_trainer.cc:321] Added: freq=372 size=8940 all=321086 active=320998 piece=▁gaaf
+I0000 00:00:1787060343.588950  253029 bpe_model_trainer.cc:321] Added: freq=371 size=8960 all=321374 active=321286 piece=blemen
+I0000 00:00:1787060343.589711  253029 bpe_model_trainer.cc:321] Added: freq=370 size=8980 all=321680 active=321592 piece=▁10.000
+I0000 00:00:1787060343.590472  253029 bpe_model_trainer.cc:321] Added: freq=369 size=9000 all=322021 active=321933 piece=inecraft
+I0000 00:00:1787060343.591031  253029 bpe_model_trainer.cc:321] Added: freq=367 size=9020 all=322181 active=322093 piece=zoon
+I0000 00:00:1787060343.591603  253029 bpe_model_trainer.cc:321] Added: freq=366 size=9040 all=322379 active=322291 piece=▁veen
+I0000 00:00:1787060343.592147  253029 bpe_model_trainer.cc:321] Added: freq=365 size=9060 all=322577 active=322489 piece=▁sokken
+I0000 00:00:1787060343.592810  253029 bpe_model_trainer.cc:321] Added: freq=363 size=9080 all=322864 active=322776 piece=osl
+I0000 00:00:1787060343.593495  253029 bpe_model_trainer.cc:321] Added: freq=362 size=9100 all=323057 active=322969 piece=▁roofd
+I0000 00:00:1787060343.594081  253029 bpe_model_trainer.cc:321] Added: freq=361 size=9120 all=323245 active=323157 piece=▁element
+I0000 00:00:1787060343.594872  253029 bpe_model_trainer.cc:321] Added: freq=360 size=9140 all=323592 active=323504 piece=▁opgehaald
+I0000 00:00:1787060343.595604  253029 bpe_model_trainer.cc:321] Added: freq=358 size=9160 all=323880 active=323792 piece=empl
+I0000 00:00:1787060343.596401  253029 bpe_model_trainer.cc:321] Added: freq=357 size=9180 all=324185 active=324097 piece=▁eek
+I0000 00:00:1787060343.597100  253029 bpe_model_trainer.cc:321] Added: freq=356 size=9200 all=324403 active=324315 piece=▁zesde
+I0000 00:00:1787060343.597784  253029 bpe_model_trainer.cc:321] Added: freq=355 size=9220 all=324714 active=324626 piece=▁Victoria
+I0000 00:00:1787060343.598505  253029 bpe_model_trainer.cc:321] Added: freq=354 size=9240 all=324969 active=324881 piece=▁afgebroken
+I0000 00:00:1787060343.599348  253029 bpe_model_trainer.cc:321] Added: freq=352 size=9260 all=325258 active=325170 piece=▁Fat
+I0000 00:00:1787060343.599944  253029 bpe_model_trainer.cc:321] Added: freq=351 size=9280 all=325591 active=325503 piece=ford
+I0000 00:00:1787060343.601001  253029 bpe_model_trainer.cc:321] Added: freq=350 size=9300 all=326141 active=326053 piece=gevaar
+I0000 00:00:1787060343.601643  253029 bpe_model_trainer.cc:321] Added: freq=349 size=9320 all=326325 active=326237 piece=▁zilveren
+I0000 00:00:1787060343.602339  253029 bpe_model_trainer.cc:321] Added: freq=348 size=9340 all=326645 active=326557 piece=▁gehele
+I0000 00:00:1787060343.602789  253029 bpe_model_trainer.cc:321] Added: freq=347 size=9360 all=326809 active=326721 piece=▁Elisabeth
+I0000 00:00:1787060343.603408  253029 bpe_model_trainer.cc:321] Added: freq=345 size=9380 all=327025 active=326937 piece=▁Hop
+I0000 00:00:1787060343.604073  253029 bpe_model_trainer.cc:321] Added: freq=344 size=9400 all=327316 active=327228 piece=▁fre
+I0000 00:00:1787060343.604765  253029 bpe_model_trainer.cc:321] Added: freq=343 size=9420 all=327626 active=327538 piece=▁dod
+I0000 00:00:1787060343.605404  253029 bpe_model_trainer.cc:321] Added: freq=342 size=9440 all=327918 active=327830 piece=▁Hof
+I0000 00:00:1787060343.606147  253029 bpe_model_trainer.cc:321] Added: freq=341 size=9460 all=328272 active=328184 piece=▁advoc
+I0000 00:00:1787060343.606969  253029 bpe_model_trainer.cc:321] Added: freq=340 size=9480 all=328669 active=328581 piece=▁ellen
+I0000 00:00:1787060343.607849  253029 bpe_model_trainer.cc:321] Added: freq=339 size=9500 all=329142 active=329054 piece=▁voorst
+I0000 00:00:1787060343.608694  253029 bpe_model_trainer.cc:321] Added: freq=338 size=9520 all=329567 active=329479 piece=▁deelstaat
+I0000 00:00:1787060343.609473  253029 bpe_model_trainer.cc:321] Added: freq=337 size=9540 all=329924 active=329836 piece=▁Joseph
+I0000 00:00:1787060343.610164  253029 bpe_model_trainer.cc:321] Added: freq=336 size=9560 all=330256 active=330168 piece=▁adel
+I0000 00:00:1787060343.611050  253029 bpe_model_trainer.cc:321] Added: freq=335 size=9580 all=330523 active=330435 piece=fiets
+I0000 00:00:1787060343.611789  253029 bpe_model_trainer.cc:321] Added: freq=334 size=9600 all=330831 active=330743 piece=▁zeem
+I0000 00:00:1787060343.612664  253029 bpe_model_trainer.cc:321] Added: freq=333 size=9620 all=331246 active=331158 piece=▁aten
+I0000 00:00:1787060343.613514  253029 bpe_model_trainer.cc:321] Added: freq=332 size=9640 all=331579 active=331491 piece=steld
+I0000 00:00:1787060343.614403  253029 bpe_model_trainer.cc:321] Added: freq=331 size=9660 all=331912 active=331824 piece=▁Love
+I0000 00:00:1787060343.615187  253029 bpe_model_trainer.cc:321] Added: freq=330 size=9680 all=332303 active=332215 piece=ikkie
+I0000 00:00:1787060343.615642  253029 bpe_model_trainer.cc:321] Added: freq=330 size=9700 all=332541 active=332453 piece=▁zeldzaam
+I0000 00:00:1787060343.616529  253029 bpe_model_trainer.cc:321] Added: freq=329 size=9720 all=332950 active=332862 piece=▁HEBBEN
+I0000 00:00:1787060343.617061  253029 bpe_model_trainer.cc:321] Added: freq=328 size=9740 all=333115 active=333027 piece=▁borden
+I0000 00:00:1787060343.617793  253029 bpe_model_trainer.cc:321] Added: freq=327 size=9760 all=333479 active=333391 piece=coach
+I0000 00:00:1787060343.618440  253029 bpe_model_trainer.cc:321] Added: freq=326 size=9780 all=333733 active=333645 piece=aaier
+I0000 00:00:1787060343.619145  253029 bpe_model_trainer.cc:321] Added: freq=326 size=9800 all=334125 active=334037 piece=▁Griffel
+I0000 00:00:1787060343.619622  253029 bpe_model_trainer.cc:321] Added: freq=325 size=9820 all=334292 active=334204 piece=▁blaadje
+I0000 00:00:1787060343.620251  253029 bpe_model_trainer.cc:321] Added: freq=324 size=9840 all=334588 active=334500 piece=▁noemden
+I0000 00:00:1787060343.620876  253029 bpe_model_trainer.cc:321] Added: freq=323 size=9860 all=334885 active=334797 piece=makers
+I0000 00:00:1787060343.621696  253029 bpe_model_trainer.cc:321] Added: freq=322 size=9880 all=335241 active=335153 piece=houding
+I0000 00:00:1787060343.622443  253029 bpe_model_trainer.cc:321] Added: freq=321 size=9900 all=335540 active=335452 piece=▁kuil
+I0000 00:00:1787060343.623273  253029 bpe_model_trainer.cc:321] Added: freq=320 size=9920 all=335981 active=335893 piece=▁wensen
+I0000 00:00:1787060343.623825  253029 bpe_model_trainer.cc:321] Added: freq=319 size=9940 all=336105 active=336017 piece=▁uitspraken
+I0000 00:00:1787060343.624713  253029 bpe_model_trainer.cc:321] Added: freq=317 size=9960 all=336509 active=336421 piece=isp
+I0000 00:00:1787060343.625548  253029 bpe_model_trainer.cc:321] Added: freq=316 size=9980 all=336952 active=336864 piece=▁Fab
+I0000 00:00:1787060343.626326  253029 bpe_model_trainer.cc:321] Added: freq=315 size=10000 all=337327 active=337239 piece=aaie
+I0000 00:00:1787060343.626711  253029 bpe_model_trainer.cc:321] Added: freq=315 size=10020 all=337464 active=337376 piece=▁wolkenkrab
+I0000 00:00:1787060343.627298  253029 bpe_model_trainer.cc:321] Added: freq=314 size=10040 all=337692 active=337604 piece=▁Airlines
+I0000 00:00:1787060343.628049  253029 bpe_model_trainer.cc:321] Added: freq=313 size=10060 all=338030 active=337942 piece=koning
+I0000 00:00:1787060343.628593  253029 bpe_model_trainer.cc:321] Added: freq=312 size=10080 all=338242 active=338154 piece=▁klant
+I0000 00:00:1787060343.629350  253029 bpe_model_trainer.cc:321] Added: freq=311 size=10100 all=338606 active=338518 piece=huid
+I0000 00:00:1787060343.630224  253029 bpe_model_trainer.cc:321] Added: freq=310 size=10120 all=339014 active=338926 piece=▁jonk
+I0000 00:00:1787060343.630732  253029 bpe_model_trainer.cc:321] Added: freq=309 size=10140 all=339164 active=339076 piece=▁VOL
+I0000 00:00:1787060343.631155  253029 bpe_model_trainer.cc:321] Added: freq=309 size=10160 all=339362 active=339274 piece=▁Leervragen
+I0000 00:00:1787060343.632074  253029 bpe_model_trainer.cc:321] Added: freq=307 size=10180 all=339771 active=339683 piece=Maak
+I0000 00:00:1787060343.632861  253029 bpe_model_trainer.cc:321] Added: freq=306 size=10200 all=339906 active=339818 piece=ailey
+I0000 00:00:1787060343.633323  253029 bpe_model_trainer.cc:321] Added: freq=305 size=10220 all=340085 active=339997 piece=WE
+I0000 00:00:1787060343.634249  253029 bpe_model_trainer.cc:321] Added: freq=305 size=10240 all=340534 active=340446 piece=▁gebogen
+I0000 00:00:1787060343.634934  253029 bpe_model_trainer.cc:321] Added: freq=304 size=10260 all=340830 active=340742 piece=plank
+I0000 00:00:1787060343.635456  253029 bpe_model_trainer.cc:321] Added: freq=303 size=10280 all=341045 active=340957 piece=aph
+I0000 00:00:1787060343.636018  253029 bpe_model_trainer.cc:321] Added: freq=303 size=10300 all=341307 active=341219 piece=▁belangrijker
+I0000 00:00:1787060343.636612  253029 bpe_model_trainer.cc:321] Added: freq=302 size=10320 all=341533 active=341445 piece=▁diensten
+I0000 00:00:1787060343.637496  253029 bpe_model_trainer.cc:321] Added: freq=301 size=10340 all=341939 active=341851 piece=▁keerde
+I0000 00:00:1787060343.638185  253029 bpe_model_trainer.cc:321] Added: freq=300 size=10360 all=342259 active=342171 piece=▁Far
+I0000 00:00:1787060343.638805  253029 bpe_model_trainer.cc:321] Added: freq=299 size=10380 all=342608 active=342520 piece=was
+I0000 00:00:1787060343.639353  253029 bpe_model_trainer.cc:321] Added: freq=299 size=10400 all=342824 active=342736 piece=▁kampioenschap
+I0000 00:00:1787060343.640131  253029 bpe_model_trainer.cc:321] Added: freq=297 size=10420 all=343188 active=343100 piece=▁MA
+I0000 00:00:1787060343.640700  253029 bpe_model_trainer.cc:321] Added: freq=297 size=10440 all=343416 active=343328 piece=▁ernstige
+I0000 00:00:1787060343.641508  253029 bpe_model_trainer.cc:321] Added: freq=296 size=10460 all=343867 active=343779 piece=▁Gran
+I0000 00:00:1787060343.642169  253029 bpe_model_trainer.cc:321] Added: freq=295 size=10480 all=344171 active=344083 piece=▁Cory
+I0000 00:00:1787060343.642748  253029 bpe_model_trainer.cc:321] Added: freq=294 size=10500 all=344442 active=344354 piece=▁out
+I0000 00:00:1787060343.643427  253029 bpe_model_trainer.cc:321] Added: freq=293 size=10520 all=344851 active=344763 piece=zan
+I0000 00:00:1787060343.644281  253029 bpe_model_trainer.cc:321] Added: freq=293 size=10540 all=345268 active=345180 piece=▁ziektes
+I0000 00:00:1787060343.644924  253029 bpe_model_trainer.cc:321] Added: freq=292 size=10560 all=345537 active=345449 piece=▁Australische
+I0000 00:00:1787060343.646006  253029 bpe_model_trainer.cc:321] Added: freq=291 size=10580 all=346079 active=345991 piece=▁Joegosl
+I0000 00:00:1787060343.646556  253029 bpe_model_trainer.cc:321] Added: freq=290 size=10600 all=346325 active=346237 piece=▁spe
+I0000 00:00:1787060343.647078  253029 bpe_model_trainer.cc:321] Added: freq=289 size=10620 all=346458 active=346370 piece=autom
+I0000 00:00:1787060343.647717  253029 bpe_model_trainer.cc:321] Added: freq=288 size=10640 all=346757 active=346669 piece=▁Ce
+I0000 00:00:1787060343.648336  253029 bpe_model_trainer.cc:321] Added: freq=287 size=10660 all=346961 active=346873 piece=Ook
+I0000 00:00:1787060343.649035  253029 bpe_model_trainer.cc:321] Added: freq=287 size=10680 all=347230 active=347142 piece=▁kleedkamer
+I0000 00:00:1787060343.649827  253029 bpe_model_trainer.cc:321] Added: freq=286 size=10700 all=347601 active=347513 piece=▁gehand
+I0000 00:00:1787060343.650584  253029 bpe_model_trainer.cc:321] Added: freq=285 size=10720 all=347895 active=347807 piece=▁Eredivisie
+I0000 00:00:1787060343.651214  253029 bpe_model_trainer.cc:321] Added: freq=284 size=10740 all=348107 active=348019 piece=▁individ
+I0000 00:00:1787060343.651893  253029 bpe_model_trainer.cc:321] Added: freq=283 size=10760 all=348402 active=348314 piece=▁onvol
+I0000 00:00:1787060343.652505  253029 bpe_model_trainer.cc:321] Added: freq=282 size=10780 all=348597 active=348509 piece=▁(...)
+I0000 00:00:1787060343.652821  253029 bpe_model_trainer.cc:321] Added: freq=281 size=10800 all=348683 active=348595 piece=aadt
+I0000 00:00:1787060343.653443  253029 bpe_model_trainer.cc:321] Added: freq=281 size=10820 all=348969 active=348881 piece=▁afstanden
+I0000 00:00:1787060343.654463  253029 bpe_model_trainer.cc:321] Added: freq=280 size=10840 all=349358 active=349270 piece=▁totale
+I0000 00:00:1787060343.655020  253029 bpe_model_trainer.cc:321] Added: freq=279 size=10860 all=349571 active=349483 piece=▁Pink
+I0000 00:00:1787060343.655634  253029 bpe_model_trainer.cc:321] Added: freq=278 size=10880 all=349815 active=349727 piece=fans
+I0000 00:00:1787060343.656330  253029 bpe_model_trainer.cc:321] Added: freq=278 size=10900 all=350112 active=350024 piece=▁vrachtwagens
+I0000 00:00:1787060343.656891  253029 bpe_model_trainer.cc:321] Added: freq=277 size=10920 all=350311 active=350223 piece=▁Hilversum
+I0000 00:00:1787060343.657571  253029 bpe_model_trainer.cc:321] Added: freq=276 size=10940 all=350581 active=350493 piece=▁Paleis
+I0000 00:00:1787060343.658232  253029 bpe_model_trainer.cc:321] Added: freq=275 size=10960 all=350885 active=350797 piece=▁Irak
+I0000 00:00:1787060343.658608  253029 bpe_model_trainer.cc:321] Added: freq=274 size=10980 all=351022 active=350934 piece=ardo
+I0000 00:00:1787060343.659527  253029 bpe_model_trainer.cc:321] Added: freq=274 size=11000 all=351445 active=351357 piece=▁ernaar
+I0000 00:00:1787060343.660074  253029 bpe_model_trainer.cc:321] Added: freq=273 size=11020 all=351642 active=351554 piece=▁Peel
+I0000 00:00:1787060343.660411  253029 bpe_model_trainer.cc:321] Added: freq=273 size=11040 all=351774 active=351686 piece=▁Russisch
+I0000 00:00:1787060343.661121  253029 bpe_model_trainer.cc:321] Added: freq=272 size=11060 all=352081 active=351993 piece=▁basket
+I0000 00:00:1787060343.661429  253029 bpe_model_trainer.cc:321] Added: freq=271 size=11080 all=352211 active=352123 piece=ais
+I0000 00:00:1787060343.662323  253029 bpe_model_trainer.cc:321] Added: freq=271 size=11100 all=352667 active=352579 piece=▁Thuis
+I0000 00:00:1787060343.662761  253029 bpe_model_trainer.cc:321] Added: freq=270 size=11120 all=352909 active=352821 piece=uma
+I0000 00:00:1787060343.663428  253029 bpe_model_trainer.cc:321] Added: freq=270 size=11140 all=353195 active=353107 piece=▁verrast
+I0000 00:00:1787060343.664153  253029 bpe_model_trainer.cc:321] Added: freq=269 size=11160 all=353521 active=353433 piece=▁felle
+I0000 00:00:1787060343.664705  253029 bpe_model_trainer.cc:321] Added: freq=268 size=11180 all=353715 active=353627 piece=▁daad
+I0000 00:00:1787060343.665318  253029 bpe_model_trainer.cc:321] Added: freq=267 size=11200 all=353997 active=353909 piece=▁dook
+I0000 00:00:1787060343.665933  253029 bpe_model_trainer.cc:321] Added: freq=266 size=11220 all=354211 active=354123 piece=▁700
+I0000 00:00:1787060343.666517  253029 bpe_model_trainer.cc:321] Added: freq=266 size=11240 all=354521 active=354433 piece=▁blinde
+I0000 00:00:1787060343.667157  253029 bpe_model_trainer.cc:321] Added: freq=265 size=11260 all=354813 active=354725 piece=▁zuin
+I0000 00:00:1787060343.667520  253029 bpe_model_trainer.cc:321] Added: freq=265 size=11280 all=354931 active=354843 piece=▁Israëlische
+I0000 00:00:1787060343.668117  253029 bpe_model_trainer.cc:321] Added: freq=264 size=11300 all=355145 active=355057 piece=▁bevrucht
+I0000 00:00:1787060343.669014  253029 bpe_model_trainer.cc:321] Added: freq=263 size=11320 all=355543 active=355455 piece=▁Filip
+I0000 00:00:1787060343.669467  253029 bpe_model_trainer.cc:321] Added: freq=262 size=11340 all=355664 active=355576 piece=▁4:
+I0000 00:00:1787060343.670021  253029 bpe_model_trainer.cc:321] Added: freq=262 size=11360 all=355956 active=355868 piece=▁finish
+I0000 00:00:1787060343.670815  253029 bpe_model_trainer.cc:321] Added: freq=261 size=11380 all=356293 active=356205 piece=▁Korte
+I0000 00:00:1787060343.671136  253029 bpe_model_trainer.cc:321] Added: freq=260 size=11400 all=356332 active=356244 piece=▁(8
+I0000 00:00:1787060343.671847  253029 bpe_model_trainer.cc:321] Added: freq=260 size=11420 all=356679 active=356591 piece=vliegen
+I0000 00:00:1787060343.672723  253029 bpe_model_trainer.cc:321] Added: freq=259 size=11440 all=357122 active=357034 piece=▁KUN
+I0000 00:00:1787060343.673366  253029 bpe_model_trainer.cc:321] Added: freq=259 size=11460 all=357304 active=357216 piece=▁lesuren
+I0000 00:00:1787060343.673966  253029 bpe_model_trainer.cc:321] Added: freq=258 size=11480 all=357525 active=357437 piece=▁real
+I0000 00:00:1787060343.674522  253029 bpe_model_trainer.cc:321] Added: freq=258 size=11500 all=357780 active=357692 piece=▁bekendgemaakt
+I0000 00:00:1787060343.675470  253029 bpe_model_trainer.cc:321] Added: freq=257 size=11520 all=358172 active=358084 piece=▁vorsten
+I0000 00:00:1787060343.675968  253029 bpe_model_trainer.cc:321] Added: freq=256 size=11540 all=358362 active=358274 piece=iler
+I0000 00:00:1787060343.676460  253029 bpe_model_trainer.cc:321] Added: freq=256 size=11560 all=358553 active=358465 piece=▁stoere
+I0000 00:00:1787060343.676985  253029 bpe_model_trainer.cc:321] Added: freq=255 size=11580 all=358775 active=358687 piece=▁Hoek
+I0000 00:00:1787060343.677775  253029 bpe_model_trainer.cc:321] Added: freq=254 size=11600 all=359128 active=359040 piece=▁Dire
+I0000 00:00:1787060343.678189  253029 bpe_model_trainer.cc:321] Added: freq=253 size=11620 all=359291 active=359203 piece=PT
+I0000 00:00:1787060343.678932  253029 bpe_model_trainer.cc:321] Added: freq=253 size=11640 all=359630 active=359542 piece=▁juicht
+I0000 00:00:1787060343.679340  253029 bpe_model_trainer.cc:321] Added: freq=252 size=11660 all=359788 active=359700 piece=ador
+I0000 00:00:1787060343.680081  253029 bpe_model_trainer.cc:321] Added: freq=251 size=11680 all=360083 active=359995 piece=ksh
+I0000 00:00:1787060343.680762  253029 bpe_model_trainer.cc:321] Added: freq=251 size=11700 all=360344 active=360256 piece=▁tempo
+I0000 00:00:1787060343.681337  253029 bpe_model_trainer.cc:321] Added: freq=250 size=11720 all=360567 active=360479 piece=▁text
+I0000 00:00:1787060343.681989  253029 bpe_model_trainer.cc:321] Added: freq=249 size=11740 all=360836 active=360748 piece=kok
+I0000 00:00:1787060343.682591  253029 bpe_model_trainer.cc:321] Added: freq=249 size=11760 all=361137 active=361049 piece=▁Engelsen
+I0000 00:00:1787060343.683024  253029 bpe_model_trainer.cc:321] Added: freq=248 size=11780 all=361274 active=361186 piece=ooter
+I0000 00:00:1787060343.683458  253029 bpe_model_trainer.cc:321] Added: freq=247 size=11800 all=361429 active=361341 piece=ISCH
+I0000 00:00:1787060343.684088  253029 bpe_model_trainer.cc:321] Added: freq=247 size=11820 all=361660 active=361572 piece=▁eigendom
+I0000 00:00:1787060343.684756  253029 bpe_model_trainer.cc:321] Added: freq=246 size=11840 all=361884 active=361796 piece=▁snelste
+I0000 00:00:1787060343.685428  253029 bpe_model_trainer.cc:321] Added: freq=245 size=11860 all=362118 active=362030 piece=▁column
+I0000 00:00:1787060343.686092  253029 bpe_model_trainer.cc:321] Added: freq=244 size=11880 all=362463 active=362375 piece=ining
+I0000 00:00:1787060343.686491  253029 bpe_model_trainer.cc:321] Added: freq=244 size=11900 all=362604 active=362516 piece=▁Belgisch
+I0000 00:00:1787060343.687203  253029 bpe_model_trainer.cc:321] Added: freq=243 size=11920 all=362951 active=362863 piece=▁Friek
+I0000 00:00:1787060343.687700  253029 bpe_model_trainer.cc:321] Added: freq=242 size=11940 all=363095 active=363007 piece=hagen
+I0000 00:00:1787060343.688227  253029 bpe_model_trainer.cc:321] Added: freq=242 size=11960 all=363336 active=363248 piece=▁aangeboden
+I0000 00:00:1787060343.688949  253029 bpe_model_trainer.cc:321] Added: freq=241 size=11980 all=363620 active=363532 piece=▁Spees
+I0000 00:00:1787060343.689344  253029 bpe_model_trainer.cc:321] Added: freq=240 size=12000 all=363791 active=363703 piece=OUW
+I0000 00:00:1787060343.690131  253029 bpe_model_trainer.cc:321] Added: freq=240 size=12020 all=364127 active=364039 piece=▁massa
+I0000 00:00:1787060343.690758  253029 bpe_model_trainer.cc:321] Added: freq=239 size=12040 all=364344 active=364256 piece=▁koor
+I0000 00:00:1787060343.691063  253029 bpe_model_trainer.cc:321] Added: freq=239 size=12060 all=364412 active=364324 piece=▁Instagram
+I0000 00:00:1787060343.691897  253029 bpe_model_trainer.cc:321] Added: freq=238 size=12080 all=364652 active=364564 piece=▁gelden
+I0000 00:00:1787060343.692497  253029 bpe_model_trainer.cc:321] Added: freq=237 size=12100 all=364856 active=364768 piece=▁pup
+I0000 00:00:1787060343.692979  253029 bpe_model_trainer.cc:321] Added: freq=237 size=12120 all=365025 active=364937 piece=▁messen
+I0000 00:00:1787060343.693589  253029 bpe_model_trainer.cc:321] Added: freq=236 size=12140 all=365288 active=365200 piece=zand
+I0000 00:00:1787060343.694127  253029 bpe_model_trainer.cc:321] Added: freq=236 size=12160 all=365516 active=365428 piece=▁afleveringen
+I0000 00:00:1787060343.694630  253029 bpe_model_trainer.cc:321] Added: freq=235 size=12180 all=365633 active=365545 piece=▁koopman
+I0000 00:00:1787060343.695257  253029 bpe_model_trainer.cc:321] Added: freq=234 size=12200 all=365959 active=365871 piece=▁joh
+I0000 00:00:1787060343.695664  253029 bpe_model_trainer.cc:321] Added: freq=234 size=12220 all=366166 active=366078 piece=ettingen
+I0000 00:00:1787060343.696449  253029 bpe_model_trainer.cc:321] Added: freq=233 size=12240 all=366587 active=366499 piece=▁jet
+I0000 00:00:1787060343.696943  253029 bpe_model_trainer.cc:321] Added: freq=233 size=12260 all=366794 active=366706 piece=▁blikken
+I0000 00:00:1787060343.697474  253029 bpe_model_trainer.cc:321] Added: freq=232 size=12280 all=366999 active=366911 piece=▁amf
+I0000 00:00:1787060343.697956  253029 bpe_model_trainer.cc:321] Added: freq=232 size=12300 all=367206 active=367118 piece=▁koekje
+I0000 00:00:1787060343.698395  253029 bpe_model_trainer.cc:321] Added: freq=231 size=12320 all=367339 active=367251 piece=kwart
+I0000 00:00:1787060343.698968  253029 bpe_model_trainer.cc:321] Added: freq=231 size=12340 all=367619 active=367531 piece=▁factoren
+I0000 00:00:1787060343.699623  253029 bpe_model_trainer.cc:321] Added: freq=230 size=12360 all=367944 active=367856 piece=▁Winn
+I0000 00:00:1787060343.699978  253029 bpe_model_trainer.cc:321] Added: freq=230 size=12380 all=368085 active=367997 piece=▁vrijgelaten
+I0000 00:00:1787060343.700586  253029 bpe_model_trainer.cc:321] Added: freq=229 size=12400 all=368325 active=368237 piece=▁Elekt
+I0000 00:00:1787060343.700870  253029 bpe_model_trainer.cc:321] Added: freq=228 size=12420 all=368454 active=368366 piece=4-
+I0000 00:00:1787060343.701725  253029 bpe_model_trainer.cc:321] Added: freq=228 size=12440 all=368823 active=368735 piece=▁specif
+I0000 00:00:1787060343.702287  253029 bpe_model_trainer.cc:321] Added: freq=227 size=12460 all=369092 active=369004 piece=▁2)
+I0000 00:00:1787060343.702855  253029 bpe_model_trainer.cc:321] Added: freq=227 size=12480 all=369358 active=369270 piece=▁Ricky
+I0000 00:00:1787060343.703323  253029 bpe_model_trainer.cc:321] Added: freq=226 size=12500 all=369456 active=369368 piece=ythe
+I0000 00:00:1787060343.703746  253029 bpe_model_trainer.cc:321] Added: freq=226 size=12520 all=369632 active=369544 piece=▁voorover
+I0000 00:00:1787060343.704488  253029 bpe_model_trainer.cc:321] Added: freq=225 size=12540 all=369913 active=369825 piece=▁toel
+I0000 00:00:1787060343.704887  253029 bpe_model_trainer.cc:321] Added: freq=225 size=12560 all=370039 active=369951 piece=▁ingrediënten
+I0000 00:00:1787060343.705578  253029 bpe_model_trainer.cc:321] Added: freq=224 size=12580 all=370355 active=370267 piece=▁dorst
+I0000 00:00:1787060343.705951  253029 bpe_model_trainer.cc:321] Added: freq=224 size=12600 all=370522 active=370434 piece=▁vermenigv
+I0000 00:00:1787060343.706814  253029 bpe_model_trainer.cc:321] Added: freq=223 size=12620 all=370890 active=370802 piece=▁tilde
+I0000 00:00:1787060343.707342  253029 bpe_model_trainer.cc:321] Added: freq=222 size=12640 all=371076 active=370988 piece=▁Lab
+I0000 00:00:1787060343.707951  253029 bpe_model_trainer.cc:321] Added: freq=222 size=12660 all=371366 active=371278 piece=▁flesje
+I0000 00:00:1787060343.708466  253029 bpe_model_trainer.cc:321] Added: freq=221 size=12680 all=371551 active=371463 piece=undel
+I0000 00:00:1787060343.709412  253029 bpe_model_trainer.cc:321] Added: freq=221 size=12700 all=371793 active=371705 piece=▁moorden
+I0000 00:00:1787060343.709920  253029 bpe_model_trainer.cc:321] Added: freq=220 size=12720 all=372007 active=371919 piece=hone
+I0000 00:00:1787060343.710469  253029 bpe_model_trainer.cc:321] Added: freq=220 size=12740 all=372255 active=372167 piece=▁bekeek
+I0000 00:00:1787060343.711022  253029 bpe_model_trainer.cc:321] Added: freq=219 size=12760 all=372519 active=372431 piece=▁ble
+I0000 00:00:1787060343.711628  253029 bpe_model_trainer.cc:321] Added: freq=219 size=12780 all=372804 active=372716 piece=otische
+I0000 00:00:1787060343.712214  253029 bpe_model_trainer.cc:321] Added: freq=218 size=12800 all=372975 active=372887 piece=▁Tak
+I0000 00:00:1787060343.712706  253029 bpe_model_trainer.cc:321] Added: freq=218 size=12820 all=373228 active=373140 piece=▁opgeven
+I0000 00:00:1787060343.713195  253029 bpe_model_trainer.cc:321] Added: freq=217 size=12840 all=373349 active=373261 piece=▁Log
+I0000 00:00:1787060343.713583  253029 bpe_model_trainer.cc:321] Added: freq=217 size=12860 all=373518 active=373430 piece=▁Voedsel
+I0000 00:00:1787060343.714048  253029 bpe_model_trainer.cc:321] Added: freq=216 size=12880 all=373663 active=373575 piece=asie
+I0000 00:00:1787060343.714519  253029 bpe_model_trainer.cc:321] Added: freq=216 size=12900 all=373825 active=373737 piece=▁snapte
+I0000 00:00:1787060343.714974  253029 bpe_model_trainer.cc:321] Added: freq=215 size=12920 all=373957 active=373869 piece=▁MEE
+I0000 00:00:1787060343.715728  253029 bpe_model_trainer.cc:321] Added: freq=215 size=12940 all=374381 active=374293 piece=▁klapt
+I0000 00:00:1787060343.715961  253029 bpe_model_trainer.cc:321] Added: freq=214 size=12960 all=374426 active=374338 piece=hu
+I0000 00:00:1787060343.716687  253029 bpe_model_trainer.cc:321] Added: freq=214 size=12980 all=374799 active=374711 piece=▁feite
+I0000 00:00:1787060343.716987  253029 bpe_model_trainer.cc:321] Added: freq=214 size=13000 all=374921 active=374833 piece=▁werkzaam
+I0000 00:00:1787060343.717576  253029 bpe_model_trainer.cc:321] Added: freq=213 size=13020 all=375184 active=375096 piece=▁ered
+I0000 00:00:1787060343.717953  253029 bpe_model_trainer.cc:321] Added: freq=213 size=13040 all=375359 active=375271 piece=▁beestjes
+I0000 00:00:1787060343.718552  253029 bpe_model_trainer.cc:321] Added: freq=212 size=13060 all=375558 active=375470 piece=schede
+I0000 00:00:1787060343.718924  253029 bpe_model_trainer.cc:321] Added: freq=212 size=13080 all=375696 active=375608 piece=▁voeding
+I0000 00:00:1787060343.719608  253029 bpe_model_trainer.cc:321] Added: freq=211 size=13100 all=376032 active=375944 piece=ateur
+I0000 00:00:1787060343.720235  253029 bpe_model_trainer.cc:321] Added: freq=211 size=13120 all=376315 active=376227 piece=▁Wilhelmina
+I0000 00:00:1787060343.720787  253029 bpe_model_trainer.cc:321] Added: freq=210 size=13140 all=376525 active=376437 piece=▁Girl
+I0000 00:00:1787060343.721099  253029 bpe_model_trainer.cc:321] Added: freq=210 size=13160 all=376618 active=376530 piece=▁plantages
+I0000 00:00:1787060343.721750  253029 bpe_model_trainer.cc:321] Added: freq=209 size=13180 all=376892 active=376804 piece=▁Kaap
+I0000 00:00:1787060343.722168  253029 bpe_model_trainer.cc:321] Added: freq=209 size=13200 all=377068 active=376980 piece=▁rubber
+I0000 00:00:1787060343.722764  253029 bpe_model_trainer.cc:321] Added: freq=208 size=13220 all=377232 active=377144 piece=▁Cito
+I0000 00:00:1787060343.723046  253029 bpe_model_trainer.cc:321] Added: freq=208 size=13240 all=377282 active=377194 piece=▁enzovoorts
+I0000 00:00:1787060343.723655  253029 bpe_model_trainer.cc:321] Added: freq=207 size=13260 all=377566 active=377478 piece=izers
+I0000 00:00:1787060343.724007  253029 bpe_model_trainer.cc:321] Added: freq=207 size=13280 all=377696 active=377608 piece=▁bemoeien
+I0000 00:00:1787060343.724757  253029 bpe_model_trainer.cc:321] Added: freq=206 size=13300 all=378100 active=378012 piece=Morgen
+I0000 00:00:1787060343.725207  253029 bpe_model_trainer.cc:321] Added: freq=206 size=13320 all=378315 active=378227 piece=▁stormen
+I0000 00:00:1787060343.726212  253029 bpe_model_trainer.cc:321] Added: freq=205 size=13340 all=378550 active=378462 piece=▁1946
+I0000 00:00:1787060343.726578  253029 bpe_model_trainer.cc:321] Added: freq=205 size=13360 all=378689 active=378601 piece=▁kostuum
+I0000 00:00:1787060343.727046  253029 bpe_model_trainer.cc:321] Added: freq=204 size=13380 all=378860 active=378772 piece=▁Get
+I0000 00:00:1787060343.727524  253029 bpe_model_trainer.cc:321] Added: freq=204 size=13400 all=379079 active=378991 piece=gestuurd
+I0000 00:00:1787060343.728320  253029 bpe_model_trainer.cc:321] Added: freq=203 size=13420 all=379384 active=379296 piece=ennie
+I0000 00:00:1787060343.728727  253029 bpe_model_trainer.cc:321] Added: freq=203 size=13440 all=379501 active=379413 piece=Amsterdam
+I0000 00:00:1787060343.729357  253029 bpe_model_trainer.cc:321] Added: freq=202 size=13460 all=379711 active=379623 piece=▁luc
+I0000 00:00:1787060343.729818  253029 bpe_model_trainer.cc:321] Added: freq=202 size=13480 all=379917 active=379829 piece=▁stokje
+I0000 00:00:1787060343.730050  253029 bpe_model_trainer.cc:321] Added: freq=202 size=13500 all=379978 active=379890 piece=▁hoofdgedachte
+I0000 00:00:1787060343.731073  253029 bpe_model_trainer.cc:321] Added: freq=201 size=13520 all=380538 active=380450 piece=▁Roem
+I0000 00:00:1787060343.731483  253029 bpe_model_trainer.cc:321] Added: freq=201 size=13540 all=380685 active=380597 piece=ambulance
+I0000 00:00:1787060343.732058  253029 bpe_model_trainer.cc:321] Added: freq=200 size=13560 all=380919 active=380831 piece=▁Kab
+I0000 00:00:1787060343.732454  253029 bpe_model_trainer.cc:321] Added: freq=200 size=13580 all=381071 active=380983 piece=▁Saskia
+I0000 00:00:1787060343.733005  253029 bpe_model_trainer.cc:321] Added: freq=199 size=13600 all=381304 active=381216 piece=bez
+I0000 00:00:1787060343.733610  253029 bpe_model_trainer.cc:321] Added: freq=199 size=13620 all=381531 active=381443 piece=▁Woord
+I0000 00:00:1787060343.733961  253029 bpe_model_trainer.cc:321] Added: freq=199 size=13640 all=381658 active=381570 piece=▁encyclopedie
+I0000 00:00:1787060343.734667  253029 bpe_model_trainer.cc:321] Added: freq=198 size=13660 all=381972 active=381884 piece=udeert
+I0000 00:00:1787060343.735004  253029 bpe_model_trainer.cc:321] Added: freq=198 size=13680 all=382104 active=382016 piece=▁kappen
+I0000 00:00:1787060343.735447  253029 bpe_model_trainer.cc:321] Added: freq=197 size=13700 all=382331 active=382243 piece=fid
+I0000 00:00:1787060343.736134  253029 bpe_model_trainer.cc:321] Added: freq=197 size=13720 all=382673 active=382585 piece=▁stik
+I0000 00:00:1787060343.736491  253029 bpe_model_trainer.cc:321] Added: freq=197 size=13740 all=382819 active=382731 piece=▁Steffie
+I0000 00:00:1787060343.736856  253029 bpe_model_trainer.cc:321] Added: freq=196 size=13760 all=382905 active=382817 piece=▁62
+I0000 00:00:1787060343.737352  253029 bpe_model_trainer.cc:321] Added: freq=196 size=13780 all=383094 active=383006 piece=▁busje
+I0000 00:00:1787060343.737771  253029 bpe_model_trainer.cc:321] Added: freq=195 size=13800 all=383295 active=383207 piece=▁Og
+I0000 00:00:1787060343.738355  253029 bpe_model_trainer.cc:321] Added: freq=195 size=13820 all=383523 active=383435 piece=onische
+I0000 00:00:1787060343.738535  253029 bpe_model_trainer.cc:321] Added: freq=195 size=13840 all=383572 active=383484 piece=▁neergezet
+I0000 00:00:1787060343.739288  253029 bpe_model_trainer.cc:321] Added: freq=194 size=13860 all=383969 active=383881 piece=▁Mah
+I0000 00:00:1787060343.739730  253029 bpe_model_trainer.cc:321] Added: freq=194 size=13880 all=384147 active=384059 piece=▁America
+I0000 00:00:1787060343.740295  253029 bpe_model_trainer.cc:321] Added: freq=193 size=13900 all=384307 active=384219 piece=▁Maya
+I0000 00:00:1787060343.740665  253029 bpe_model_trainer.cc:321] Added: freq=193 size=13920 all=384467 active=384379 piece=▁Poolse
+I0000 00:00:1787060343.740843  253029 bpe_model_trainer.cc:321] Added: freq=193 size=13940 all=384494 active=384406 piece=▁televisieserie
+I0000 00:00:1787060343.742030  253029 bpe_model_trainer.cc:321] Added: freq=192 size=13960 all=384801 active=384713 piece=▁ZIEN
+I0000 00:00:1787060343.742358  253029 bpe_model_trainer.cc:321] Added: freq=192 size=13980 all=384906 active=384818 piece=▁meters
+I0000 00:00:1787060343.742562  253029 bpe_model_trainer.cc:321] Added: freq=192 size=14000 all=384961 active=384873 piece=▁voorzetsel
+I0000 00:00:1787060343.743509  253029 bpe_model_trainer.cc:321] Added: freq=191 size=14020 all=385437 active=385349 piece=▁Stil
+I0000 00:00:1787060343.743848  253029 bpe_model_trainer.cc:321] Added: freq=191 size=14040 all=385576 active=385488 piece=▁zojuist
+I0000 00:00:1787060343.744611  253029 bpe_model_trainer.cc:321] Added: freq=190 size=14060 all=385910 active=385822 piece=▁Tas
+I0000 00:00:1787060343.745097  253029 bpe_model_trainer.cc:321] Added: freq=190 size=14080 all=386100 active=386012 piece=Vooruit
+I0000 00:00:1787060343.745394  253029 bpe_model_trainer.cc:321] Added: freq=190 size=14100 all=386194 active=386106 piece=verbinding
+I0000 00:00:1787060343.745924  253029 bpe_model_trainer.cc:321] Added: freq=189 size=14120 all=386377 active=386289 piece=▁Salt
+I0000 00:00:1787060343.746354  253029 bpe_model_trainer.cc:321] Added: freq=189 size=14140 all=386608 active=386520 piece=▁Captain
+I0000 00:00:1787060343.746518  253029 bpe_model_trainer.cc:321] Added: freq=189 size=14160 all=386624 active=386536 piece=▁Eiffeltoren
+I0000 00:00:1787060343.747295  253029 bpe_model_trainer.cc:321] Added: freq=188 size=14180 all=386950 active=386862 piece=▁Vrede
+I0000 00:00:1787060343.747529  253029 bpe_model_trainer.cc:321] Added: freq=188 size=14200 all=387041 active=386953 piece=▁organiseert
+I0000 00:00:1787060343.748257  253029 bpe_model_trainer.cc:321] Added: freq=187 size=14220 all=387407 active=387319 piece=▁Ernst
+I0000 00:00:1787060343.748558  253029 bpe_model_trainer.cc:321] Added: freq=187 size=14240 all=387525 active=387437 piece=▁leefgebied
+I0000 00:00:1787060343.749291  253029 bpe_model_trainer.cc:321] Added: freq=186 size=14260 all=387811 active=387723 piece=▁Belle
+I0000 00:00:1787060343.749651  253029 bpe_model_trainer.cc:321] Added: freq=186 size=14280 all=387916 active=387828 piece=▁landelijke
+I0000 00:00:1787060343.750415  253029 bpe_model_trainer.cc:321] Added: freq=185 size=14300 all=388281 active=388193 piece=▁spu
+I0000 00:00:1787060343.750985  253029 bpe_model_trainer.cc:321] Added: freq=185 size=14320 all=388487 active=388399 piece=▁blader
+I0000 00:00:1787060343.751785  253029 bpe_model_trainer.cc:321] Added: freq=185 size=14340 all=388609 active=388521 piece=▁voormalig
+I0000 00:00:1787060343.752459  253029 bpe_model_trainer.cc:321] Added: freq=184 size=14360 all=388968 active=388880 piece=▁Gold
+I0000 00:00:1787060343.752809  253029 bpe_model_trainer.cc:321] Added: freq=184 size=14380 all=389101 active=389013 piece=▁bronzen
+I0000 00:00:1787060343.752981  253029 bpe_model_trainer.cc:321] Added: freq=184 size=14400 all=389139 active=389051 piece=▁signaalwoorden
+I0000 00:00:1787060343.753731  253029 bpe_model_trainer.cc:321] Added: freq=183 size=14420 all=389558 active=389470 piece=▁Life
+I0000 00:00:1787060343.754080  253029 bpe_model_trainer.cc:321] Added: freq=183 size=14440 all=389706 active=389618 piece=▁iPhone
+I0000 00:00:1787060343.754246  253029 bpe_model_trainer.cc:321] Added: freq=182 size=14460 all=389729 active=389641 piece=91
+I0000 00:00:1787060343.755058  253029 bpe_model_trainer.cc:321] Added: freq=182 size=14480 all=390044 active=389956 piece=▁Koude
+I0000 00:00:1787060343.755280  253029 bpe_model_trainer.cc:321] Added: freq=182 size=14500 all=390100 active=390012 piece=▁journaal
+I0000 00:00:1787060343.755967  253029 bpe_model_trainer.cc:321] Added: freq=181 size=14520 all=390355 active=390267 piece=orsele
+I0000 00:00:1787060343.756192  253029 bpe_model_trainer.cc:321] Added: freq=181 size=14540 all=390424 active=390336 piece=▁opgevoed
+I0000 00:00:1787060343.756731  253029 bpe_model_trainer.cc:321] Added: freq=180 size=14560 all=390585 active=390497 piece=ucky
+I0000 00:00:1787060343.757676  253029 bpe_model_trainer.cc:321] Added: freq=180 size=14580 all=390866 active=390778 piece=ulling
+I0000 00:00:1787060343.757934  253029 bpe_model_trainer.cc:321] Added: freq=180 size=14600 all=390957 active=390869 piece=▁voorste
+I0000 00:00:1787060343.758552  253029 bpe_model_trainer.cc:321] Added: freq=179 size=14620 all=391257 active=391169 piece=ONDER
+I0000 00:00:1787060343.759012  253029 bpe_model_trainer.cc:321] Added: freq=179 size=14640 all=391418 active=391330 piece=▁Sloven
+I0000 00:00:1787060343.759369  253029 bpe_model_trainer.cc:321] Added: freq=179 size=14660 all=391592 active=391504 piece=▁Leerdoelen
+I0000 00:00:1787060343.760016  253029 bpe_model_trainer.cc:321] Added: freq=178 size=14680 all=391885 active=391797 piece=▁Flip
+I0000 00:00:1787060343.760306  253029 bpe_model_trainer.cc:321] Added: freq=178 size=14700 all=391981 active=391893 piece=▁herhaalt
+I0000 00:00:1787060343.760866  253029 bpe_model_trainer.cc:321] Added: freq=177 size=14720 all=392186 active=392098 piece=odoxe
+I0000 00:00:1787060343.761316  253029 bpe_model_trainer.cc:321] Added: freq=177 size=14740 all=392350 active=392262 piece=standen
+I0000 00:00:1787060343.761558  253029 bpe_model_trainer.cc:321] Added: freq=177 size=14760 all=392406 active=392318 piece=▁snoepjes
+I0000 00:00:1787060343.762145  253029 bpe_model_trainer.cc:321] Added: freq=176 size=14780 all=392665 active=392577 piece=hemd
+I0000 00:00:1787060343.762696  253029 bpe_model_trainer.cc:321] Added: freq=176 size=14800 all=392865 active=392777 piece=▁Hoezo
+I0000 00:00:1787060343.762965  253029 bpe_model_trainer.cc:321] Added: freq=176 size=14820 all=392919 active=392831 piece=▁zuidoosten
+I0000 00:00:1787060343.763626  253029 bpe_model_trainer.cc:321] Added: freq=175 size=14840 all=393180 active=393092 piece=▁Gef
+I0000 00:00:1787060343.764067  253029 bpe_model_trainer.cc:321] Added: freq=175 size=14860 all=393393 active=393305 piece=▁Bloed
+I0000 00:00:1787060343.764411  253029 bpe_model_trainer.cc:321] Added: freq=175 size=14880 all=393558 active=393470 piece=▁verbeterd
+I0000 00:00:1787060343.765033  253029 bpe_model_trainer.cc:321] Added: freq=174 size=14900 all=393876 active=393788 piece=▁WIE
+I0000 00:00:1787060343.765495  253029 bpe_model_trainer.cc:321] Added: freq=174 size=14920 all=394048 active=393960 piece=▁Malfid
+I0000 00:00:1787060343.765700  253029 bpe_model_trainer.cc:321] Added: freq=174 size=14940 all=394112 active=394024 piece=gelegenheid
+I0000 00:00:1787060343.766407  253029 bpe_model_trainer.cc:321] Added: freq=173 size=14960 all=394401 active=394313 piece=▁Slim
+I0000 00:00:1787060343.766786  253029 bpe_model_trainer.cc:321] Added: freq=173 size=14980 all=394586 active=394498 piece=▁poesje
+I0000 00:00:1787060343.766991  253029 bpe_model_trainer.cc:321] Added: freq=173 size=15000 all=394632 active=394544 piece=▁wereldberoemde
+I0000 00:00:1787060343.767780  253029 bpe_model_trainer.cc:321] Added: freq=172 size=15020 all=394912 active=394824 piece=▁Plac
+I0000 00:00:1787060343.768105  253029 bpe_model_trainer.cc:321] Added: freq=172 size=15040 all=395036 active=394948 piece=▁Uruguay
+I0000 00:00:1787060343.768284  253029 bpe_model_trainer.cc:321] Added: freq=172 size=15060 all=395071 active=394983 piece=▁arrondissement
+I0000 00:00:1787060343.769111  253029 bpe_model_trainer.cc:321] Added: freq=171 size=15080 all=395507 active=395419 piece=▁1933
+I0000 00:00:1787060343.769474  253029 bpe_model_trainer.cc:321] Added: freq=171 size=15100 all=395695 active=395607 piece=▁Vaart
+I0000 00:00:1787060343.769670  253029 bpe_model_trainer.cc:321] Added: freq=171 size=15120 all=395737 active=395649 piece=▁vetgedrukte
+I0000 00:00:1787060343.770453  253029 bpe_model_trainer.cc:321] Added: freq=170 size=15140 all=396034 active=395946 piece=▁2009.
+I0000 00:00:1787060343.770680  253029 bpe_model_trainer.cc:321] Added: freq=170 size=15160 all=396103 active=396015 piece=▁Algemeen
+I0000 00:00:1787060343.771100  253029 bpe_model_trainer.cc:321] Added: freq=169 size=15180 all=396220 active=396132 piece=ETEN
+I0000 00:00:1787060343.772108  253029 bpe_model_trainer.cc:321] Added: freq=169 size=15200 all=396553 active=396465 piece=limaat
+I0000 00:00:1787060343.772450  253029 bpe_model_trainer.cc:321] Added: freq=169 size=15220 all=396648 active=396560 piece=▁uitroep
+I0000 00:00:1787060343.772905  253029 bpe_model_trainer.cc:321] Added: freq=168 size=15240 all=396784 active=396696 piece=onna
+I0000 00:00:1787060343.773387  253029 bpe_model_trainer.cc:321] Added: freq=168 size=15260 all=397016 active=396928 piece=▁puppy
+I0000 00:00:1787060343.773631  253029 bpe_model_trainer.cc:321] Added: freq=168 size=15280 all=397083 active=396995 piece=▁proefwerk
+I0000 00:00:1787060343.774318  253029 bpe_model_trainer.cc:321] Added: freq=167 size=15300 all=397371 active=397283 piece=sens
+I0000 00:00:1787060343.774875  253029 bpe_model_trainer.cc:321] Added: freq=167 size=15320 all=397622 active=397534 piece=▁hoest
+I0000 00:00:1787060343.775214  253029 bpe_model_trainer.cc:321] Added: freq=167 size=15340 all=397746 active=397658 piece=▁veeteelt
+I0000 00:00:1787060343.775798  253029 bpe_model_trainer.cc:321] Added: freq=166 size=15360 all=397963 active=397875 piece=▁hup
+I0000 00:00:1787060343.776237  253029 bpe_model_trainer.cc:321] Added: freq=166 size=15380 all=398112 active=398024 piece=▁WACHT
+I0000 00:00:1787060343.776460  253029 bpe_model_trainer.cc:321] Added: freq=166 size=15400 all=398180 active=398092 piece=Vlaanderen
+I0000 00:00:1787060343.777110  253029 bpe_model_trainer.cc:321] Added: freq=165 size=15420 all=398508 active=398420 piece=▁Der
+I0000 00:00:1787060343.777545  253029 bpe_model_trainer.cc:321] Added: freq=165 size=15440 all=398686 active=398598 piece=Hoeveel
+I0000 00:00:1787060343.777848  253029 bpe_model_trainer.cc:321] Added: freq=165 size=15460 all=398785 active=398697 piece=▁ongelovig
+I0000 00:00:1787060343.778221  253029 bpe_model_trainer.cc:321] Added: freq=164 size=15480 all=398865 active=398777 piece=ikes
+I0000 00:00:1787060343.778791  253029 bpe_model_trainer.cc:321] Added: freq=164 size=15500 all=399108 active=399020 piece=zuiger
+I0000 00:00:1787060343.779106  253029 bpe_model_trainer.cc:321] Added: freq=164 size=15520 all=399221 active=399133 piece=▁Rekenen
+I0000 00:00:1787060343.779224  253029 bpe_model_trainer.cc:321] Added: freq=163 size=15540 all=399219 active=399131 piece=SM
+I0000 00:00:1787060343.779999  253029 bpe_model_trainer.cc:321] Added: freq=163 size=15560 all=399588 active=399500 piece=▁LEGO
+I0000 00:00:1787060343.780418  253029 bpe_model_trainer.cc:321] Added: freq=163 size=15580 all=399775 active=399687 piece=▁Noteer
+I0000 00:00:1787060343.780761  253029 bpe_model_trainer.cc:321] Added: freq=163 size=15600 all=399882 active=399794 piece=▁Landschap
+I0000 00:00:1787060343.781349  253029 bpe_model_trainer.cc:321] Added: freq=162 size=15620 all=400084 active=399996 piece=akels
+I0000 00:00:1787060343.781809  253029 bpe_model_trainer.cc:321] Added: freq=162 size=15640 all=400255 active=400167 piece=▁Cyprus
+I0000 00:00:1787060343.781993  253029 bpe_model_trainer.cc:321] Added: freq=162 size=15660 all=400298 active=400210 piece=▁weettekst
+I0000 00:00:1787060343.782475  253029 bpe_model_trainer.cc:321] Added: freq=161 size=15680 all=400465 active=400377 piece=▁2-0
+I0000 00:00:1787060343.782996  253029 bpe_model_trainer.cc:321] Added: freq=161 size=15700 all=400695 active=400607 piece=origin
+I0000 00:00:1787060343.783279  253029 bpe_model_trainer.cc:321] Added: freq=161 size=15720 all=400802 active=400714 piece=▁Jeffrey
+I0000 00:00:1787060343.783501  253029 bpe_model_trainer.cc:321] Added: freq=160 size=15740 all=400876 active=400788 piece=MM
+I0000 00:00:1787060343.784151  253029 bpe_model_trainer.cc:321] Added: freq=160 size=15760 all=401254 active=401166 piece=▁hei
+I0000 00:00:1787060343.784711  253029 bpe_model_trainer.cc:321] Added: freq=160 size=15780 all=401511 active=401423 piece=▁oever
+I0000 00:00:1787060343.785176  253029 bpe_model_trainer.cc:321] Added: freq=160 size=15800 all=401736 active=401648 piece=▁scheppen
+I0000 00:00:1787060343.786058  253029 bpe_model_trainer.cc:321] Added: freq=159 size=15820 all=402041 active=401953 piece=▁4)
+I0000 00:00:1787060343.786643  253029 bpe_model_trainer.cc:321] Added: freq=159 size=15840 all=402295 active=402207 piece=splein
+I0000 00:00:1787060343.787002  253029 bpe_model_trainer.cc:321] Added: freq=159 size=15860 all=402467 active=402379 piece=▁rechters
+I0000 00:00:1787060343.787395  253029 bpe_model_trainer.cc:321] Added: freq=158 size=15880 all=402616 active=402528 piece=Russ
+I0000 00:00:1787060343.788033  253029 bpe_model_trainer.cc:321] Added: freq=158 size=15900 all=402894 active=402806 piece=▁Linda
+I0000 00:00:1787060343.938815  253029 trainer_interface.cc:702] Saving model: /scratch-shared/sperdijk/storylm_p1_training/tokenizers/tokenizer_16k_nl/sentencepiece.model
+I0000 00:00:1787060343.978373  253029 trainer_interface.cc:714] Saving vocabs: /scratch-shared/sperdijk/storylm_p1_training/tokenizers/tokenizer_16k_nl/sentencepiece.vocab
+Saved HF-compatible tokenizer to /scratch-shared/sperdijk/storylm_p1_training/tokenizers/tokenizer_16k_nl (vocab size 3)
+[transformers] Model config: bos_token_id must be `None` or an integer within the vocabulary (between 0 and 2), got 50256. This may result in unexpected behavior.
+[transformers] Model config: eos_token_id must be `None` or an integer within the vocabulary (between 0 and 2), got 50256. This may result in unexpected behavior.
+Built gpt2 model with 7,203,456 parameters (block size 256)
+Loading prepared dataset from /scratch-shared/sperdijk/storylm_p1_training/data/base_pretrain...
+Tokenizing and packing train split...
+Tokenizing and packing dev split...
+  train: 1,919 blocks | dev: 106 blocks
+wandb: [wandb.login()] Loaded credentials for https://api.wandb.ai from /home/sperdijk/.netrc.
+wandb: Currently logged in as: sabijn (sabijn-leiden-university) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: setting up run iwy9mlki
+wandb: Tracking run with wandb version 0.26.0
+wandb: Run data is saved locally in /gpfs/scratch1/shared/sperdijk/storylm_p1_training/wandb/run-20260818_153914-iwy9mlki
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run base_gpt2_20m_tok_16k
+wandb: ⭐️ View project at https://wandb.ai/sabijn-leiden-university/storytimelm-pretraining
+wandb: 🚀 View run at https://wandb.ai/sabijn-leiden-university/storytimelm-pretraining/runs/iwy9mlki
+[transformers] warmup_ratio is deprecated and will be removed in v5.2. Use `warmup_steps` instead.
+Starting training...
+  0%|          | 0/180 [00:00<?, ?it/s][transformers] `loss_type=None` was set in the config but it is unrecognized. Using the default loss: `ForCausalLMLoss`.
+  1%|          | 1/180 [00:00<01:38,  1.83it/s]  3%|▎         | 6/180 [00:00<00:14, 11.71it/s]  7%|▋         | 12/180 [00:00<00:07, 21.75it/s] 10%|█         | 18/180 [00:00<00:05, 29.54it/s] 13%|█▎        | 24/180 [00:01<00:04, 35.44it/s] 17%|█▋        | 30/180 [00:01<00:03, 39.80it/s] 20%|██        | 36/180 [00:01<00:03, 42.98it/s] 23%|██▎       | 42/180 [00:01<00:03, 45.21it/s] 27%|██▋       | 48/180 [00:01<00:02, 46.81it/s]                                                {'loss': '0.1747', 'grad_norm': '0.003936', 'learning_rate': '0.000257', 'epoch': '0.8333'}
+ 28%|██▊       | 50/180 [00:01<00:02, 46.81it/s] 29%|██▉       | 53/180 [00:01<00:05, 23.45it/s] 33%|███▎      | 59/180 [00:02<00:04, 28.33it/s] 36%|███▌      | 64/180 [00:02<00:03, 32.11it/s] 39%|███▉      | 70/180 [00:02<00:03, 36.40it/s] 42%|████▏     | 76/180 [00:02<00:02, 39.91it/s] 46%|████▌     | 82/180 [00:02<00:02, 42.73it/s] 49%|████▉     | 88/180 [00:02<00:02, 44.89it/s] 52%|█████▏    | 94/180 [00:02<00:01, 46.56it/s] 56%|█████▌    | 100/180 [00:02<00:01, 47.77it/s]                                                 {'loss': '0.0001692', 'grad_norm': '0.002629', 'learning_rate': '0.0001338', 'epoch': '1.667'}
+ 56%|█████▌    | 100/180 [00:02<00:01, 47.77it/s] 58%|█████▊    | 105/180 [00:03<00:01, 48.27it/s] 62%|██████▏   | 111/180 [00:03<00:01, 48.97it/s] 65%|██████▌   | 117/180 [00:03<00:01, 49.47it/s] 68%|██████▊   | 123/180 [00:03<00:01, 49.80it/s] 72%|███████▏  | 129/180 [00:03<00:01, 50.05it/s] 75%|███████▌  | 135/180 [00:03<00:00, 50.26it/s] 78%|███████▊  | 141/180 [00:03<00:00, 50.40it/s] 82%|████████▏ | 147/180 [00:03<00:00, 50.50it/s]                                                 {'loss': '0.000137', 'grad_norm': '0.002374', 'learning_rate': '2.289e-05', 'epoch': '2.5'}
+ 83%|████████▎ | 150/180 [00:03<00:00, 50.50it/s] 85%|████████▌ | 153/180 [00:03<00:00, 50.37it/s] 88%|████████▊ | 159/180 [00:04<00:00, 50.45it/s] 92%|█████████▏| 165/180 [00:04<00:00, 50.50it/s] 95%|█████████▌| 171/180 [00:04<00:00, 50.55it/s] 98%|█████████▊| 177/180 [00:04<00:00, 50.52it/s]
+  0%|          | 0/4 [00:00<?, ?it/s][A                                                 
+                                     [A{'eval_loss': '0.0001083', 'eval_runtime': '0.7063', 'eval_samples_per_second': '150.1', 'eval_steps_per_second': '5.663', 'epoch': '3'}
+100%|██████████| 180/180 [00:05<00:00, 50.52it/s]
+100%|██████████| 4/4 [00:00<00:00, 51.58it/s][A
+                                             [A
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s][A
+Writing model shards: 100%|██████████| 1/1 [00:01<00:00,  1.13s/it][AWriting model shards: 100%|██████████| 1/1 [00:01<00:00,  1.13s/it]
+                                                 {'train_runtime': '6.767', 'train_samples_per_second': '850.7', 'train_steps_per_second': '26.6', 'train_loss': '0.04862', 'epoch': '3'}
+100%|██████████| 180/180 [00:06<00:00, 50.52it/s]100%|██████████| 180/180 [00:06<00:00, 26.61it/s]
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00, 99.68it/s]
+Saved base model to /scratch-shared/sperdijk/storylm_p1_training/models/base_gpt2_20m_16k/final
+Evaluating on dev split...
+  0%|          | 0/4 [00:00<?, ?it/s]100%|██████████| 4/4 [00:00<00:00, 168.45it/s]
+Dev loss: 0.0001 | perplexity: 1.00
+wandb: updating run metadata
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: 
+wandb: Run history:
+wandb:               eval/loss ▁▁
+wandb:            eval/runtime █▁
+wandb: eval/samples_per_second ▁█
+wandb:   eval/steps_per_second ▁█
+wandb:             train/epoch ▁▄▆████
+wandb:   train/eval/perplexity ▁
+wandb:       train/global_step ▁▄▆████
+wandb:         train/grad_norm █▂▁
+wandb:     train/learning_rate █▄▁
+wandb:              train/loss █▁▁
+wandb: 
+wandb: Run summary:
+wandb:               eval/loss 0.00011
+wandb:            eval/runtime 0.0425
+wandb: eval/samples_per_second 2492.034
+wandb:   eval/steps_per_second 94.039
+wandb:              total_flos 62818910994432.0
+wandb:             train/epoch 3
+wandb:   train/eval/perplexity 1.00011
+wandb:       train/global_step 180
+wandb:         train/grad_norm 0.00237
+wandb:     train/learning_rate 2e-05
+wandb:                      +5 ...
+wandb: 
+wandb: 🚀 View run base_gpt2_20m_tok_16k at: https://wandb.ai/sabijn-leiden-university/storytimelm-pretraining/runs/iwy9mlki
+wandb: ⭐️ View project at: https://wandb.ai/sabijn-leiden-university/storytimelm-pretraining
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20260818_153914-iwy9mlki/logs
+[rank0]:[W818 15:39:25.863080122 ProcessGroupNCCL.cpp:1647] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+Loading model from /scratch-shared/sperdijk/storylm_p1_training/models/base_gpt2_20m_16k/final...
+[transformers] Model config: bos_token_id must be `None` or an integer within the vocabulary (between 0 and 2), got 50256. This may result in unexpected behavior.
+[transformers] Model config: eos_token_id must be `None` or an integer within the vocabulary (between 0 and 2), got 50256. This may result in unexpected behavior.
+Loading weights:   0%|          | 0/76 [00:00<?, ?it/s]Loading weights:  53%|█████▎    | 40/76 [00:00<00:00, 136.31it/s]Loading weights: 100%|██████████| 76/76 [00:00<00:00, 256.04it/s]
+Loading prepared dataset from /scratch-shared/sperdijk/storylm_p1_training/data/base_pretrain (split=test)...
+Tokenizing:   0%|          | 0/15231 [00:00<?, ? examples/s]Tokenizing:   7%|▋         | 1000/15231 [00:00<00:04, 3325.87 examples/s]Tokenizing:  26%|██▋       | 4000/15231 [00:00<00:01, 9962.36 examples/s]Tokenizing:  39%|███▉      | 6000/15231 [00:00<00:00, 9836.30 examples/s]Tokenizing:  53%|█████▎    | 8000/15231 [00:00<00:00, 12059.50 examples/s]Tokenizing:  79%|███████▉  | 12000/15231 [00:00<00:00, 16383.58 examples/s]Tokenizing:  92%|█████████▏| 14000/15231 [00:01<00:00, 12048.90 examples/s]Tokenizing: 100%|██████████| 15231/15231 [00:01<00:00, 11974.87 examples/s]
+Packing into fixed-length blocks:   0%|          | 0/15231 [00:00<?, ? examples/s]Packing into fixed-length blocks: 100%|██████████| 15231/15231 [00:00<00:00, 422559.86 examples/s]
+  test: 106 blocks
+wandb: [wandb.login()] Loaded credentials for https://api.wandb.ai from /home/sperdijk/.netrc.
+wandb: Currently logged in as: sabijn (sabijn-leiden-university) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: setting up run wkic9wfg
+wandb: Tracking run with wandb version 0.26.0
+wandb: Run data is saved locally in /gpfs/scratch1/shared/sperdijk/storylm_p1_training/wandb/run-20260818_153936-wkic9wfg
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run eval_base_gpt2_20m_16k
+wandb: ⭐️ View project at https://wandb.ai/sabijn-leiden-university/storytimelm-pretraining
+wandb: 🚀 View run at https://wandb.ai/sabijn-leiden-university/storytimelm-pretraining/runs/wkic9wfg
+Computing loss / perplexity...
+[transformers] `loss_type=None` was set in the config but it is unrecognized. Using the default loss: `ForCausalLMLoss`.
+  0%|          | 0/7 [00:00<?, ?it/s]100%|██████████| 7/7 [00:00<00:00, 164.90it/s]
+test loss: 0.0001 | perplexity: 1.00
+Running BLiMP-NL evaluation...
+Evaluating BLiMP-NL subset: adpositional_phrases
+Generating train split:   0%|          | 0/200 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 200/200 [00:00<00:00, 11201.84 examples/s]
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/scripts/05_evaluate_model.py", line 88, in <module>
+[rank0]:     main()
+[rank0]:   File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/scripts/05_evaluate_model.py", line 65, in main
+[rank0]:     summary_df = evaluate_blimp_nl(
+[rank0]:                  ^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/src/evaluation/blimp_nl.py", line 84, in evaluate_blimp_nl
+[rank0]:     detailed_rows, summary = evaluate_blimp_subset(
+[rank0]:                              ^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/src/evaluation/blimp_nl.py", line 43, in evaluate_blimp_subset
+[rank0]:     good_score = sentence_logprob(model, tokenizer, good_sent, device, normalize_by_length)
+[rank0]:                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+[rank0]:     return func(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/src/evaluation/blimp_nl.py", line 18, in sentence_logprob
+[rank0]:     logits = model(input_ids).logits
+[rank0]:              ^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/utils/generic.py", line 903, in wrapper
+[rank0]:     output = func(self, *args, **kwargs)
+[rank0]:              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 691, in forward
+[rank0]:     transformer_outputs: BaseModelOutputWithPastAndCrossAttentions = self.transformer(
+[rank0]:                                                                      ^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/utils/generic.py", line 1032, in wrapper
+[rank0]:     output = func(self, *args, **kwargs)
+[rank0]:              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/utils/output_capturing.py", line 252, in wrapper
+[rank0]:     outputs = func(self, *args, **kwargs)
+[rank0]:               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 557, in forward
+[rank0]:     input_ids = input_ids.view(-1, input_shape[-1])
+[rank0]:                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]: RuntimeError: cannot reshape tensor of 0 elements into shape [-1, 0] because the unspecified dimension size -1 can be any value and is ambiguous
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33meval_base_gpt2_20m_16k[0m at: [34mhttps://wandb.ai/sabijn-leiden-university/storytimelm-pretraining/runs/wkic9wfg[0m
+[1;34mwandb[0m: Find logs at: [1;35m../../../gpfs/scratch1/shared/sperdijk/storylm_p1_training/wandb/run-20260818_153936-wkic9wfg/logs[0m
+[rank0]:[W818 15:39:43.466742151 ProcessGroupNCCL.cpp:1647] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+E0818 15:39:45.090000 253642 /gpfs/home1/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/api.py:988] failed (exitcode: 1) local_rank: 0 (pid: 253665) of binary: /home/sperdijk/.conda/envs/babylm2026/bin/python3.12
+Traceback (most recent call last):
+  File "/home/sperdijk/.conda/envs/babylm2026/bin/torchrun", line 6, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 367, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/run.py", line 1016, in main
+    run(args)
+  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/run.py", line 1007, in run
+    elastic_launch(
+  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 191, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 371, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+scripts/05_evaluate_model.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2026-08-18_15:39:45
+  host      : gcn105.local.snellius.surf.nl
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 253665) 
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
