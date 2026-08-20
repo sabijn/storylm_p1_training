@@ -4,6 +4,7 @@ datasets
 accelerate
 sentencepiece
 tokenizers
+protobuf
 wandb
 pyyaml
 pandas

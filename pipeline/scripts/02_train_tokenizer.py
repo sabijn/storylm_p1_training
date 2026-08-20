@@ -7,6 +7,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import sentencepiece as spm
 from transformers import LlamaTokenizerFast
+from transformers.convert_slow_tokenizer import SentencePieceExtractor
 
 from src.common.config import load_yaml
 from src.data.prepare import load_prepared
@@ -76,8 +77,10 @@ def main():
     # LlamaTokenizerFast is used here purely as a generic SentencePiece -> HF
     # fast-tokenizer wrapper; it does not tie the tokenizer to the Llama model
     # architecture (any AutoModelForCausalLM can use it).
+    extracted = SentencePieceExtractor(model_file).extract(model_type=None)
     tokenizer = LlamaTokenizerFast(
-        vocab_file=model_file,
+        vocab=extracted["vocab"],
+        merges=extracted["merges"],
         pad_token=special["pad"],
         unk_token=special["unk"],
         bos_token=special["bos"],
@@ -85,8 +88,8 @@ def main():
     )
     if tokenizer.vocab_size != tok_cfg["vocab_size"]:
         raise RuntimeError(
-            f"""LlamaTokenizerFast wrapping produced vocab_size={tokenizer.vocab_size},
-            expected {tok_cfg['vocab_size']} (from {model_file})."""
+            f"LlamaTokenizerFast wrapping produced vocab_size={tokenizer.vocab_size}, "
+            f"expected {tok_cfg['vocab_size']} (from {model_file})."
         )
 
     tokenizer.save_pretrained(output_dir)
