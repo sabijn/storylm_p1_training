@@ -24,7 +24,10 @@ def show_data_samples(dataset, n: int) -> None:
 def show_tokenized_samples(dataset, tokenizer, n: int) -> None:
     print(f"\n{SEP}\n2. TOKENIZED DATA SAMPLES\n{SEP}")
     for i in range(min(n, len(dataset))):
+        test = dataset[i]['text']
+        print(test if len(test) <= 500 else test[:500] + " [...]")
         text = f"{tokenizer.bos_token}{dataset[i]['text']}{tokenizer.eos_token}"
+        print("text", text)
         ids = tokenizer(text, add_special_tokens=False)["input_ids"]
         preview_ids = ids[:50]
         tokens = tokenizer.convert_ids_to_tokens(preview_ids)
@@ -79,7 +82,7 @@ def main():
     print(f"Data dir:      {data_cfg['paths']['output_dir']} (split={split_name})")
 
     tokenizer = AutoTokenizer.from_pretrained(tokenizer_path)
-
+    print(tokenizer)
     print("Loading dataset...")
     dataset_dict = load_prepared(data_cfg["paths"]["output_dir"])
     dataset = dataset_dict[split_name]

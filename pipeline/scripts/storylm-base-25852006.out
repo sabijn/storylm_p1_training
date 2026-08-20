@@ -1,0 +1,112 @@
+============================================================================================== 
+Warning! Mixing Conda and module environments may lead to corruption of the
+user environment. 
+We do not recommend users mixing those two environments unless absolutely
+necessary. Note that 
+SURF does not provide any support for Conda environment.
+For more information, please refer to our software policy page:
+https://servicedesk.surf.nl/wiki/display/WIKI/Software+policy+Snellius#SoftwarepolicySnellius-UseofAnacondaandMinicondaenvironmentsonSnellius 
+
+Remember that many packages have already been installed on the system and can
+be loaded using 
+the 'module load <package__name>' command. If you are uncertain if a package is
+already available 
+on the system, please use 'module avail' or 'module spider' to search for it.
+============================================================================================== 
+[transformers] Model config: bos_token_id must be `None` or an integer within the vocabulary (between 0 and 2), got 50256. This may result in unexpected behavior.
+[transformers] Model config: eos_token_id must be `None` or an integer within the vocabulary (between 0 and 2), got 50256. This may result in unexpected behavior.
+Model dir:     /scratch-shared/sperdijk/storylm_p1_training/models/base_gpt2_20m_16k/final
+Tokenizer:     /scratch-shared/sperdijk/storylm_p1_training/models/base_gpt2_20m_16k/final
+Data dir:      /scratch-shared/sperdijk/storylm_p1_training/data/base_pretrain (split=test)
+LlamaTokenizer(name_or_path='/scratch-shared/sperdijk/storylm_p1_training/models/base_gpt2_20m_16k/final', vocab_size=3, model_max_length=1000000000000000019884624838656, padding_side='left', truncation_side='right', special_tokens={'bos_token': '<bos>', 'eos_token': '</eos>', 'unk_token': '<unk>', 'pad_token': '<pad>'}, added_tokens_decoder={
+	0: AddedToken("<unk>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	1: AddedToken("<bos>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	2: AddedToken("</eos>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	3: AddedToken("<pad>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+})
+Loading dataset...
+
+--------------------------------------------------------------------------------
+1. RAW DATA SAMPLES
+--------------------------------------------------------------------------------
+
+--- sample 0 (13835 chars) ---
+Gedrag valt in de syllabus van biologie onder subdomein D2. De eindtermen en deelconcepten zijn uiteindelijk de onderdelen die je moet beheersen van hoofdstuk 1. Hieronder zie je een uitwerking van de eindtermen van de syllabus en het boek (te vinden op bladzijde 7 van nectar). Uitwerking van de eindterm De kandidaat kan in contexten bijvoorbeeld: -  toelichten dat gedrag tot stand komt door interne en externe factoren; -  verklaren dat gedrag gedeeltelijk erfelijk bepaald is; -  uitleggen da [...]
+
+--- sample 1 (131 chars) ---
+grafisch het heeft te maken met het drukken van boeken, tijdschriften e.d. Een drukkerij is een voorbeeld van een grafisch bedrijf.
+
+--- sample 2 (140 chars) ---
+Lees De meeste ...strand staan. (regel 30-50) In welke zin staat het probleem? tip: Gebruik de leesmanier - Zie het probleem en de oplossing
+
+--- sample 3 (83 chars) ---
+schrijven vroeger en nu: balpen vulpen ganzenveer computer typemachine kroontjespen
+
+--- sample 4 (141 chars) ---
+1.1 Schrijf de afkortingen voluit. a.u.b. - ...nl. - ...enz. - ...o.l.v. - ...cv. - ...e.d. - ...o.a. - ...blz. - ...d.w.z. - ...i.v.m. - ...
+
+--------------------------------------------------------------------------------
+2. TOKENIZED DATA SAMPLES
+--------------------------------------------------------------------------------
+Gedrag valt in de syllabus van biologie onder subdomein D2. De eindtermen en deelconcepten zijn uiteindelijk de onderdelen die je moet beheersen van hoofdstuk 1. Hieronder zie je een uitwerking van de eindtermen van de syllabus en het boek (te vinden op bladzijde 7 van nectar). Uitwerking van de eindterm De kandidaat kan in contexten bijvoorbeeld: -  toelichten dat gedrag tot stand komt door interne en externe factoren; -  verklaren dat gedrag gedeeltelijk erfelijk bepaald is; -  uitleggen da [...]
+text <bos>Gedrag valt in de syllabus van biologie onder subdomein D2. De eindtermen en deelconcepten zijn uiteindelijk de onderdelen die je moet beheersen van hoofdstuk 1. Hieronder zie je een uitwerking van de eindtermen van de syllabus en het boek (te vinden op bladzijde 7 van nectar). Uitwerking van de eindterm De kandidaat kan in contexten bijvoorbeeld: -  toelichten dat gedrag tot stand komt door interne en externe factoren; -  verklaren dat gedrag gedeeltelijk erfelijk bepaald is; -  uitleggen dat gedrag het resultaat is van een dynamische relatie tussen het organisme en zijn omgeving; -  toelichten dat gedrag meerdere functies heeft; -  een aantal functies van gedrag noemen onder andere gekoppeld aan levensfases; -  uitleggen hoe gedrag evolueert onder invloed van selectiedruk; -  een eenvoudig gedragsonderzoek uitvoeren; -  herkennen dat populaties zoals een school vissen of een zwerm vogels, gedrag vertonen dat een meerwaarde heeft ten opzichte van het gedrag van de afzonderlijke organismen. Deelconcepten: Prikkel (inwendig en uitwendig), sleutelprikkel, supernormale prikkel (supranormale prikkel), reflex, drempelwaarde, signalen, rangorde, respons, territoriumgedrag, balts, paringsgedrag, broedzorg, overspronggedrag, ambivalent gedrag, omgericht gedrag, gewenning, inprenting, operant conditionering, klassiek conditionering, ritueel gedrag, imitatie, inzicht, trial and error, sleutelprikkel, supranormale prikkel, ethogram, protocol, adequaat gedrag, gedragssysteem, gedragsketen, gedragselement, ethogram, antropomorfismen, waarden en normen. Bron: Staatsexamen VO, 2014, biologie havo nieuwe programma, vakinformatie staatsexamen 2015, College voor toetsen en examen. 2012, Noordhoff Uitgevers, Nectar 3e editie Biologie 4 havo boek. Wat weet je al over ...? Maak de volgende vragen: Klik op de knop 'Test je kennis' om de toets te starten Voor ieder goed antwoord krijg je 2 punten. Je voorkennis is voldoende als je meer dan 32 punten haalt. wk 47 21-11 en 25-11 H1 Gedrag Startcontext H1 'Aangenaam kennis maken' H1.1 Communicatie - Uitleg soorten gedrag en signalen H1.2 Prikkels - Uitleg prikkel, sleutel- en supernormale prikkel Leertaak gedrag - Lezen en maken startcontext H1 'Aangenaam kennis maken' - Leren + nakijken startcontext H1 - Lezen H1.1 maken opdrachten 1 t/m 9 - Nakijken + leren H1.1 Uitvoeren leertaak gedrag wk 48 28-11 t/m 02-12 H1.3 Functies van gedrag - Uitleg klassiek en operant conditioneren H1.4 Gedragsonderzoek Uitleg gedragselement, gedragsketen, gedragssysteem, ethogram, antropomorfisme - Lezen en maken H1.2 opdrachten 1 t/m 10 - Nakijken en leren H1.2 Lezen en maken H1.3 opdrachten 1 t/m 9 Nakijken en leren H1.3 Inleveren leertaak gedrag (2 e les) wk 49 05-12 t/m 09-12 H1.5 Ontwikkeling van gedrag - Uitleg manieren van leren Toepassen 'Manieren om te versieren' Voorbereiden voor de TRAP - Lezen H1.4, maken H1.4 opdrachten 1 t/m 12 - Nakijken + leren H1.4 - Lezen H1.5, maken H1.5 opdrachten 1 t/m 11 - Nakijken + leren H1.5 - Lezen en maken 'Manieren om te versieren' - Nakijken 'Manieren om te versieren' Voorbereiden TRAP: examentraining H1 en H7 wk 50 12-12 13-12 Voorbereiden voor de TRAP Voorbereiden TRAP: examentraining H1 en H7 Trap 2 Stofomschrijving: H1 + H7 + leertaken en opdrachten Duur van de toets: 50 minuten Gewicht toets: 3 (zie PTA) Schoolexamen Gedrag Gedrag is alle waarneembare activiteit van een dier. Dus bijvoorbeeld een kat die op de grond op de loer ligt omdat hij aan het jagen is op een muis. De muis zal op zijn beurt hopelijk snel op de vlucht slaan als hij de kat ziet. De functie van gedrag is om de overlevingskans te vergroten . Inwendige en uitwendige prikkels Gedrag is een reactie op prikkels. Het kunnen inwendige prikkels zijn (vb. honger), maar het kunnen ook uitwendige prikkels zijn (vb. de schoolbel). Aan de hand van de sterkte van de prikkel wordt er wel of niet op gereageerd. De prikkel moet sterk genoeg zijn om een soort van drempelwaarde over te gaan, de motivatie moet namelijk groot genoeg zijn. Komt de prikkel er niet overheen dan zal er geen gedrag worden vertoont. Als je bijvoorbeeld op school zit dan reageer je niet op alle auto's die je buiten voorbij kan zien rijden (ook niet op het geluid). Terwijl als zacht je naam wordt geroepen je hier wel op reageerd. Wanneer de motivatie hoog genoeg is voor gedrag kan per individue verschillen. Een ander voorbeeld van uitwendige prikkels zijn natuurlijk ook signalen van soortgenoten: communcatie. Communicaties is bijvoorbeel belangrijk om de rangorde/hiërarchie in de groep te bepalen (vb. pikorde bij kippen), coordinatie (vb. bij de jacht van leeuwinnen) en taakverdeling binnen de groep (vb. mieren die poppen verzorgen of voedsel verzamelen). De reactie op het signaal is afhankelijk van de zender en ontvanger: Omdat de reactie afhangt van zender en ontvanger kan er ook miscommunicatie/misverstanden ontstaan door filters en ruis. Bekijk dat maar eens op een dag. Je zult soms missen dat een ander je naam roept (vanwege teveel lawaai of omdat je geconcentreerd bezig bent) of je zult wel eens merken tijdens een gesprek dat iemand je niet goed verstaan heeft. Sleutelprikkel Er zijn ook prikkels waarop als reactie altijd gedrag wordt vertoond, motivatie is standaard hoog genoeg. Deze prikkels noemen wij sleutelprikkels. Een voorbeeld van een sleutelprikkel is de reactie van jonge meeuwen op de vlek op de snavel van hun ouders. Als de jongen deze vlek zien, dan gaan zij direct ertegen pikken met hun eigen snavel. Doel ervan is dat de ouder deels verteerd voedel vanuit hun bek aan de jongen geven. De sleutelprikkels kunnen worden versterkt (gebeurt vaak vanuit de mens), dit heet een supernormale prikkel. Wanneer dit gebeurt zal de reactie op de prikkel ook versterkt zijn. Tinbergen is een etholoog die onderzoek heeft gedaan naar sleutelprikkels en supernomale prikkels bij meeuwen. Bekijk het filmpje. Maak nu de vragen van paragraaf 1 en 2 volgens de planner, kijk de antwoorden na en maak afspraken met de docent en TOA om het practicum 'leertaak meelwormen' uit te voeren. De leertaak moet je inleveren voor een beoordeling. Er zijn 3 vormen van confictgedrag. - ambivalent gedrag: conflict/twijfel tussen twee gedragssystemen. - overspronggedrag: tonen van een vreemd gedragselement binnen een gedragssysteem. Dit element hoort dus eigenlijk in een ander systeem, maar wordt toch uitgevoerd: In het gedragsysteem terretoriumgedrag gaan ze zich in een keer verzorgen. - Omgerichtgedrag: gedrag gericht naar een ander (dier, object...) dan het oorspronkelijke doel: Een ander voorbeeld kan zijn: dichtslaan van een deur na een woordwisseling met een broer of zus of in een keer tegen iemand onbedoeld uitvallen. Maak de opgaven van paragraaf 3 volgens de planner en kijk vervolgens de antwoorden na. Elke losse handeling die een dier uivoert wordt een gedragselement genoemd. Bijvoorbeeld bij een vis: zigzag dans, terretorium naderen, zwemmen naar een nest. Wanneer gedragselementen elkaar vast opvolgen noem je het een gedragsketen en een gedragsketen is onderdeel van een gedragssysteem wat weer onderdeel uitmaakt van een type gedrag. Bijvoorbeeld bij het gedrag: voortplanting. Wanneer er tussen soortgenoten een vaste volgorde plaatsvinden van gedragselementen achter elkaar (dus een vaste gedragsketen) dan wordt dit een ritueel genoemd. Een voorbeeld van een ritueel is een balts (zie hieronder de balts van stekelbaarsjes): Bekijk de film om een balts te zien bij vogels: Onderzoek naar gedrag wordt gedaan door ethologen (vb. is Tinbergen). Bij een onderzoek van gedrag worden de handelingen van dieren opgeschreven, zo objectief mogelijk. Sommige mensen zijn geneigd om een menselijke benadering te geven aan het gedrag dat ze zien. Het geven van een menselijke benadering wordt antropomorfismen genoemd. Tijdens onderzoek worden beschrijvingen weergegeven in een ethogram: Voorbeeld Hond Element Afkorting Omschrijving eten eet kauwende beweging met voedsel in de bek graven graaf met de voorpoten wordt grond weggewerkt, af en toe met een achterwaartse beweging van de achterpoten snuffelen snuffel met snuit aan materiaal snuffelen krabben krabt een van de poten krabt het eigen lichaam In een ethogram maak je een lijst met handelingen die het desbetreffende dier zou kunnen verrichten. Vervolgens ga je tijdens het onderzoek bij houden hoe lang (tijd) het dier bezig is met bepaalde handelingen. Dit zet je uit in een tabel en heet een protocol. Voorbeeld protocol gedrag van een hond: Tijd (min) element 0.5 snuffel 0.5 - 4 eet 4 - 4.25 krabt 4.25 - 6 eet Naast het noteren van de handeling kun je via het gedrag ook kijken welke voorkeur organsimen hebben voor hun omgeving, net zoals jullie hebben onderzocht bij de 'leertaak meelwormen'. Maak nu de opgaven van paragraaf 4 volgens de planner en kijk vervolgens de antwoorden na. Gedrag is vaak een combinatie van aangeboren en aangeleerd. Bijvoorbeeld de zang bij vogels is vaak deels aangeboren en deels aangeleerd. Omdat het (voor een deel) dus aangeleerd is, noemen we de manieren waarop je het kan aanleren: vormen van leergedrag . Het aangeboren deel is star (niet flexibel). Het is een onvoorwaardelijke reflex: een prikkel veroorzaakt een gedrag; een "natuurlijke reactie" op een prikkel ongeacht de situatie. Voorbeelden: kniepeesreflex (zie afbeelding hieronder) en speekselproduktie. Afbeelding: kniepeesreflex. Het aangeleerde deel is flexibel, aanpassen aan veranderende omstandigheden/ervaring. Het is een voorwaardelijke reflex: een reactie/gedrag uitgelokt door een "niet-natuurlijke" prikkel (prikkel die aanvankelijk geen, maar later wél het gedrag uitlokt). Vormen van leergedrag. Er zijn verschillende vormen van leergedrag. Ze staan hieronder aangegeven: inprenting gewenning motorisch leren trial en error operant conditioneren klassiek conditioneren imitatie inzicht Per vorm van leergedrag verschilt de mate waarin het aanboren en aangeleerde deel betrokken is. Het rijtje hieroven is ook op volgorde weergegeven. Bij inprenting is het aangeboren deel vooral betrokken en bij izicht is vooral het aangeleerde deel betrokken. Inzicht wordt daarnaast gezien als de meest ingewikkelde vorm van leergedrag. Hieronder staat per leervorm uitgelegd wat men eronder verstaat en een of meerdere voorbeelden gegeven. 1) Inprenting is leren tijdens een gevoelige periode. Deze periode is meestal van korte duur. Bijvoorbeeld: herkennen van ouders (moederbeeld) bij net uitgekomen ganzen. Wanneer jonge ganzen na de geboorte iets op een bepaalde manier zien bewegen dan onthouden ze dit als 'moeder'. 2) Gewenning is dat de reactie op een prikkel afneemt, je wordt minder gevoelig of ongevoelig voor de prikkel. Bijvoorbeeld: afwakken van een schrikreactie bij een hard geluid (denk bijvoorbeeld aan slapen bij de spoorbaan). Of het niet meer reageren in het klaslokaal op geluiden van auto's die buiten voorbij rijden. Of de afwezigheid van reactie van vogels op een vogelverschrikker. 3) Motorisch leren is het aanleren van fijne motoriek en om meerdere bewegingen tegelijkertijd te doen. Bijvoorbeeld leren fietsen. 4) Trial and error is proefondervindingrijk leren door middel van straffen en/of belonen (vanuit de natuur). Bijvoorbeeld een vogel die leert welke rupsen hij wel/niet kan eten (belonen of straffen door een vieze smaak). Of vos die leert dat hij een egel met rust moet laten omdat hij geprikt is (zie afbeelding hieronder). 5) Operant conditioneren is trail and error (dus straffen en belonen) vanuit de mens (vaak in proefopzetting). Bijvoorbeeld: dresseren van een paard, africhten van een hond of de skinner-box. Een skinner-box is ontwikkeld door B. F. Skinner en is een opzet waarbij je kijkt naar verandering in gedag van dieren. Hieronder zie je een voorbeeld: Het dier moet dan een specifieke reactie geven op een bepaalde prikkel. De box bevat bijvoorbeeld een knop of hendel waar het dier op moet drukken om aan eten te komen (beloning voor goed gedrag). 6) Klassiek conditioneren is een koppeling tussen een toevallige (voorwaardelijke) prikkel en gedrag dat oorspronkelijk niet door die prikkel werd veroorzaakt. Bekendste voorbeeld is de hond van Pavlov. Pavlov zag dat honden beginnen te kwijlen als ze eten zien. Hij heeft in een experiment een hond iedere keer een geluid laten horen als het eten eraan kwam. Na verloop van tijd zag Pavlov dat de hond ook speeksel maakte als alleen het geluid te horen was en geen eten. Het is geen natuurlijke reactie dat een hond op basis van een geluid eten maakt, dus klassiek contditioneren. Hieronder een afbeelding die het pricipe van het experiment van Pavlov weergeeft: 7) Imitatie is leren door het gedrag na te doen, nabootsen. Bijvoorbeeld: het leren praten van van kind (ouders of anderen in de omgeving proberen na te doen). Of leren van zang bij vogels. 8) Inzicht is een leervorm waarbij een dier in een onbekende situatie de oplossing voor het probleem vindt door vroeger opgedane ervaringen te combineren (stappen vooruit kunnen denken). Hierbij moet je eerst denken en dan doen. Bijvoorbeeld: Chimpansees die een steen als insturment gebruiken om hun voedsel te krijgen. Bekijk het onderstaande filmpje en geef aan welke vorm van leergedrag wordt getoond. Bekijk onderstaande film en geef ook hierbij aan welke vorm van leergedag te zien is. Leer de vormen van leergedrag en maak de volgende oefentoets door per beschrijving weer te geven van welke vorm van leergedrag sprake is. Maak nu de opgaven die horen bij paragraaf 5 volgens de planner en kijk vervolgens de antwoorden na. Voor oefenen in de vormen van leergedrag kun je ook de oefentoets maken die bij "Vormen van leergedag (paragraaf 5)' staat weergegeven. Hieronder kun je van alle paragrafen gemixte oefeningen vinden. Maak nu de examentraining in Nectar Voor eventuele extra oefeningen kun je naar .</eos>
+
+--- sample 0 (2 tokens, showing first 2) ---
+ids:    [1, 2]
+tokens: ['<bos>', '</eos>']
+grafisch het heeft te maken met het drukken van boeken, tijdschriften e.d. Een drukkerij is een voorbeeld van een grafisch bedrijf.
+text <bos>grafisch het heeft te maken met het drukken van boeken, tijdschriften e.d. Een drukkerij is een voorbeeld van een grafisch bedrijf.</eos>
+
+--- sample 1 (2 tokens, showing first 2) ---
+ids:    [1, 2]
+tokens: ['<bos>', '</eos>']
+Lees De meeste ...strand staan. (regel 30-50) In welke zin staat het probleem? tip: Gebruik de leesmanier - Zie het probleem en de oplossing
+text <bos>Lees De meeste ...strand staan. (regel 30-50) In welke zin staat het probleem? tip: Gebruik de leesmanier - Zie het probleem en de oplossing</eos>
+
+--- sample 2 (2 tokens, showing first 2) ---
+ids:    [1, 2]
+tokens: ['<bos>', '</eos>']
+schrijven vroeger en nu: balpen vulpen ganzenveer computer typemachine kroontjespen
+text <bos>schrijven vroeger en nu: balpen vulpen ganzenveer computer typemachine kroontjespen</eos>
+
+--- sample 3 (2 tokens, showing first 2) ---
+ids:    [1, 2]
+tokens: ['<bos>', '</eos>']
+1.1 Schrijf de afkortingen voluit. a.u.b. - ...nl. - ...enz. - ...o.l.v. - ...cv. - ...e.d. - ...o.a. - ...blz. - ...d.w.z. - ...i.v.m. - ...
+text <bos>1.1 Schrijf de afkortingen voluit. a.u.b. - ...nl. - ...enz. - ...o.l.v. - ...cv. - ...e.d. - ...o.a. - ...blz. - ...d.w.z. - ...i.v.m. - ...</eos>
+
+--- sample 4 (2 tokens, showing first 2) ---
+ids:    [1, 2]
+tokens: ['<bos>', '</eos>']
+
+Loading model from /scratch-shared/sperdijk/storylm_p1_training/models/base_gpt2_20m_16k/final...
+Loading weights:   0%|          | 0/76 [00:00<?, ?it/s]Loading weights: 100%|██████████| 76/76 [00:00<00:00, 33593.33it/s]
+Device: cuda | params: 7,203,456
+
+--------------------------------------------------------------------------------
+3. GENERATIONS
+--------------------------------------------------------------------------------
+
+--- generation 0 ---
+prompt:    'Gedrag valt in de syllabus van biologie onder subdomein D2. De eindtermen en deelconcepten zijn'
+generated: ''
+
+--- generation 1 ---
+prompt:    'grafisch het heeft te maken met het drukken van boeken, tijdschriften e.d. Een drukkerij is'
+generated: ''
+
+--- generation 2 ---
+prompt:    'Lees De meeste ...strand staan. (regel 30-50) In welke zin staat het probleem? tip: Gebruik'
+generated: ''
+
+--- generation 3 ---
+prompt:    'schrijven vroeger en nu: balpen vulpen ganzenveer computer typemachine kroontjespen'
+generated: ''
+
+--- generation 4 ---
+prompt:    '1.1 Schrijf de afkortingen voluit. a.u.b. - ...nl. - ...enz. - ...o.l.v. - ...cv. -'
+generated: ''
+
+--------------------------------------------------------------------------------
+Done.
+--------------------------------------------------------------------------------
