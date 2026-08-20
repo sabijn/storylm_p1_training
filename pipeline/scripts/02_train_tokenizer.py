@@ -83,6 +83,12 @@ def main():
         bos_token=special["bos"],
         eos_token=special["eos"],
     )
+    if tokenizer.vocab_size != tok_cfg["vocab_size"]:
+        raise RuntimeError(
+            f"""LlamaTokenizerFast wrapping produced vocab_size={tokenizer.vocab_size},
+            expected {tok_cfg['vocab_size']} (from {model_file})."""
+        )
+
     tokenizer.save_pretrained(output_dir)
     print(f"Saved HF-compatible tokenizer to {output_dir} (vocab size {tokenizer.vocab_size})")
 
