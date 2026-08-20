@@ -76,7 +76,7 @@ def main():
 
     # LlamaTokenizerFast is used here purely as a generic SentencePiece -> HF
     # fast-tokenizer wrapper; it does not tie the tokenizer to the Llama model
-    # architecture (any AutoModelForCausalLM can use it).
+    # architecture (any AutoModelForCausalLM can use it) (IN THEORY)
     extracted = SentencePieceExtractor(model_file).extract(model_type=None)
     tokenizer = LlamaTokenizerFast(
         vocab=extracted["vocab"],

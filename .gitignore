@@ -2,6 +2,7 @@
 slurm_output/
 slurm_scripts/
 checkpoints/
+tokenizer_16k_nl/
 
 # MAC-OS specific
 .DS_STORE
