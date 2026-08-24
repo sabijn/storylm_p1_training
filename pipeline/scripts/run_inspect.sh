@@ -29,6 +29,9 @@ module load 2023
 module load Miniconda3/23.5.2-0
 source activate babylm2026
 
+# 1. Train a SentencePiece tokenizer on the train split, wrapped as a HF fast tokenizer
+torchrun --nproc_per_node=1 scripts/02_train_tokenizer.py --config configs/tokenizer.yaml
+
 python scripts/06_inspect_model.py --config configs/eval_base.yaml
 
 

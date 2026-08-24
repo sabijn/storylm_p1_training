@@ -2,6 +2,9 @@ architecture: gpt2
 
 # Common size fields map onto GPT2Config's n_embd/n_inner/n_head/n_layer/n_positions.
 # Sizes below follow the 20M row in the README's model-size table.
+# 20M: hidden_size: 384, intermediate_size: 768, num_attention_heads: 6, num_hidden_layers: 6, max_position_embeddings: 256
+# 60M: hidden_size: 512, intermediate_size: 1024, num_attention_heads: 8, num_hidden_layers: 16, max_position_embeddings: 256
+# 180M: hidden_size: 768, intermediate_size: 1792, num_attention_heads: 12, num_hidden_layers: 24, max_position_embeddings: 256
 model:
   hidden_size: 512
   intermediate_size: 1024
