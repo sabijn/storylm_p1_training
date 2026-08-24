@@ -3,10 +3,10 @@ architecture: gpt2
 # Common size fields map onto GPT2Config's n_embd/n_inner/n_head/n_layer/n_positions.
 # Sizes below follow the 20M row in the README's model-size table.
 model:
-  hidden_size: 384
-  intermediate_size: 768
-  num_attention_heads: 6
-  num_hidden_layers: 6
+  hidden_size: 512
+  intermediate_size: 1024
+  num_attention_heads: 8
+  num_hidden_layers: 16
   max_position_embeddings: 256
   extra:
     resid_pdrop: 0.1
@@ -20,7 +20,7 @@ data:
   config: data_base.yaml   # resolved relative to this file's directory
 
 training:
-  output_dir: /scratch-shared/sperdijk/storylm_p1_training/models/base_gpt2_20m_16k
+  output_dir: /scratch-shared/sperdijk/storylm_p1_training/models/base_gpt2_60m_16k
   num_train_epochs: 5
   per_device_train_batch_size: 32
   per_device_eval_batch_size: 32
@@ -41,5 +41,5 @@ training:
 wandb:
   entity: sabijn-leiden-university
   project: storytimelm-pretraining
-  run_name: base_gpt2_20m_tok_16k
-  tags: [base, gpt2, 20m, tok_16k]
+  run_name: base_gpt2_60m_tok_16k
+  tags: [base, gpt2, 60m, tok_16k]

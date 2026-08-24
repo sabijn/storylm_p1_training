@@ -6,7 +6,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import sentencepiece as spm
-from transformers import LlamaTokenizerFast
+from transformers import AutoTokenizer, LlamaTokenizerFast
 from transformers.convert_slow_tokenizer import SentencePieceExtractor
 
 from src.common.config import load_yaml
@@ -62,6 +62,12 @@ def main():
     cfg = load_yaml(args.config)
     tok_cfg = cfg["tokenizer"]
     special = tok_cfg["special_tokens"]
+    output_dir = cfg["paths"]["output_dir"]
+
+    if (Path(output_dir) / "tokenizer_config.json").exists():
+        tokenizer = AutoTokenizer.from_pretrained(output_dir)
+        print(f"Found existing tokenizer at {output_dir} (vocab size {tokenizer.vocab_size}), skipping training.")
+        return
 
     print(f"Loading prepared dataset from {cfg['data']['prepared_dataset_dir']}...")
     dataset_dict = load_prepared(cfg["data"]["prepared_dataset_dir"])
@@ -69,7 +75,6 @@ def main():
 
     corpus_file = write_corpus(split_dataset, cfg["paths"]["corpus_file"])
 
-    output_dir = cfg["paths"]["output_dir"]
     model_prefix = str(Path(output_dir) / "sentencepiece")
     print(f"Training {tok_cfg['vocab_size']}-vocab SentencePiece {tok_cfg.get('model_type', 'bpe')} tokenizer...")
     model_file = train_sentencepiece(corpus_file, model_prefix, tok_cfg)

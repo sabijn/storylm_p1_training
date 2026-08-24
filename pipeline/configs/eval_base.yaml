@@ -1,6 +1,6 @@
 model:
-  path: /scratch-shared/sperdijk/storylm_p1_training/models/base_gpt2_20m_16k/final
-  tokenizer_path: /scratch-shared/sperdijk/storylm_p1_training/models/base_gpt2_20m_16k/final
+  path: /scratch-shared/sperdijk/storylm_p1_training/models/base_gpt2_60m_16k/final
+  tokenizer_path: /scratch-shared/sperdijk/storylm_p1_training/models/base_gpt2_60m_16k/final
 
 data:
   config: data_base.yaml   # resolved relative to this file's directory
@@ -9,13 +9,13 @@ data:
 eval_batch_size: 16
 
 paths:
-  output_dir: /scratch-shared/sperdijk/storylm_p1_training/results/base_gpt2_20m_16k
+  output_dir: /scratch-shared/sperdijk/storylm_p1_training/results/base_gpt2_60m_16k
 
 wandb:
   entity: sabijn-leiden-university
   project: storytimelm-pretraining
-  run_name: eval_base_gpt2_20m_16k
-  tags: [eval, base, gpt2, 20m, tok_16k]
+  run_name: eval_base_gpt2_60m_16k
+  tags: [eval, base, gpt2, 60m, tok_16k]
 
 blimp:
   normalize_by_length: true
