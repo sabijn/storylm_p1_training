@@ -2,7 +2,9 @@
 slurm_output/
 slurm_scripts/
 checkpoints/
-tokenizer_16k_nl/
+tokenizers/
+test_and_check.ipynb
+pipeline/data
 
 # MAC-OS specific
 .DS_STORE
