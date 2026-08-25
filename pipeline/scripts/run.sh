@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=storylm-base
+#SBATCH --job-name=storylm-base-32k
 #SBATCH --partition=gpu_h100
 #SBATCH --nodes=1
 #SBATCH --gpus=1
