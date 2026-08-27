@@ -1,8 +1,8 @@
 # A different dataset than data_base.yaml, used for continued pretraining of the base model.
 sources:
-  - name: chiscor
-    type: csv
-    path: /local/perdijks/datasets/ChiSCor_master_df.csv
+  - name: StoriesFTW
+    type: hf
+    path: Sabijn/StoriesfortheWin
     text_column: story_raw
 
 split:
@@ -11,4 +11,4 @@ split:
   seed: 42
 
 paths:
-  output_dir: /local/perdijks/storylm_pipeline/data/continued_chiscor
+  output_dir: /scratch-shared/sperdijk/storylm_p1_training/data/continue_StoriesFTW

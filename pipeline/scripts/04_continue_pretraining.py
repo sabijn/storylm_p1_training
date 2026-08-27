@@ -11,6 +11,7 @@ from src.common.config import load_yaml
 from src.common.wandb_utils import init_wandb
 from src.data.packing import pack_dataset
 from src.data.prepare import load_prepared
+from src.evaluation.callbacks import BlimpNLCallback
 from src.evaluation.perplexity import evaluate_perplexity
 from src.models.build_model import get_block_size
 
@@ -47,12 +48,25 @@ def main():
     )
     data_collator = DataCollatorForLanguageModeling(tokenizer, mlm=False)
 
+    callbacks = []
+    blimp_cfg = cfg.get("blimp", {})
+    if blimp_cfg.get("eval_steps"):
+        print(f"BLiMP-NL will run every {blimp_cfg['eval_steps']} steps during training.")
+        callbacks.append(
+            BlimpNLCallback(
+                tokenizer=tokenizer,
+                eval_steps=blimp_cfg["eval_steps"],
+                normalize_by_length=blimp_cfg.get("normalize_by_length", True),
+            )
+        )
+
     trainer = Trainer(
         model=model,
         args=training_args,
         train_dataset=train_dataset,
         eval_dataset=dev_dataset,
         data_collator=data_collator,
+        callbacks=callbacks,
     )
 
     print("Continuing pretraining...")

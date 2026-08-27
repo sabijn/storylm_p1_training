@@ -104,3 +104,23 @@ def evaluate_blimp_nl(
     print(f"Macro-average accuracy: {macro_acc:.4f}")
 
     return summary_df
+
+
+def evaluate_blimp_nl_macro_accuracy(
+    model,
+    tokenizer,
+    device,
+    normalize_by_length: bool = True,
+) -> float:
+    """Lightweight BLiMP-NL pass for periodic in-training logging: just the macro-average
+    accuracy across subsets, no per-example rows or CSVs (see `evaluate_blimp_nl` for the
+    full report used post-training)."""
+    subset_names = get_dataset_config_names("juletxara/blimp-nl")
+    accuracies = []
+
+    for subset_name in subset_names:
+        subset_data = load_dataset("juletxara/blimp-nl", subset_name, split="train")
+        _, summary = evaluate_blimp_subset(model, tokenizer, subset_name, subset_data, device, normalize_by_length)
+        accuracies.append(summary["accuracy"])
+
+    return sum(accuracies) / len(accuracies)
