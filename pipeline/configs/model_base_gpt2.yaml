@@ -23,7 +23,7 @@ data:
   config: data_base.yaml   # resolved relative to this file's directory
 
 training:
-  output_dir: /scratch-shared/sperdijk/storylm_p1_training/models/base_gpt2_60m_32k_run2
+  output_dir: /scratch-shared/sperdijk/storylm_p1_training/models/base_gpt2_60m_32k_run3
   num_train_epochs: 5
   per_device_train_batch_size: 32
   per_device_eval_batch_size: 32
@@ -38,11 +38,11 @@ training:
   save_steps: 500
   save_total_limit: 3
   logging_steps: 50
-  seed: 359
+  seed: 362
   bf16: true
 
 wandb:
   entity: sabijn-leiden-university
   project: storytimelm-pretraining
-  run_name: base_gpt2_60m_tok_32k_run2
-  tags: [base, gpt2, 60m, tok_32k, run2]
+  run_name: base_gpt2_60m_tok_32k_run3
+  tags: [base, gpt2, 60m, tok_32k, run3]

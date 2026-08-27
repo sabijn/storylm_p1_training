@@ -1,11 +1,11 @@
 #!/bin/bash
-#SBATCH --job-name=storylm-base-32k-run2
+#SBATCH --job-name=storylm-base-32k-run3
 #SBATCH --partition=gpu_h100
 #SBATCH --nodes=1
 #SBATCH --gpus=1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=120G
-#SBATCH --time=03:00:00
+#SBATCH --time=02:30:00
 #SBATCH --output=%x-%j.out
 #SBATCH --error=%x-%j.out
 
