@@ -1,0 +1,82 @@
+============================================================================================== 
+Warning! Mixing Conda and module environments may lead to corruption of the
+user environment. 
+We do not recommend users mixing those two environments unless absolutely
+necessary. Note that 
+SURF does not provide any support for Conda environment.
+For more information, please refer to our software policy page:
+https://servicedesk.surf.nl/wiki/display/WIKI/Software+policy+Snellius#SoftwarepolicySnellius-UseofAnacondaandMinicondaenvironmentsonSnellius 
+
+Remember that many packages have already been installed on the system and can
+be loaded using 
+the 'module load <package__name>' command. If you are uncertain if a package is
+already available 
+on the system, please use 'module avail' or 'module spider' to search for it.
+============================================================================================== 
+Preparing data from 1 source(s)...
+Generating train split:   0%|          | 0/680300 [00:00<?, ? examples/s]Generating train split:  20%|█▉        | 135557/680300 [00:00<00:01, 285373.62 examples/s]Generating train split:  40%|███▉      | 271114/680300 [00:00<00:00, 525961.97 examples/s]Generating train split:  70%|██████▉   | 475707/680300 [00:01<00:00, 477609.15 examples/s]Generating train split:  90%|████████▉ | 611264/680300 [00:01<00:00, 601300.17 examples/s]Generating train split: 100%|██████████| 680300/680300 [00:01<00:00, 583819.72 examples/s]
+Traceback (most recent call last):
+  File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/scripts/01_prepare_data.py", line 32, in <module>
+    main()
+  File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/scripts/01_prepare_data.py", line 21, in main
+    dataset_dict = prepare_and_split(cfg)
+                   ^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/src/data/prepare.py", line 12, in prepare_and_split
+    datasets = load_all_sources(data_cfg["sources"])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/src/data/sources.py", line 34, in load_all_sources
+    return [load_source(cfg) for cfg in sources_cfg]
+            ^^^^^^^^^^^^^^^^
+  File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/src/data/sources.py", line 21, in load_source
+    dataset = dataset.rename_column(text_column, "text")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/datasets/fingerprint.py", line 468, in wrapper
+    out = func(dataset, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/datasets/arrow_dataset.py", line 2578, in rename_column
+    raise ValueError(
+ValueError: Original column name story_raw not in the dataset. Current columns in the dataset: ['index', 'story']
+[transformers] Model config: bos_token_id must be `None` or an integer within the vocabulary (between 0 and 15999), got 50256. This may result in unexpected behavior.
+[transformers] Model config: eos_token_id must be `None` or an integer within the vocabulary (between 0 and 15999), got 50256. This may result in unexpected behavior.
+Loading base model from /scratch-shared/sperdijk/storylm_p1_training/models/base_gpt2_60m_16k/final...
+Loading weights:   0%|          | 0/196 [00:00<?, ?it/s]Loading weights:  21%|██▏       | 42/196 [00:00<00:00, 366.78it/s]Loading weights:  47%|████▋     | 92/196 [00:00<00:00, 298.24it/s]Loading weights:  83%|████████▎ | 162/196 [00:00<00:00, 395.88it/s]Loading weights: 100%|██████████| 196/196 [00:00<00:00, 451.08it/s]
+Loading prepared dataset from /scratch-shared/sperdijk/storylm_p1_training/data/continue_StoriesFTW...
+Traceback (most recent call last):
+  File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/scripts/04_continue_pretraining.py", line 89, in <module>
+    main()
+  File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/scripts/04_continue_pretraining.py", line 34, in main
+    dataset_dict = load_prepared(data_cfg["paths"]["output_dir"])
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/src/data/prepare.py", line 41, in load_prepared
+    return load_from_disk(dataset_dir)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/datasets/load.py", line 1772, in load_from_disk
+    raise FileNotFoundError(f"Directory {dataset_path} not found")
+FileNotFoundError: Directory /scratch-shared/sperdijk/storylm_p1_training/data/continue_StoriesFTW not found
+Loading model from /scratch-shared/sperdijk/storylm_p1_training/models/continued_StoriesFTW_gpt2_60m_16k/final...
+Traceback (most recent call last):
+  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/utils/hub.py", line 437, in cached_files
+    hf_hub_download(
+  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 84, in _inner_fn
+    validate_repo_id(arg_value)
+  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 132, in validate_repo_id
+    raise HFValidationError(
+huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/scratch-shared/sperdijk/storylm_p1_training/models/continued_StoriesFTW_gpt2_60m_16k/final'. Use `repo_type` argument if needed.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/scripts/05_evaluate_model.py", line 88, in <module>
+    main()
+  File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/scripts/05_evaluate_model.py", line 30, in main
+    model = AutoModelForCausalLM.from_pretrained(model_dir)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/models/auto/auto_factory.py", line 289, in from_pretrained
+    resolved_config_file = cached_file(
+                           ^^^^^^^^^^^^
+  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/utils/hub.py", line 293, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/utils/hub.py", line 488, in cached_files
+    raise OSError(f"{e}") from e
+OSError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/scratch-shared/sperdijk/storylm_p1_training/models/continued_StoriesFTW_gpt2_60m_16k/final'. Use `repo_type` argument if needed.
