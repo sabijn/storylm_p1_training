@@ -1,169 +1,0 @@
-============================================================================================== 
-Warning! Mixing Conda and module environments may lead to corruption of the
-user environment. 
-We do not recommend users mixing those two environments unless absolutely
-necessary. Note that 
-SURF does not provide any support for Conda environment.
-For more information, please refer to our software policy page:
-https://servicedesk.surf.nl/wiki/display/WIKI/Software+policy+Snellius#SoftwarepolicySnellius-UseofAnacondaandMinicondaenvironmentsonSnellius 
-
-Remember that many packages have already been installed on the system and can
-be loaded using 
-the 'module load <package__name>' command. If you are uncertain if a package is
-already available 
-on the system, please use 'module avail' or 'module spider' to search for it.
-============================================================================================== 
-Preparing data from 1 source(s)...
-Saving the dataset (0/2 shards):   0%|          | 0/274149 [00:00<?, ? examples/s]Saving the dataset (0/2 shards):   0%|          | 1000/274149 [00:00<01:26, 3172.85 examples/s]Saving the dataset (0/2 shards):   1%|          | 2000/274149 [00:00<00:52, 5189.42 examples/s]Saving the dataset (0/2 shards):   1%|▏         | 4000/274149 [00:00<00:33, 8172.61 examples/s]Saving the dataset (0/2 shards):   2%|▏         | 5000/274149 [00:00<00:31, 8646.40 examples/s]Saving the dataset (0/2 shards):   3%|▎         | 8000/274149 [00:00<00:19, 13334.24 examples/s]Saving the dataset (0/2 shards):   4%|▍         | 12000/274149 [00:00<00:15, 17468.83 examples/s]Saving the dataset (0/2 shards):   6%|▌         | 16000/274149 [00:01<00:11, 21862.81 examples/s]Saving the dataset (0/2 shards):   7%|▋         | 19000/274149 [00:01<00:12, 20533.88 examples/s]Saving the dataset (0/2 shards):   9%|▉         | 25000/274149 [00:01<00:08, 28143.20 examples/s]Saving the dataset (0/2 shards):  12%|█▏        | 34000/274149 [00:01<00:05, 42059.29 examples/s]Saving the dataset (0/2 shards):  18%|█▊        | 49000/274149 [00:01<00:03, 65874.93 examples/s]Saving the dataset (0/2 shards):  23%|██▎       | 63000/274149 [00:01<00:02, 82950.06 examples/s]Saving the dataset (0/2 shards):  28%|██▊       | 76000/274149 [00:01<00:02, 93618.83 examples/s]Saving the dataset (0/2 shards):  35%|███▍      | 95000/274149 [00:01<00:01, 116812.39 examples/s]Saving the dataset (0/2 shards):  42%|████▏     | 114000/274149 [00:02<00:01, 134806.18 examples/s]Saving the dataset (0/2 shards):  48%|████▊     | 132000/274149 [00:02<00:00, 144095.89 examples/s]Saving the dataset (1/2 shards):  50%|█████     | 137075/274149 [00:02<00:00, 144095.89 examples/s]Saving the dataset (1/2 shards):  57%|█████▋    | 155075/274149 [00:02<00:00, 143625.84 examples/s]Saving the dataset (1/2 shards):  64%|██████▍   | 176075/274149 [00:02<00:00, 136763.35 examples/s]Saving the dataset (1/2 shards):  70%|███████   | 193075/274149 [00:02<00:00, 143471.76 examples/s]Saving the dataset (1/2 shards):  78%|███████▊  | 213075/274149 [00:02<00:00, 154454.12 examples/s]Saving the dataset (1/2 shards):  85%|████████▌ | 233075/274149 [00:02<00:00, 164163.06 examples/s]Saving the dataset (1/2 shards):  92%|█████████▏| 251075/274149 [00:02<00:00, 166182.22 examples/s]Saving the dataset (1/2 shards):  99%|█████████▉| 272075/274149 [00:03<00:00, 152722.92 examples/s]Saving the dataset (2/2 shards): 100%|██████████| 274149/274149 [00:03<00:00, 152722.92 examples/s]Saving the dataset (2/2 shards): 100%|██████████| 274149/274149 [00:03<00:00, 88680.61 examples/s] 
-Saving the dataset (0/1 shards):   0%|          | 0/15231 [00:00<?, ? examples/s]Saving the dataset (0/1 shards): 100%|██████████| 15231/15231 [00:00<00:00, 127560.50 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 15231/15231 [00:00<00:00, 127560.50 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 15231/15231 [00:00<00:00, 124352.66 examples/s]
-Saving the dataset (0/1 shards):   0%|          | 0/15231 [00:00<?, ? examples/s]Saving the dataset (0/1 shards):  85%|████████▌ | 13000/15231 [00:00<00:00, 84215.17 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 15231/15231 [00:00<00:00, 84215.17 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 15231/15231 [00:00<00:00, 91919.95 examples/s]
-  train: 274,149 examples
-  dev: 15,231 examples
-  test: 15,231 examples
-Saved prepared dataset to /scratch-shared/sperdijk/storylm_p1_training/data/base_pretrain
-Found existing tokenizer at /scratch-shared/sperdijk/storylm_p1_training/tokenizers/tokenizer_32k_nl (vocab size 32000), skipping training.
-[transformers] Model config: bos_token_id must be `None` or an integer within the vocabulary (between 0 and 31999), got 50256. This may result in unexpected behavior.
-[transformers] Model config: eos_token_id must be `None` or an integer within the vocabulary (between 0 and 31999), got 50256. This may result in unexpected behavior.
-Built gpt2 model with 50,160,640 parameters (block size 256)
-Loading prepared dataset from /scratch-shared/sperdijk/storylm_p1_training/data/base_pretrain...
-Tokenizing and packing train split...
-Tokenizing and packing dev split...
-  train: 466,340 blocks | dev: 26,194 blocks
-wandb: [wandb.login()] Loaded credentials for https://api.wandb.ai from /home/sperdijk/.netrc.
-wandb: Currently logged in as: sabijn (sabijn-leiden-university) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
-Traceback (most recent call last):
-  File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/scripts/03_train_base_model.py", line 75, in <module>
-    main()
-  File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/scripts/03_train_base_model.py", line 41, in main
-    init_wandb(cfg["wandb"], run_config={"architecture": cfg["architecture"], **cfg["model"]})
-  File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/src/common/wandb_utils.py", line 14, in init_wandb
-    return wandb.init(
-           ^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/wandb/sdk/wandb_init.py", line 1611, in init
-    get_sentry().reraise(e)
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/wandb/analytics/sentry.py", line 190, in reraise
-    raise exc.with_traceback(tb)
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/wandb/sdk/wandb_init.py", line 1594, in init
-    run = wi.init(run_settings, run_config, run_printer)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/wandb/sdk/wandb_init.py", line 898, in init
-    service = self._wl.ensure_service()
-              ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/wandb/sdk/wandb_setup.py", line 392, in ensure_service
-    self._connection = service_connection.connect_to_service(
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/wandb/sdk/lib/service/service_connection.py", line 51, in connect_to_service
-    return _start_and_connect_service(asyncer, settings)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/wandb/sdk/lib/service/service_connection.py", line 64, in _start_and_connect_service
-    proc = service_process.start(settings)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/wandb/sdk/lib/service/service_process.py", line 33, in start
-    return _start(
-           ^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/wandb/sdk/lib/service/service_process.py", line 81, in _start
-    get_sentry().reraise(e)
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/wandb/analytics/sentry.py", line 190, in reraise
-    raise exc.with_traceback(tb)
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/wandb/sdk/lib/service/service_process.py", line 75, in _start
-    return _launch_server(
-           ^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/wandb/sdk/lib/service/service_process.py", line 162, in _launch_server
-    token = service_port_file.poll_for_token(
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/wandb/sdk/lib/service/service_port_file.py", line 63, in poll_for_token
-    raise ServicePollForTokenError(
-wandb.sdk.lib.service.service_port_file.ServicePollForTokenError: Failed to read port info after 30.0 seconds (wandb-core PID=1938730): /scratch-local/sperdijk.26015203/tmppy90a3ey/port-1937957.txt
-E0825 16:38:40.343000 1937937 /gpfs/home1/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/api.py:988] failed (exitcode: 1) local_rank: 0 (pid: 1937957) of binary: /home/sperdijk/.conda/envs/babylm2026/bin/python3.12
-Traceback (most recent call last):
-  File "/home/sperdijk/.conda/envs/babylm2026/bin/torchrun", line 6, in <module>
-    sys.exit(main())
-             ^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 367, in wrapper
-    return f(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/run.py", line 1016, in main
-    run(args)
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/run.py", line 1007, in run
-    elastic_launch(
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 191, in __call__
-    return launch_agent(self._config, self._entrypoint, list(args))
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 371, in launch_agent
-    raise ChildFailedError(
-torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
-============================================================
-scripts/03_train_base_model.py FAILED
-------------------------------------------------------------
-Failures:
-  <NO_OTHER_FAILURES>
-------------------------------------------------------------
-Root Cause (first observed failure):
-[0]:
-  time      : 2026-08-25_16:38:40
-  host      : gcn125.local.snellius.surf.nl
-  rank      : 0 (local_rank: 0)
-  exitcode  : 1 (pid: 1937957) 
-  error_file: <N/A>
-  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
-============================================================
-Loading model from /scratch-shared/sperdijk/storylm_p1_training/models/base_gpt2_60m_32k_run2/final...
-Traceback (most recent call last):
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/utils/hub.py", line 437, in cached_files
-    hf_hub_download(
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 84, in _inner_fn
-    validate_repo_id(arg_value)
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 132, in validate_repo_id
-    raise HFValidationError(
-huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/scratch-shared/sperdijk/storylm_p1_training/models/base_gpt2_60m_32k_run2/final'. Use `repo_type` argument if needed.
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/scripts/05_evaluate_model.py", line 88, in <module>
-    main()
-  File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/scripts/05_evaluate_model.py", line 30, in main
-    model = AutoModelForCausalLM.from_pretrained(model_dir)
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/models/auto/auto_factory.py", line 289, in from_pretrained
-    resolved_config_file = cached_file(
-                           ^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/utils/hub.py", line 293, in cached_file
-    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/utils/hub.py", line 488, in cached_files
-    raise OSError(f"{e}") from e
-OSError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/scratch-shared/sperdijk/storylm_p1_training/models/base_gpt2_60m_32k_run2/final'. Use `repo_type` argument if needed.
-E0825 16:38:48.583000 1939023 /gpfs/home1/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/api.py:988] failed (exitcode: 1) local_rank: 0 (pid: 1939039) of binary: /home/sperdijk/.conda/envs/babylm2026/bin/python3.12
-Traceback (most recent call last):
-  File "/home/sperdijk/.conda/envs/babylm2026/bin/torchrun", line 6, in <module>
-    sys.exit(main())
-             ^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 367, in wrapper
-    return f(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/run.py", line 1016, in main
-    run(args)
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/run.py", line 1007, in run
-    elastic_launch(
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 191, in __call__
-    return launch_agent(self._config, self._entrypoint, list(args))
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 371, in launch_agent
-    raise ChildFailedError(
-torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
-============================================================
-scripts/05_evaluate_model.py FAILED
-------------------------------------------------------------
-Failures:
-  <NO_OTHER_FAILURES>
-------------------------------------------------------------
-Root Cause (first observed failure):
-[0]:
-  time      : 2026-08-25_16:38:48
-  host      : gcn125.local.snellius.surf.nl
-  rank      : 0 (local_rank: 0)
-  exitcode  : 1 (pid: 1939039) 
-  error_file: <N/A>
-  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
-============================================================

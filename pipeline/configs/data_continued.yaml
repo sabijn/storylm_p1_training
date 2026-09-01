@@ -2,8 +2,9 @@
 sources:
   - name: StoriesFTW
     type: hf
-    path: Sabijn/StoriesfortheWin
-    text_column: story_raw
+    hf_name: Sabijn/StoriesfortheWin
+    split: train
+    text_column: story
 
 split:
   dev_fraction: 0.05

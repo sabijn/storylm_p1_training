@@ -1,6 +1,6 @@
 model:
-  path: /local/perdijks/storylm_pipeline/models/continued_chiscor/final
-  tokenizer_path: /local/perdijks/storylm_pipeline/models/continued_chiscor/final
+  path: /scratch-shared/sperdijk/storylm_p1_training/models/continued_StoriesFTW_gpt2_60m_16k/final
+  tokenizer_path: /scratch-shared/sperdijk/storylm_p1_training/models/continued_StoriesFTW_gpt2_60m_16k/final
 
 data:
   config: data_continued.yaml   # resolved relative to this file's directory
@@ -9,13 +9,13 @@ data:
 eval_batch_size: 16
 
 paths:
-  output_dir: /local/perdijks/storylm_pipeline/results/continued_chiscor
+  output_dir: /scratch-shared/sperdijk/storylm_p1_training/results/continued_StoriesFTW_gpt2_60m_16k
 
 wandb:
   entity: sabijn-leiden-university
   project: storytimelm-pretraining
-  run_name: eval_continued_chiscor
-  tags: [eval, continued]
+  run_name: eval_continued_StoriesFTW_gpt2_60m_16k
+  tags: [eval, continued, StoriesFTW, gpt2, 60m, 16k]
 
 blimp:
   normalize_by_length: true
