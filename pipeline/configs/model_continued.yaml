@@ -33,7 +33,9 @@ wandb:
   tags: [continued, StoriesFTW, gpt2, 60m, 16k]
 
 # Runs a lightweight BLiMP-NL pass every `eval_steps` training steps and logs
-# blimp_nl/macro_accuracy to wandb. Omit `eval_steps` (or the whole block) to disable.
+# blimp_nl/macro_accuracy_mean + _std (bootstrap-resampled over each subset's per-example
+# correctness, n_bootstrap resamples) to wandb. Omit `eval_steps` (or the whole block) to disable.
 blimp:
   eval_steps: 2000
   normalize_by_length: true
+  n_bootstrap: 1000

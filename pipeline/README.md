@@ -61,5 +61,5 @@ Llama's `num_key_value_heads` for grouped-query attention, GPT2's dropout rates)
   perplexity/BLIMP-NL metrics all land in the same run.
 
 ## (Solved) Bugs 🐛
-- The trained SentencePiece tokenizer is wrapped in a LlamaTokenizerFast. Transformers <5.0.0 requires a .model file to be loaded in LlamaTokenizerFast. However, Transformers >5.0.0 (now running 5.10.2) requires the vocabulary to be a list/dict (see also (https://huggingface.co/docs/transformers/v5.10.4/en/model_doc/llama)) so the .model file was ignored and LlamaTokenizerFast fell back onto an empty vocab with only special tokens (unk/pad/eos/bos). Now added an extractor for the SentencePiece tokenizer.
-
+- 🟢 The trained SentencePiece tokenizer is wrapped in a LlamaTokenizerFast. Transformers <5.0.0 requires a .model file to be loaded in LlamaTokenizerFast. However, Transformers >5.0.0 (now running 5.10.2) requires the vocabulary to be a list/dict (see also (https://huggingface.co/docs/transformers/v5.10.4/en/model_doc/llama)) so the .model file was ignored and LlamaTokenizerFast fell back onto an empty vocab with only special tokens (unk/pad/eos/bos). Now added an extractor for the SentencePiece tokenizer.
+- 🟢 AutoModelForCausalLM.from_pretrained loads in evaluation mode by default (see [documentation](https://huggingface.co/docs/transformers/main_classes/model#transformers.PreTrainedModel.from_pretrained))

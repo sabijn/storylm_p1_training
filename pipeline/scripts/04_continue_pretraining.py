@@ -57,6 +57,7 @@ def main():
                 tokenizer=tokenizer,
                 eval_steps=blimp_cfg["eval_steps"],
                 normalize_by_length=blimp_cfg.get("normalize_by_length", True),
+                n_bootstrap=blimp_cfg.get("n_bootstrap", 1000),
             )
         )
 
