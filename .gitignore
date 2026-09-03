@@ -5,6 +5,7 @@ checkpoints/
 tokenizers/
 test_and_check.ipynb
 pipeline/data
+references/
 
 # MAC-OS specific
 .DS_STORE

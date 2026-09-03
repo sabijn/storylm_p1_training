@@ -27,13 +27,17 @@ source activate babylm2026
 # 1. Split the base-pretraining data into train/dev/test and cache it to disk
 torchrun --nproc_per_node=1 scripts/01_prepare_data.py --config configs/data_base.yaml
 
-# 2. Train a SentencePiece tokenizer on the train split, wrapped as a HF fast tokenizer
-torchrun --nproc_per_node=1 scripts/02_train_tokenizer.py --config configs/tokenizer.yaml
-
-# 3. Train a base model from scratch (pick gpt2 or llama sizing)
+# 2. Train a base model from scratch (pick gpt2 or llama sizing)
 torchrun --nproc_per_node=1 scripts/03_train_base_model.py --config configs/model_base_gpt2.yaml
 
-# 4. Evaluate the base model: dev/test loss + perplexity, and BLIMP-NL
+# 3. Evaluate the base model: dev/test loss + perplexity, and BLIMP-NL
 torchrun --nproc_per_node=1 scripts/05_evaluate_model.py --config configs/eval_base.yaml
+
+# 4. Prepare a different dataset, then continue pretraining the base model on it
+torchrun --nproc_per_node=1 scripts/01_prepare_data.py --config configs/data_continued.yaml
+torchrun --nproc_per_node=1 scripts/04_continue_pretraining.py --config configs/model_continued.yaml
+
+# 5. Evaluate the continued-pretraining model the same way
+torchrun --nproc_per_node=1 scripts/05_evaluate_model.py --config configs/eval_continued.yaml
 
 

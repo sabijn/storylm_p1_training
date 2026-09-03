@@ -1,15 +1,15 @@
 # Loads a saved base model and continues pretraining it on data_continued.yaml.
 # No `model:` block here — architecture and sizes come from the checkpoint.
 base_model:
-  path: /scratch-shared/sperdijk/storylm_p1_training/models/base_gpt2_60m_16k/final
-  tokenizer_path: /scratch-shared/sperdijk/storylm_p1_training/models/base_gpt2_60m_16k/final
+  path: /scratch-shared/sperdijk/storylm_p1_training/models/base_gpt2_60m_16k_epoch1/final
+  tokenizer_path: /scratch-shared/sperdijk/storylm_p1_training/models/base_gpt2_60m_16k_epoch1/final
 
 data:
   config: data_continued.yaml   # resolved relative to this file's directory
 
 training:
-  output_dir: /scratch-shared/sperdijk/storylm_p1_training/models/continued_StoriesFTW_gpt2_60m_16k
-  num_train_epochs: 3
+  output_dir: /scratch-shared/sperdijk/storylm_p1_training/models/continued_StoriesFTW_gpt2_60m_16k_basepoch1
+  num_train_epochs: 25
   per_device_train_batch_size: 32
   per_device_eval_batch_size: 32
   gradient_accumulation_steps: 1
@@ -22,6 +22,9 @@ training:
   save_strategy: steps
   save_steps: 200
   save_total_limit: 3
+  load_best_model_at_end: true
+  metric_for_best_model: eval_loss
+  greater_is_better: false
   logging_steps: 20
   seed: 359
   bf16: true
@@ -30,12 +33,9 @@ wandb:
   entity: sabijn-leiden-university
   project: storytimelm-pretraining
   run_name: continued_StoriesFTW_gpt2_60m_16k
-  tags: [continued, StoriesFTW, gpt2, 60m, 16k]
+  tags: [continued, StoriesFTW, gpt2, 60m, 16k, basepoch1]
 
-# Runs a lightweight BLiMP-NL pass every `eval_steps` training steps and logs
-# blimp_nl/macro_accuracy_mean + _std (bootstrap-resampled over each subset's per-example
-# correctness, n_bootstrap resamples) to wandb. Omit `eval_steps` (or the whole block) to disable.
+# Omit `token_milestones_millions` (or the whole block) to disable.
 blimp:
-  eval_steps: 2000
+  token_milestones_millions: [25, 50, 75, 100, 250, 500, 750, 1000, 1250, 1500, 1750, 2000]
   normalize_by_length: true
-  n_bootstrap: 1000

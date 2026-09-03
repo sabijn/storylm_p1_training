@@ -1,7 +1,6 @@
 import os
 import re
 
-import numpy as np
 import pandas as pd
 import torch
 from datasets import get_dataset_config_names, load_dataset
@@ -112,29 +111,16 @@ def evaluate_blimp_nl_macro_accuracy(
     tokenizer,
     device,
     normalize_by_length: bool = True,
-    n_bootstrap: int = 1000,
-) -> tuple[float, float]:
-    """Lightweight BLiMP-NL pass for periodic in-training logging: the macro-average accuracy
-    across subsets, no per-example rows or CSVs (see `evaluate_blimp_nl` for the full report
-    used post-training).
-
-    Each subset has only ~200 minimal pairs, so a single point estimate is noisy. Instead of
-    scoring once, we bootstrap-resample (with replacement) each subset's per-example
-    correctness `n_bootstrap` times, recompute the macro-average accuracy on every resample,
-    and return its (mean, std) - the mean approximates the point estimate and the std
-    quantifies how much it could plausibly vary given the benchmark's finite size, without any
-    extra model forward passes.
-    """
+) -> float:
+    """Lightweight BLiMP-NL pass for periodic in-training logging: just the macro-average
+    accuracy across subsets, no per-example rows or CSVs (see `evaluate_blimp_nl` for the
+    full report used post-training)."""
     subset_names = get_dataset_config_names("juletxara/blimp-nl")
-    rng = np.random.default_rng()
-    bootstrap_subset_accuracies = []
+    accuracies = []
 
     for subset_name in subset_names:
         subset_data = load_dataset("juletxara/blimp-nl", subset_name, split="train")
-        rows, _ = evaluate_blimp_subset(model, tokenizer, subset_name, subset_data, device, normalize_by_length)
-        correct = np.array([row["correct"] for row in rows])
-        resampled = rng.choice(correct, size=(n_bootstrap, len(correct)), replace=True)
-        bootstrap_subset_accuracies.append(resampled.mean(axis=1))
+        _, summary = evaluate_blimp_subset(model, tokenizer, subset_name, subset_data, device, normalize_by_length)
+        accuracies.append(summary["accuracy"])
 
-    bootstrap_macro_accuracies = np.mean(bootstrap_subset_accuracies, axis=0)
-    return float(bootstrap_macro_accuracies.mean()), float(bootstrap_macro_accuracies.std())
+    return sum(accuracies) / len(accuracies)

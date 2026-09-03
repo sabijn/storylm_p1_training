@@ -1,58 +1,95 @@
+import json
+import math
+import shutil
+from pathlib import Path
+
 import wandb
 from transformers import TrainerCallback
 
 from .blimp_nl import evaluate_blimp_nl_macro_accuracy
 
 
-class BlimpNLCallback(TrainerCallback):
-    """Runs a lightweight BLiMP-NL pass every `eval_steps` training steps and logs the
-    bootstrap-resampled macro-average accuracy to the active W&B run as mean/lower/upper
-    (mean +/- std), so the three can be added to a single wandb line-plot panel and read as
-    one mean-with-band graph (see evaluate_blimp_nl_macro_accuracy)."""
+class TokenMilestoneCallback(TrainerCallback):
+    """Drives token-anchor-based BLiMP-NL analysis for a single continuous training run.
+
+    Milestones are given in millions of tokens seen and converted to target training steps
+    via `tokens_per_step` (tokens consumed per optimizer step). At each milestone step, this
+    forces an off-schedule checkpoint (independent of `save_steps`/`save_total_limit`), copies
+    it to a permanent `milestone-<M>M` directory (never pruned), evaluates BLiMP-NL
+    macro-accuracy on the live model, logs it to W&B (keyed by both step and tokens seen), and
+    writes a small metadata json next to the checkpoint.
+    """
 
     def __init__(
         self,
         tokenizer,
-        eval_steps: int,
+        milestones_millions: list[int],
+        tokens_per_step: int,
+        output_dir: str,
         normalize_by_length: bool = True,
-        n_bootstrap: int = 1000,
     ):
         self.tokenizer = tokenizer
-        self.eval_steps = eval_steps
+        self.tokens_per_step = tokens_per_step
+        self.output_dir = Path(output_dir)
         self.normalize_by_length = normalize_by_length
-        self.n_bootstrap = n_bootstrap
+
+        self.milestone_steps = {M: math.ceil(M * 1_000_000 / tokens_per_step) for M in milestones_millions}
+        self._due_this_step: list[int] = []
 
     def on_step_end(self, args, state, control, **kwargs):
-        if self.eval_steps <= 0 or state.global_step == 0 or state.global_step % self.eval_steps != 0:
-            return control
+        due = [M for M, step in self.milestone_steps.items() if step == state.global_step]
+        if due:
+            self._due_this_step = due
+            control.should_save = True
+        return control
 
+    def on_save(self, args, state, control, **kwargs):
+        if not self._due_this_step:
+            return control
+        due, self._due_this_step = self._due_this_step, []
+
+        step = state.global_step
+        tokens_seen = step * self.tokens_per_step
+        checkpoint_dir = self.output_dir / f"checkpoint-{step}"
         model = kwargs["model"]
-        device = next(model.parameters()).device
+
         was_training = model.training
         model.eval()
         try:
-            macro_accuracy_mean, macro_accuracy_std = evaluate_blimp_nl_macro_accuracy(
+            macro_accuracy = evaluate_blimp_nl_macro_accuracy(
                 model,
                 self.tokenizer,
-                device,
+                next(model.parameters()).device,
                 normalize_by_length=self.normalize_by_length,
-                n_bootstrap=self.n_bootstrap,
             )
         finally:
             model.train(was_training)
 
         print(
-            f"[BLiMP-NL] step {state.global_step}: "
-            f"macro accuracy = {macro_accuracy_mean:.4f} ± {macro_accuracy_std:.4f}"
+            f"[TokenMilestone] step {step} (~{tokens_seen / 1e6:.1f}M tokens): "
+            f"blimp macro accuracy = {macro_accuracy:.4f}"
         )
-        # Logged as mean/lower/upper (not mean/std) so the three land on one wandb line-plot
-        # panel and read together as a mean-with-band curve.
         wandb.log(
-            {
-                "blimp_nl/macro_accuracy_mean": macro_accuracy_mean,
-                "blimp_nl/macro_accuracy_lower": macro_accuracy_mean - macro_accuracy_std,
-                "blimp_nl/macro_accuracy_upper": macro_accuracy_mean + macro_accuracy_std,
-            },
-            step=state.global_step,
+            {"blimp_nl/macro_accuracy": macro_accuracy, "train/tokens_seen": tokens_seen},
+            step=step,
         )
+
+        for M in due:
+            milestone_dir = self.output_dir / f"milestone-{M}M"
+            shutil.rmtree(milestone_dir, ignore_errors=True)
+            shutil.copytree(checkpoint_dir, milestone_dir)
+            self.tokenizer.save_pretrained(milestone_dir)
+            with open(milestone_dir / "milestone_meta.json", "w") as f:
+                json.dump(
+                    {
+                        "milestone_millions": M,
+                        "tokens_seen": tokens_seen,
+                        "global_step": step,
+                        "blimp_nl_macro_accuracy": macro_accuracy,
+                    },
+                    f,
+                    indent=2,
+                )
+            print(f"[TokenMilestone] saved milestone-{M}M -> {milestone_dir}")
+
         return control
