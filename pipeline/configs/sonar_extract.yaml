@@ -1,0 +1,7 @@
+# Config for scripts/prepare_sonar.py. One-time, long-running: streams every FoLiA
+# document out of the SoNaR-500 archive (never unpacks it to disk) and writes a single
+# local dataset with columns: text, category, category_name, doc_id, source_file.
+# After this has run once, use the `local` source type in data_continued.yaml (or any
+# data_*.yaml) to select categories / sample from the result - no need to rerun this.
+archive_path: /scratch-shared/sperdijk/storylm_p1_training/raw/SoNaRCorpus_NC_1.2.1.tgz
+output_dir: /scratch-shared/sperdijk/storylm_p1_training/data/sonar_extracted

@@ -1,7 +1,7 @@
 from typing import Any
 
 import pandas as pd
-from datasets import Dataset, load_dataset
+from datasets import Dataset, load_dataset, load_from_disk
 
 
 def load_source(source_cfg: dict[str, Any]) -> Dataset:
@@ -14,8 +14,24 @@ def load_source(source_cfg: dict[str, Any]) -> Dataset:
     elif source_type == "csv":
         df = pd.read_csv(source_cfg["path"])
         dataset = Dataset.from_pandas(df, preserve_index=False)
+    elif source_type == "local":
+        # A pre-existing local `save_to_disk` dataset (e.g. from scripts/prepare_sonar.py),
+        # optionally filtered to specific categories and/or randomly subsampled.
+        dataset = load_from_disk(source_cfg["path"])
+
+        categories = source_cfg.get("categories")
+        if categories:
+            categories = set(categories)
+            dataset = dataset.filter(lambda ex: ex["category"] in categories)
+
+        sample_fraction = source_cfg.get("sample_fraction")
+        sample_size = source_cfg.get("sample_size")
+        if sample_fraction is not None or sample_size is not None:
+            dataset = dataset.shuffle(seed=source_cfg.get("seed", 42))
+            n = sample_size if sample_size is not None else round(len(dataset) * sample_fraction)
+            dataset = dataset.select(range(min(n, len(dataset))))
     else:
-        raise ValueError(f"Unknown source type: {source_type!r} (expected 'hf' or 'csv')")
+        raise ValueError(f"Unknown source type: {source_type!r} (expected 'hf', 'csv', or 'local')")
 
     if text_column != "text":
         dataset = dataset.rename_column(text_column, "text")
