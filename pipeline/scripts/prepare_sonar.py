@@ -42,9 +42,14 @@ CATEGORY_NAMES = {
     "WS-U-T-B": "texts_for_visually_impaired",
 }
 
-# Matches SONAR500/DATA/<category dir>/<CODE>-<10 digit id>.folia.xml, wherever it sits in
-# the archive (search, not match, so an extra wrapper directory doesn't break it).
-FOLIA_MEMBER_RE = re.compile(r"SONAR500/FoLiA/[^/]+/([A-Z]{2}-[A-Z]-[A-Z]-[A-Z])-(\d{10})\.folia\.xml$")
+# Matches SONAR500/FoLiA/<CODE>_<human readable name>/<3-digit bucket>/<CODE>-<10 digit
+# id>.folia.xml, wherever it sits in the archive (search, not match, so an extra wrapper
+# directory doesn't break it). The category directory itself isn't captured - the code is
+# read from the filename instead, where it's guaranteed present.
+FOLIA_MEMBER_RE = re.compile(
+    r"SONAR500/FoLiA/(?:[A-Z]{2}-[A-Z]-[A-Z]-[A-Z]_[a-z_]+)/\d{3}/"
+    r"([A-Z]{2}-[A-Z]-[A-Z]-[A-Z])-(\d{10})\.folia\.xml$"
+)
 
 _NO_SPACE_BEFORE = set(".,;:!?)]}’”")
 _NO_SPACE_AFTER = set("([{‘“")
