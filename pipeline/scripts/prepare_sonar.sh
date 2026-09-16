@@ -1,17 +1,13 @@
 #!/bin/bash
 #SBATCH --job-name=sonar-extract
-#SBATCH --partition=genoa
+#SBATCH --partition=gpu_a100
 #SBATCH --nodes=1
+#SBATCH --gpus=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=32G
-#SBATCH --time=24:00:00
+#SBATCH --time=12:00:00
 #SBATCH --output=%x-%j.out
 #SBATCH --error=%x-%j.out
-
-# CPU-only, no GPU needed - just streams the tgz and writes text. Adjust --partition to
-# whatever CPU partition you have access to, and --time based on how far the job gets on
-# a first attempt (a full pass over the 57GB compressed archive is unavoidable; this is a
-# conservative upper bound, not a measured runtime).
 
 export WORKING_DIR="$HOME/storylm_p1_training/pipeline"
 # Job-specific checkout dir (not shared across concurrent jobs, unlike run.sh's fixed path).

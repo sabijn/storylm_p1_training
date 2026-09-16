@@ -3,5 +3,5 @@
 # local dataset with columns: text, category, category_name, doc_id, source_file.
 # After this has run once, use the `local` source type in data_continued.yaml (or any
 # data_*.yaml) to select categories / sample from the result - no need to rerun this.
-archive_path: /scratch-shared/sperdijk/storylm_p1_training/raw/SoNaRCorpus_NC_1.2.1.tgz
+archive_path: /scratch-shared/sperdijk/storylm_p1_training/data/raw/SoNaRCorpus_NC_1.2.1.tgz
 output_dir: /scratch-shared/sperdijk/storylm_p1_training/data/sonar_extracted

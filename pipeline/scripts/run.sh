@@ -10,7 +10,7 @@
 #SBATCH --error=%x-%j.out
 
 export WORKING_DIR="$HOME/storylm_p1_training/pipeline"
-export CODE_TEMP_DIR="/scratch-shared/$USER/storylm_p1_training"
+export CODE_TEMP_DIR="/scratch-shared/$USER/storylm_p1_training/$SLURM_JOB_ID"
 
 # Create temp running dir
 mkdir -p "$CODE_TEMP_DIR"

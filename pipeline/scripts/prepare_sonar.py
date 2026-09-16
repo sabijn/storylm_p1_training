@@ -44,7 +44,7 @@ CATEGORY_NAMES = {
 
 # Matches SONAR500/DATA/<category dir>/<CODE>-<10 digit id>.folia.xml, wherever it sits in
 # the archive (search, not match, so an extra wrapper directory doesn't break it).
-FOLIA_MEMBER_RE = re.compile(r"SONAR500/DATA/[^/]+/([A-Z]{2}-[A-Z]-[A-Z]-[A-Z])-(\d{10})\.folia\.xml$")
+FOLIA_MEMBER_RE = re.compile(r"SONAR500/FoLiA/[^/]+/([A-Z]{2}-[A-Z]-[A-Z]-[A-Z])-(\d{10})\.folia\.xml$")
 
 _NO_SPACE_BEFORE = set(".,;:!?)]}’”")
 _NO_SPACE_AFTER = set("([{‘“")

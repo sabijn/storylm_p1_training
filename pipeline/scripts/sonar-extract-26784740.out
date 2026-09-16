@@ -1,0 +1,51 @@
+============================================================================================== 
+Warning! Mixing Conda and module environments may lead to corruption of the
+user environment. 
+We do not recommend users mixing those two environments unless absolutely
+necessary. Note that 
+SURF does not provide any support for Conda environment.
+For more information, please refer to our software policy page:
+https://servicedesk.surf.nl/wiki/display/WIKI/Software+policy+Snellius#SoftwarepolicySnellius-UseofAnacondaandMinicondaenvironmentsonSnellius 
+
+Remember that many packages have already been installed on the system and can
+be loaded using 
+the 'module load <package__name>' command. If you are uncertain if a package is
+already available 
+on the system, please use 'module avail' or 'module spider' to search for it.
+============================================================================================== 
+Streaming FoLiA documents from /scratch-shared/sperdijk/storylm_p1_training/data/raw/SoNaRCorpus_NC_1.2.1.tgz...
+Generating train split: 0 examples [00:00, ? examples/s]Generating train split: 0 examples [37:01, ? examples/s]Generating train split: 0 examples [37:01, ? examples/s]
+Done: 0 documents extracted from 0 FoLiA files scanned (0 parse errors).
+Traceback (most recent call last):
+  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/datasets/builder.py", line 1551, in _prepare_split_single
+    num_examples, num_bytes = writer.finalize()
+                              ^^^^^^^^^^^^^^^^^
+  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/datasets/arrow_writer.py", line 795, in finalize
+    raise SchemaInferenceError("Please pass `features` or at least one example when writing data")
+datasets.arrow_writer.SchemaInferenceError: Please pass `features` or at least one example when writing data
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/26784740/scripts/prepare_sonar.py", line 190, in <module>
+    main()
+  File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/26784740/scripts/prepare_sonar.py", line 178, in main
+    dataset = Dataset.from_generator(iter_folia_examples, gen_kwargs={"archive_path": archive_path})
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/datasets/arrow_dataset.py", line 1429, in from_generator
+    ).read()
+      ^^^^^^
+  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/datasets/io/generator.py", line 52, in read
+    self.builder.download_and_prepare(
+  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/datasets/builder.py", line 890, in download_and_prepare
+    self._download_and_prepare(
+  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/datasets/builder.py", line 1577, in _download_and_prepare
+    super()._download_and_prepare(
+  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/datasets/builder.py", line 951, in _download_and_prepare
+    self._prepare_split(split_generator, **prepare_split_kwargs)
+  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/datasets/builder.py", line 1382, in _prepare_split
+    for job_id, done, content in self._prepare_split_single(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/datasets/builder.py", line 1560, in _prepare_split_single
+    raise DatasetGenerationError("An error occurred while generating the dataset") from e
+datasets.exceptions.DatasetGenerationError: An error occurred while generating the dataset

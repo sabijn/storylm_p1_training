@@ -1,16 +1,16 @@
 #!/bin/bash
-#SBATCH --job-name=storylm-continue-16k-run3
+#SBATCH --job-name=storylm-continue-16k-all-blimp
 #SBATCH --partition=gpu_h100
 #SBATCH --nodes=1
 #SBATCH --gpus=1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=120G
-#SBATCH --time=03:00:00
+#SBATCH --time=24:00:00
 #SBATCH --output=%x-%j.out
 #SBATCH --error=%x-%j.out
 
 export WORKING_DIR="$HOME/storylm_p1_training/pipeline"
-export CODE_TEMP_DIR="/scratch-shared/$USER/storylm_p1_training"
+export CODE_TEMP_DIR="/scratch-shared/$USER/storylm_p1_training/$SLURM_JOB_ID"
 
 # Create temp running dir
 mkdir -p "$CODE_TEMP_DIR"
