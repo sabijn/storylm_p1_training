@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=storylm-continue-16k-all-blimp
+#SBATCH --job-name=sonar-continue-16k-all-blimp
 #SBATCH --partition=gpu_h100
 #SBATCH --nodes=1
 #SBATCH --gpus=1

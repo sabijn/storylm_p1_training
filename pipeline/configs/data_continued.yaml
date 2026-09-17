@@ -1,24 +1,24 @@
 # A different dataset than data_base.yaml, used for continued pretraining of the base model.
 sources:
-  - name: StoriesFTW
-    type: hf
-    hf_name: Sabijn/StoriesfortheWin
-    split: train
-    text_column: story
+  # - name: StoriesFTW
+  #   type: hf
+  #   hf_name: Sabijn/StoriesfortheWin
+  #   split: train
+  #   text_column: story
 
   # SoNaR-500 subset. Requires running scripts/prepare_sonar.py once first (see
   # configs/sonar_extract.yaml) to produce the `path` below. Uncomment and fill in either
   # `categories` (SoNaR text-type codes, e.g. WR-P-P-B=books, WS-U-E-A=autocues - full list
   # in scripts/prepare_sonar.py's CATEGORY_NAMES) or `sample_fraction`/`sample_size` (random
   # subset of ALL categories, seeded) - omit both to use every extracted document as-is.
-  # - name: SoNaR
-  #   type: local
-  #   path: /scratch-shared/sperdijk/storylm_p1_training/data/sonar_extracted
-  #   text_column: text
-  #   categories: [WR-P-P-B, WS-U-E-A]
-  #   # sample_fraction: 0.1
-  #   # sample_size: 100000
-  #   seed: 42
+  - name: SoNaR
+    type: local
+    path: /scratch-shared/sperdijk/storylm_p1_training/data/sonar_extracted
+    text_column: text
+    #categories: [WR-P-P-B, WS-U-E-A]
+    # sample_fraction: 0.1
+    sample_size: 100000
+    seed: 42
 
 split:
   dev_fraction: 0.05
