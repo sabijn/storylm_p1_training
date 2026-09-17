@@ -24,9 +24,19 @@ def load_source(source_cfg: dict[str, Any]) -> Dataset:
             categories = set(categories)
             dataset = dataset.filter(lambda ex: ex["category"] in categories)
 
+        sample_words = source_cfg.get("sample_words")
         sample_fraction = source_cfg.get("sample_fraction")
         sample_size = source_cfg.get("sample_size")
-        if sample_fraction is not None or sample_size is not None:
+        if sum(x is not None for x in (sample_words, sample_fraction, sample_size)) > 1:
+            raise ValueError("Set at most one of sample_words, sample_fraction, sample_size.")
+
+        if sample_words is not None:
+            # Whitespace word count as a fast, tokenizer-agnostic proxy for a token budget
+            # (data prep has no tokenizer in the picture - multiply by a tokenizer's known
+            # fertility, e.g. ~1.2, to translate a target token count into sample_words).
+            dataset = dataset.shuffle(seed=source_cfg.get("seed", 42))
+            dataset = _select_by_word_budget(dataset, text_column, sample_words)
+        elif sample_fraction is not None or sample_size is not None:
             dataset = dataset.shuffle(seed=source_cfg.get("seed", 42))
             n = sample_size if sample_size is not None else round(len(dataset) * sample_fraction)
             dataset = dataset.select(range(min(n, len(dataset))))
@@ -44,6 +54,24 @@ def load_source(source_cfg: dict[str, Any]) -> Dataset:
     dataset = dataset.filter(lambda ex: len(ex["text"]) > 0)
 
     return dataset
+
+
+def _select_by_word_budget(dataset: Dataset, text_column: str, target_words: int, batch_size: int = 1000) -> Dataset:
+    """Select a prefix of an already-shuffled dataset whose cumulative whitespace word
+    count reaches `target_words`, without counting words past that point - so this only
+    costs work proportional to the sample actually selected, not the full dataset."""
+    total_words = 0
+    n_selected = 0
+    for start in range(0, len(dataset), batch_size):
+        batch_texts = dataset[start : start + batch_size][text_column]
+        for text in batch_texts:
+            total_words += len((text or "").split())
+            n_selected += 1
+            if total_words >= target_words:
+                break
+        if total_words >= target_words:
+            break
+    return dataset.select(range(n_selected))
 
 
 def load_all_sources(sources_cfg: list[dict[str, Any]]) -> list[Dataset]:

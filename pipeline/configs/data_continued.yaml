@@ -7,17 +7,22 @@ sources:
   #   text_column: story
 
   # SoNaR-500 subset. Requires running scripts/prepare_sonar.py once first (see
-  # configs/sonar_extract.yaml) to produce the `path` below. Uncomment and fill in either
-  # `categories` (SoNaR text-type codes, e.g. WR-P-P-B=books, WS-U-E-A=autocues - full list
-  # in scripts/prepare_sonar.py's CATEGORY_NAMES) or `sample_fraction`/`sample_size` (random
-  # subset of ALL categories, seeded) - omit both to use every extracted document as-is.
+  # configs/sonar_extract.yaml) to produce the `path` below. Uncomment `categories` (SoNaR
+  # text-type codes, e.g. WR-P-P-B=books, WS-U-E-A=autocues - full list in
+  # scripts/prepare_sonar.py's CATEGORY_NAMES) to restrict which categories to draw from.
+  # Set at most one of: sample_words (whitespace word count budget - a tokenizer-agnostic
+  # proxy for a token budget; divide your target token count by the tokenizer's fertility,
+  # e.g. ~1.2 for the 16k/32k tokenizers per the fertility analysis in test_and_check.ipynb,
+  # to get sample_words), sample_fraction, sample_size (document count). Omit all three to
+  # use every (category-filtered) document as-is.
   - name: SoNaR
     type: local
     path: /scratch-shared/sperdijk/storylm_p1_training/data/sonar_extracted
     text_column: text
     #categories: [WR-P-P-B, WS-U-E-A]
+    # sample_words: 0   # TODO: set your target word budget (target_tokens / fertility)
     # sample_fraction: 0.1
-    sample_size: 100000
+    # sample_size: 100000
     seed: 42
 
 split:
