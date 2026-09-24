@@ -24,8 +24,8 @@ _FINETUNE_CFG_FIELDS = set(FinetuneConfig.__dataclass_fields__)
 def run_extra_tasks(cfg, model, model_dir, tokenizer, device, output_dir) -> dict:
     """Run the tasks listed under the config's `tasks:` block (see eval_base.yaml for the
     full list of available task names and what each option means - this includes BLiMP-NL,
-    as task "blimp_nl"). Returns {task_name: result_dict}; also flattens numeric results
-    into a wandb-loggable dict."""
+    as task "blimp_nl"). Returns {task_name: result_dict}.
+    """
     tasks_cfg = cfg.get("tasks") or {}
     results = {}
     model_name = Path(model_dir).parent.name or "model"
@@ -34,19 +34,22 @@ def run_extra_tasks(cfg, model, model_dir, tokenizer, device, output_dir) -> dic
             raise ValueError(f"Unknown task: {task_name!r}. Available: {sorted(TASK_REGISTRY)}")
         spec = TASK_REGISTRY[task_name]
         task_kwargs = dict(task_kwargs or {})
+        task_output_dir = Path(output_dir) / task_name
+        task_output_dir.mkdir(parents=True, exist_ok=True)
 
         print(f"\nRunning extra eval task: {task_name} ({spec.kind})...")
         if spec.kind == "zero_shot":
             result = spec.fn(model, tokenizer, device, **task_kwargs)
         elif spec.kind == "zero_shot_output":
-            result = spec.fn(model, tokenizer, device, output_dir, model_name=model_name, **task_kwargs)
+            result = spec.fn(model, tokenizer, device, str(task_output_dir), model_name=model_name, **task_kwargs)
         else:  # finetune
             finetune_kwargs = {k: task_kwargs.pop(k) for k in list(task_kwargs) if k in _FINETUNE_CFG_FIELDS}
             finetune_cfg = FinetuneConfig(**finetune_kwargs)
-            task_output_dir = str(Path(output_dir) / f"finetune_{task_name}")
-            result = spec.fn(model_dir, tokenizer, device, task_output_dir, cfg=finetune_cfg, **task_kwargs)
+            result = spec.fn(model_dir, tokenizer, device, str(task_output_dir), cfg=finetune_cfg, **task_kwargs)
 
         print(f"  {task_name}: {result}")
+        with open(task_output_dir / "results.json", "w") as f:
+            json.dump(result, f, indent=2)
         results[task_name] = result
     return results
 
