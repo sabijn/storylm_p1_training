@@ -1,4 +1,5 @@
 import argparse
+import json
 import sys
 from pathlib import Path
 
@@ -12,9 +13,42 @@ from src.common.config import load_yaml
 from src.common.wandb_utils import init_wandb
 from src.data.packing import pack_dataset
 from src.data.prepare import load_prepared
-from src.evaluation.blimp_nl import evaluate_blimp_nl
+from src.evaluation.finetune import FinetuneConfig
 from src.evaluation.perplexity import evaluate_perplexity
+from src.evaluation.tasks.registry import TASK_REGISTRY
 from src.models.build_model import get_block_size
+
+_FINETUNE_CFG_FIELDS = set(FinetuneConfig.__dataclass_fields__)
+
+
+def run_extra_tasks(cfg, model, model_dir, tokenizer, device, output_dir) -> dict:
+    """Run the tasks listed under the config's `tasks:` block (see eval_base.yaml for the
+    full list of available task names and what each option means - this includes BLiMP-NL,
+    as task "blimp_nl"). Returns {task_name: result_dict}; also flattens numeric results
+    into a wandb-loggable dict."""
+    tasks_cfg = cfg.get("tasks") or {}
+    results = {}
+    model_name = Path(model_dir).parent.name or "model"
+    for task_name, task_kwargs in tasks_cfg.items():
+        if task_name not in TASK_REGISTRY:
+            raise ValueError(f"Unknown task: {task_name!r}. Available: {sorted(TASK_REGISTRY)}")
+        spec = TASK_REGISTRY[task_name]
+        task_kwargs = dict(task_kwargs or {})
+
+        print(f"\nRunning extra eval task: {task_name} ({spec.kind})...")
+        if spec.kind == "zero_shot":
+            result = spec.fn(model, tokenizer, device, **task_kwargs)
+        elif spec.kind == "zero_shot_output":
+            result = spec.fn(model, tokenizer, device, output_dir, model_name=model_name, **task_kwargs)
+        else:  # finetune
+            finetune_kwargs = {k: task_kwargs.pop(k) for k in list(task_kwargs) if k in _FINETUNE_CFG_FIELDS}
+            finetune_cfg = FinetuneConfig(**finetune_kwargs)
+            task_output_dir = str(Path(output_dir) / f"finetune_{task_name}")
+            result = spec.fn(model_dir, tokenizer, device, task_output_dir, cfg=finetune_cfg, **task_kwargs)
+
+        print(f"  {task_name}: {result}")
+        results[task_name] = result
+    return results
 
 
 def main():
@@ -59,25 +93,22 @@ def main():
     metrics = evaluate_perplexity(trainer)
     print(f"{split_name} loss: {metrics['loss']:.4f} | perplexity: {metrics['perplexity']:.2f}")
 
-    print("Running BLiMP-NL evaluation...")
-    model_name = Path(model_dir).parent.name or "model"
-    blimp_cfg = cfg.get("blimp", {})
-    summary_df = evaluate_blimp_nl(
-        model,
-        tokenizer,
-        device,
-        output_dir,
-        model_name=model_name,
-        normalize_by_length=blimp_cfg.get("normalize_by_length", True),
-    )
-
     log_payload = {
         f"eval/{split_name}_loss": metrics["loss"],
         f"eval/{split_name}_perplexity": metrics["perplexity"],
-        "blimp_nl/macro_accuracy": summary_df["accuracy"].mean(),
     }
-    for _, row in summary_df.iterrows():
-        log_payload[f"blimp_nl/{row['subset']}_accuracy"] = row["accuracy"]
+
+    task_results = run_extra_tasks(cfg, model, model_dir, tokenizer, device, output_dir)
+    for task_name, result in task_results.items():
+        for metric_name, value in result.items():
+            if isinstance(value, (int, float)):
+                log_payload[f"{task_name}/{metric_name}"] = value
+    if task_results:
+        results_path = Path(output_dir) / "extra_tasks_results.json"
+        with open(results_path, "w") as f:
+            json.dump(task_results, f, indent=2)
+        print(f"\nExtra task results saved to {results_path}")
+
     wandb.log(log_payload)
     wandb.finish()
 

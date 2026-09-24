@@ -17,5 +17,25 @@ wandb:
   run_name: eval_continued_sonar_gpt2_60m_16k_basepoch1_allblimp
   tags: [eval, continued, sonar, gpt2, 60m, 16k, basepoch1, allblimp]
 
-blimp:
-  normalize_by_length: true
+# Extra eval tasks (see pipeline/src/evaluation/tasks/registry.py). Each key is a task name
+# mapped to its own kwargs (empty {} for defaults); omit a task's entry to skip it. Zero-shot
+# tasks run directly on the model; finetune tasks train + evaluate a throwaway copy (the
+# checkpoint being evaluated is never modified) and accept FinetuneConfig overrides
+# (num_train_epochs, learning_rate, per_device_train_batch_size, per_device_eval_batch_size,
+# weight_decay, warmup_ratio, seed). blimp_nl runs by default, matching this pipeline's
+# previous always-on behavior; uncomment others to add them.
+tasks:
+  blimp_nl:
+    normalize_by_length: true
+  # # --- zero-shot ---
+  # hellaswag_nl: {}          # split: validation (default), normalize_by_length: true (default)
+  # storycloze_nl: {}         # split: test (default)
+  # belebele_nl: {}           # split: test (only split available - no train/val for this dataset)
+  # xcomps_nl: {}             # conceptual-property minimal pairs, accuracy
+  # crows_pairs_nl: {}        # stereotype probe - reports stereotype_score, NOT accuracy (50% = unbiased)
+  # copanl: {}                # causal reasoning, scored like storycloze_nl/hellaswag_nl (continuation logprob, no fine-tuning)
+  # # --- finetune (each trains a fresh throwaway classification/QA head) ---
+  # sib200: {}                # 7-way topic classification (NLU)
+  # sicknl: {}                # 3-way NLI
+  # squadnl:                  # extractive QA - contexts truncated to the model's context window (no sliding window)
+  #   num_train_epochs: 2

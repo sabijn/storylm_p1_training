@@ -106,6 +106,28 @@ def evaluate_blimp_nl(
     return summary_df
 
 
+def evaluate_blimp_nl_task(
+    model,
+    tokenizer,
+    device,
+    output_dir: str,
+    model_name: str = "model",
+    normalize_by_length: bool = True,
+) -> dict:
+    """Adapter for the extra-tasks registry (src/evaluation/tasks/registry.py): same
+    evaluation as evaluate_blimp_nl (still writes the per-subset + summary CSVs as a side
+    effect), but returns a flat {metric_name: value} dict - macro_accuracy plus one
+    <subset>_accuracy per subset - matching the other tasks' return-value contract instead
+    of a DataFrame."""
+    summary_df = evaluate_blimp_nl(
+        model, tokenizer, device, output_dir, model_name=model_name, normalize_by_length=normalize_by_length
+    )
+    result = {"macro_accuracy": summary_df["accuracy"].mean()}
+    for _, row in summary_df.iterrows():
+        result[f"{row['subset']}_accuracy"] = row["accuracy"]
+    return result
+
+
 def evaluate_blimp_nl_by_subset(
     model,
     tokenizer,
