@@ -31,4 +31,3 @@ python scripts/04_continue_pretraining.py --config configs/model_continued.yaml
 # 6. Evaluate the continued-pretraining model the same way
 python scripts/05_evaluate_model.py --config configs/eval_continued.yaml
 
-

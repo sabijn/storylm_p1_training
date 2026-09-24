@@ -1,6 +1,6 @@
 model:
-  path: /scratch-shared/sperdijk/storylm_p1_training/models/continued_sonar_gpt2_60m_16k_basepoch1_allblimp/final
-  tokenizer_path: /scratch-shared/sperdijk/storylm_p1_training/models/continued_sonar_gpt2_60m_16k_basepoch1_allblimp/final
+  path: /scratch-shared/sperdijk/storylm_p1_training/models/continued_sonar_gpt2_60m_16k_basepoch1_allblimp/milestone-2000M
+  tokenizer_path: /scratch-shared/sperdijk/storylm_p1_training/models/continued_sonar_gpt2_60m_16k_basepoch1_allblimp/milestone-2000M
 
 data:
   config: data_continued.yaml   # resolved relative to this file's directory
@@ -9,13 +9,13 @@ data:
 eval_batch_size: 16
 
 paths:
-  output_dir: /scratch-shared/sperdijk/storylm_p1_training/results/continued_sonar_gpt2_60m_16k_basepoch1_allblimp
+  output_dir: /scratch-shared/sperdijk/storylm_p1_training/results/continued_sonar_gpt2_60m_16k/milestone-2000M
 
 wandb:
   entity: sabijn-leiden-university
   project: storytimelm-pretraining
-  run_name: eval_continued_sonar_gpt2_60m_16k_basepoch1_allblimp
-  tags: [eval, continued, sonar, gpt2, 60m, 16k, basepoch1, allblimp]
+  run_name: eval_continued_sonar_gpt2_60m_16k
+  tags: [eval, continued, sonar, gpt2, 60m, 16k]
 
 # Extra eval tasks (see pipeline/src/evaluation/tasks/registry.py). Each key is a task name
 # mapped to its own kwargs (empty {} for defaults); omit a task's entry to skip it. Zero-shot
@@ -27,15 +27,15 @@ wandb:
 tasks:
   blimp_nl:
     normalize_by_length: true
-  # # --- zero-shot ---
-  # hellaswag_nl: {}          # split: validation (default), normalize_by_length: true (default)
-  # storycloze_nl: {}         # split: test (default)
-  # belebele_nl: {}           # split: test (only split available - no train/val for this dataset)
-  # xcomps_nl: {}             # conceptual-property minimal pairs, accuracy
-  # crows_pairs_nl: {}        # stereotype probe - reports stereotype_score, NOT accuracy (50% = unbiased)
-  # copanl: {}                # causal reasoning, scored like storycloze_nl/hellaswag_nl (continuation logprob, no fine-tuning)
-  # # --- finetune (each trains a fresh throwaway classification/QA head) ---
-  # sib200: {}                # 7-way topic classification (NLU)
-  # sicknl: {}                # 3-way NLI
-  # squadnl:                  # extractive QA - contexts truncated to the model's context window (no sliding window)
-  #   num_train_epochs: 2
+  # --- zero-shot ---
+  hellaswag_nl: {}          # split: validation (default), normalize_by_length: true (default)
+  storycloze_nl: {}         # split: test (default)
+  belebele_nl: {}           # split: test (only split available - no train/val for this dataset)
+  xcomps_nl: {}             # conceptual-property minimal pairs, accuracy
+  crows_pairs_nl: {}        # stereotype probe - reports stereotype_score, NOT accuracy (50% = unbiased)
+  copanl: {}                # causal reasoning, scored like storycloze_nl/hellaswag_nl (continuation logprob, no fine-tuning)
+  # --- finetune (each trains a fresh throwaway classification/QA head) ---
+  sib200: {}                # 7-way topic classification (NLU)
+  sicknl: {}                # 3-way NLI
+  squadnl:                  # extractive QA - contexts truncated to the model's context window (no sliding window)
+    num_train_epochs: 2
