@@ -14,21 +14,41 @@ from src.data.packing import pack_dataset
 from src.data.prepare import load_prepared
 from src.evaluation.callbacks import TokenMilestoneCallback
 from src.evaluation.perplexity import evaluate_perplexity
-from src.models.build_model import get_block_size
+from src.models.build_model import build_model, get_block_size
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Continue pretraining a saved base model on a new dataset.")
+    parser = argparse.ArgumentParser(
+        description="Continue pretraining a saved base model on a new dataset - or, if "
+        "`base_model:` is omitted and `architecture:`/`model:`/`tokenizer:` are given instead "
+        "(same shape as model_base_*.yaml), start from a freshly-initialized model."
+    )
     parser.add_argument("--config", type=Path, required=True, help="Path to configs/model_continued.yaml.")
     args = parser.parse_args()
 
     cfg = load_yaml(args.config)
     data_cfg = load_yaml(args.config.parent / cfg["data"]["config"])
-    base_cfg = cfg["base_model"]
 
-    print(f"Loading base model from {base_cfg['path']}...")
-    model = AutoModelForCausalLM.from_pretrained(base_cfg["path"])
-    tokenizer = AutoTokenizer.from_pretrained(base_cfg["tokenizer_path"])
+    if "base_model" in cfg and "model" in cfg:
+        raise ValueError(
+            "model_continued.yaml has both `base_model:` and `model:` - pick one: `base_model:` "
+            "to continue from a saved checkpoint, or `architecture:`/`model:`/`tokenizer:` to "
+            "start from a fresh, randomly-initialized model."
+        )
+
+    if "base_model" in cfg:
+        base_cfg = cfg["base_model"]
+        print(f"Loading base model from {base_cfg['path']}...")
+        model = AutoModelForCausalLM.from_pretrained(base_cfg["path"])
+        tokenizer = AutoTokenizer.from_pretrained(base_cfg["tokenizer_path"])
+        run_config = {"base_model_path": base_cfg["path"]}
+    else:
+        print(f"No base_model: block - initializing a fresh {cfg['architecture']} model instead...")
+        tokenizer = AutoTokenizer.from_pretrained(cfg["tokenizer"]["path"])
+        model = build_model(cfg["architecture"], cfg["model"], vocab_size=tokenizer.vocab_size)
+        print(f"Built {cfg['architecture']} model with {model.num_parameters():,} parameters")
+        run_config = {"base_model_path": None, "architecture": cfg["architecture"], **cfg["model"]}
+
     block_size = get_block_size(model)
 
     print(f"Loading prepared dataset from {data_cfg['paths']['output_dir']}...")
@@ -40,7 +60,7 @@ def main():
     dev_dataset = pack_dataset(dataset_dict["dev"], tokenizer, block_size)
     print(f"  train: {len(train_dataset):,} blocks | dev: {len(dev_dataset):,} blocks")
 
-    init_wandb(cfg["wandb"], run_config={"base_model_path": base_cfg["path"]})
+    init_wandb(cfg["wandb"], run_config=run_config)
 
     training_args = TrainingArguments(
         **cfg["training"],
@@ -51,8 +71,8 @@ def main():
 
     callbacks = []
     milestone_callback = None
-    blimp_cfg = cfg.get("blimp", {})
-    if blimp_cfg.get("token_milestones_millions"):
+    milestones_cfg = cfg.get("milestones", {})
+    if milestones_cfg.get("token_milestones_millions"):
         tokens_per_step = (
             block_size
             * training_args.per_device_train_batch_size
@@ -60,15 +80,15 @@ def main():
             * training_args.world_size
         )
         print(
-            f"Token milestones (M tokens): {blimp_cfg['token_milestones_millions']} "
+            f"Token milestones (M tokens): {milestones_cfg['token_milestones_millions']} "
             f"(~{tokens_per_step:,} tokens/step)"
         )
         milestone_callback = TokenMilestoneCallback(
             tokenizer=tokenizer,
-            milestones_millions=blimp_cfg["token_milestones_millions"],
+            milestones_millions=milestones_cfg["token_milestones_millions"],
             tokens_per_step=tokens_per_step,
             output_dir=training_args.output_dir,
-            normalize_by_length=blimp_cfg.get("normalize_by_length", True),
+            tasks_cfg=cfg.get("tasks", {}),
         )
         callbacks.append(milestone_callback)
 

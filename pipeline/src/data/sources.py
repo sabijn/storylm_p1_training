@@ -2,6 +2,7 @@ from typing import Any
 
 import pandas as pd
 from datasets import Dataset, load_dataset, load_from_disk
+from transformers import AutoTokenizer
 
 
 def load_source(source_cfg: dict[str, Any]) -> Dataset:
@@ -25,17 +26,25 @@ def load_source(source_cfg: dict[str, Any]) -> Dataset:
             dataset = dataset.filter(lambda ex: ex["category"] in categories)
 
         sample_words = source_cfg.get("sample_words")
+        sample_tokens = source_cfg.get("sample_tokens")
         sample_fraction = source_cfg.get("sample_fraction")
         sample_size = source_cfg.get("sample_size")
-        if sum(x is not None for x in (sample_words, sample_fraction, sample_size)) > 1:
-            raise ValueError("Set at most one of sample_words, sample_fraction, sample_size.")
+        if sum(x is not None for x in (sample_words, sample_tokens, sample_fraction, sample_size)) > 1:
+            raise ValueError("Set at most one of sample_words, sample_tokens, sample_fraction, sample_size.")
 
         if sample_words is not None:
             # Whitespace word count as a fast, tokenizer-agnostic proxy for a token budget
-            # (data prep has no tokenizer in the picture - multiply by a tokenizer's known
-            # fertility, e.g. ~1.2, to translate a target token count into sample_words).
+            # (multiply a target token count by a tokenizer's known fertility, e.g. ~1.2, to
+            # get sample_words) - prefer sample_tokens when exact token counts matter.
             dataset = dataset.shuffle(seed=source_cfg.get("seed", 42))
             dataset = _select_by_word_budget(dataset, text_column, sample_words)
+        elif sample_tokens is not None:
+            tokenizer_path = source_cfg.get("tokenizer_path")
+            if not tokenizer_path:
+                raise ValueError("sample_tokens requires tokenizer_path (the tokenizer to count tokens with).")
+            tokenizer = AutoTokenizer.from_pretrained(tokenizer_path)
+            dataset = dataset.shuffle(seed=source_cfg.get("seed", 42))
+            dataset = _select_by_token_budget(dataset, text_column, tokenizer, sample_tokens)
         elif sample_fraction is not None or sample_size is not None:
             dataset = dataset.shuffle(seed=source_cfg.get("seed", 42))
             n = sample_size if sample_size is not None else round(len(dataset) * sample_fraction)
@@ -70,6 +79,28 @@ def _select_by_word_budget(dataset: Dataset, text_column: str, target_words: int
             if total_words >= target_words:
                 break
         if total_words >= target_words:
+            break
+    return dataset.select(range(n_selected))
+
+
+def _select_by_token_budget(
+    dataset: Dataset, text_column: str, tokenizer, target_tokens: int, batch_size: int = 1000
+) -> Dataset:
+    """Select a prefix of an already-shuffled dataset whose cumulative tokenized length (via
+    `tokenizer`, no special tokens) reaches `target_tokens`, tokenizing only as far as needed
+    - same early-stopping strategy as `_select_by_word_budget`, but exact rather than a
+    whitespace-word proxy."""
+    total_tokens = 0
+    n_selected = 0
+    for start in range(0, len(dataset), batch_size):
+        batch_texts = dataset[start : start + batch_size][text_column]
+        batch_ids = tokenizer(batch_texts, add_special_tokens=False)["input_ids"]
+        for ids in batch_ids:
+            total_tokens += len(ids)
+            n_selected += 1
+            if total_tokens >= target_tokens:
+                break
+        if total_tokens >= target_tokens:
             break
     return dataset.select(range(n_selected))
 

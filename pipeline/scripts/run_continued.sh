@@ -1,11 +1,11 @@
 #!/bin/bash
-#SBATCH --job-name=sonar-continue-16k-all-blimp
+#SBATCH --job-name=sftw-from-scratch
 #SBATCH --partition=gpu_h100
 #SBATCH --nodes=1
 #SBATCH --gpus=1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=120G
-#SBATCH --time=24:00:00
+#SBATCH --time=30:00:00
 #SBATCH --output=%x-%j.out
 #SBATCH --error=%x-%j.out
 
