@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=sftw-from-scratch
+#SBATCH --job-name=babylm-dutch-from-scratch
 #SBATCH --partition=gpu_h100
 #SBATCH --nodes=1
 #SBATCH --gpus=1
