@@ -1,73 +1,0 @@
-============================================================================================== 
-Warning! Mixing Conda and module environments may lead to corruption of the
-user environment. 
-We do not recommend users mixing those two environments unless absolutely
-necessary. Note that 
-SURF does not provide any support for Conda environment.
-For more information, please refer to our software policy page:
-https://servicedesk.surf.nl/wiki/display/WIKI/Software+policy+Snellius#SoftwarepolicySnellius-UseofAnacondaandMinicondaenvironmentsonSnellius 
-
-Remember that many packages have already been installed on the system and can
-be loaded using 
-the 'module load <package__name>' command. If you are uncertain if a package is
-already available 
-on the system, please use 'module avail' or 'module spider' to search for it.
-============================================================================================== 
-Preparing data from 1 source(s)...
-Saving the dataset (0/1 shards):   0%|          | 0/612270 [00:00<?, ? examples/s]Saving the dataset (0/1 shards):   0%|          | 1000/612270 [00:00<02:15, 4514.78 examples/s]Saving the dataset (0/1 shards):   0%|          | 2000/612270 [00:00<02:10, 4667.09 examples/s]Saving the dataset (0/1 shards):   0%|          | 3000/612270 [00:00<01:48, 5629.23 examples/s]Saving the dataset (0/1 shards):   1%|          | 5000/612270 [00:00<01:16, 7978.87 examples/s]Saving the dataset (0/1 shards):   3%|▎         | 16000/612270 [00:00<00:18, 32241.05 examples/s]Saving the dataset (0/1 shards):   5%|▌         | 31000/612270 [00:00<00:09, 60221.35 examples/s]Saving the dataset (0/1 shards):   8%|▊         | 47000/612270 [00:01<00:06, 84873.86 examples/s]Saving the dataset (0/1 shards):  11%|█         | 68000/612270 [00:01<00:04, 115021.05 examples/s]Saving the dataset (0/1 shards):  14%|█▍        | 87000/612270 [00:01<00:03, 134129.02 examples/s]Saving the dataset (0/1 shards):  17%|█▋        | 104000/612270 [00:01<00:05, 92213.16 examples/s]Saving the dataset (0/1 shards):  19%|█▉        | 116000/612270 [00:01<00:05, 87098.27 examples/s]Saving the dataset (0/1 shards):  21%|██        | 127000/612270 [00:01<00:05, 90516.70 examples/s]Saving the dataset (0/1 shards):  23%|██▎       | 141000/612270 [00:01<00:04, 99052.36 examples/s]Saving the dataset (0/1 shards):  26%|██▌       | 159000/612270 [00:02<00:03, 117152.66 examples/s]Saving the dataset (0/1 shards):  30%|███       | 184000/612270 [00:02<00:02, 148662.87 examples/s]Saving the dataset (0/1 shards):  34%|███▎      | 206000/612270 [00:02<00:02, 142131.06 examples/s]Saving the dataset (0/1 shards):  36%|███▋      | 223000/612270 [00:02<00:02, 148501.67 examples/s]Saving the dataset (0/1 shards):  40%|███▉      | 244000/612270 [00:02<00:02, 163639.70 examples/s]Saving the dataset (0/1 shards):  44%|████▍     | 271000/612270 [00:02<00:01, 190642.46 examples/s]Saving the dataset (0/1 shards):  49%|████▊     | 297000/612270 [00:02<00:01, 208144.01 examples/s]Saving the dataset (0/1 shards):  53%|█████▎    | 323000/612270 [00:02<00:01, 222514.89 examples/s]Saving the dataset (0/1 shards):  59%|█████▊    | 359000/612270 [00:02<00:00, 261126.83 examples/s]Saving the dataset (0/1 shards):  64%|██████▍   | 393000/612270 [00:03<00:00, 282738.71 examples/s]Saving the dataset (0/1 shards):  71%|███████   | 436000/612270 [00:03<00:00, 323774.63 examples/s]Saving the dataset (0/1 shards):  78%|███████▊  | 480000/612270 [00:03<00:00, 254544.42 examples/s]Saving the dataset (0/1 shards):  85%|████████▌ | 523000/612270 [00:03<00:00, 293611.30 examples/s]Saving the dataset (0/1 shards):  93%|█████████▎| 569000/612270 [00:03<00:00, 332789.46 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 612270/612270 [00:03<00:00, 332789.46 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 612270/612270 [00:03<00:00, 165946.19 examples/s]
-Saving the dataset (0/1 shards):   0%|          | 0/34015 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 34015/34015 [00:00<00:00, 441306.98 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 34015/34015 [00:00<00:00, 440375.25 examples/s]
-Saving the dataset (0/1 shards):   0%|          | 0/34015 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 34015/34015 [00:00<00:00, 445517.02 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 34015/34015 [00:00<00:00, 443225.00 examples/s]
-  train: 612,270 examples
-  dev: 34,015 examples
-  test: 34,015 examples
-Saved prepared dataset to /scratch-shared/sperdijk/storylm_p1_training/data/continue_sftw
-No base_model: block - initializing a fresh gpt2 model instead...
-Traceback (most recent call last):
-  File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/27178759/scripts/04_continue_pretraining.py", line 134, in <module>
-    main()
-  File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/27178759/scripts/04_continue_pretraining.py", line 47, in main
-    tokenizer = AutoTokenizer.from_pretrained(cfg["tokenizer"]["path"])
-                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/models/auto/tokenization_auto.py", line 839, in from_pretrained
-    return tokenizer_class.from_pretrained(pretrained_model_name_or_path, *inputs, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/tokenization_utils_base.py", line 1744, in from_pretrained
-    return cls._from_pretrained(
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/tokenization_utils_base.py", line 1934, in _from_pretrained
-    tokenizer = cls(*init_inputs, **init_kwargs)
-                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/tokenization_utils_tokenizers.py", line 376, in __init__
-    raise ValueError(
-ValueError: Couldn't instantiate the backend tokenizer from one of: 
-(1) a `tokenizers` library serialization file, 
-(2) a slow tokenizer instance to convert or 
-(3) an equivalent slow tokenizer class to instantiate and convert. 
-You need to have sentencepiece or tiktoken installed to convert a slow tokenizer to a fast one.
-Loading model from /scratch-shared/sperdijk/storylm_p1_training/models/scratch_storiesftw_gpt2_60m_16k/milestone-2000M...
-Traceback (most recent call last):
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/utils/hub.py", line 437, in cached_files
-    hf_hub_download(
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 84, in _inner_fn
-    validate_repo_id(arg_value)
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 132, in validate_repo_id
-    raise HFValidationError(
-huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/scratch-shared/sperdijk/storylm_p1_training/models/scratch_storiesftw_gpt2_60m_16k/milestone-2000M'. Use `repo_type` argument if needed.
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/27178759/scripts/05_evaluate_model.py", line 86, in <module>
-    main()
-  File "/gpfs/scratch1/shared/sperdijk/storylm_p1_training/27178759/scripts/05_evaluate_model.py", line 31, in main
-    model = AutoModelForCausalLM.from_pretrained(model_dir)
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/models/auto/auto_factory.py", line 289, in from_pretrained
-    resolved_config_file = cached_file(
-                           ^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/utils/hub.py", line 293, in cached_file
-    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/sperdijk/.conda/envs/babylm2026/lib/python3.12/site-packages/transformers/utils/hub.py", line 488, in cached_files
-    raise OSError(f"{e}") from e
-OSError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/scratch-shared/sperdijk/storylm_p1_training/models/scratch_storiesftw_gpt2_60m_16k/milestone-2000M'. Use `repo_type` argument if needed.
