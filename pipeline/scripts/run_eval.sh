@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=sonar-eval-100M
+#SBATCH --job-name=base-eval-100M
 #SBATCH --partition=gpu_h100
 #SBATCH --nodes=1
 #SBATCH --gpus=1

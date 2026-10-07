@@ -6,6 +6,8 @@ tokenizers/
 test_and_check.ipynb
 pipeline/data
 references/
+models/
+results/
 
 # MAC-OS specific
 .DS_STORE
