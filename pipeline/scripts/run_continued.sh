@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=babylm-dutch-from-scratch
+#SBATCH --job-name=gutenberg-dutch-from-scratch
 #SBATCH --partition=gpu_h100
 #SBATCH --nodes=1
 #SBATCH --gpus=1

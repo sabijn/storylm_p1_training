@@ -20,7 +20,7 @@ data:
   config: data_continued.yaml   # resolved relative to this file's directory
 
 training:
-  output_dir: /scratch-shared/sperdijk/storylm_p1_training/models/scratch_babylm-nld_gpt2_60m_16k
+  output_dir: /scratch-shared/sperdijk/storylm_p1_training/models/scratch_gutenberg-nld_gpt2_60m_16k
   num_train_epochs: 25
   per_device_train_batch_size: 32
   per_device_eval_batch_size: 32
@@ -44,8 +44,8 @@ training:
 wandb:
   entity: sabijn-leiden-university
   project: storytimelm-pretraining
-  run_name: scratch_babylm-nld_gpt2_60m_16k
-  tags: [scratch, babylm-nld, gpt2, 60m, 16k]
+  run_name: scratch_gutenberg-nld_gpt2_60m_16k
+  tags: [scratch, gutenberg-nld, gpt2, 60m, 16k]
 
 milestones:
   token_milestones_millions: [25, 50, 75, 100, 250, 500, 750, 1000, 1250, 1500, 1750, 2000]

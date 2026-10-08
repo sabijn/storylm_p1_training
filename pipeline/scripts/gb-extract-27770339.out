@@ -1,0 +1,23 @@
+============================================================================================== 
+Warning! Mixing Conda and module environments may lead to corruption of the
+user environment. 
+We do not recommend users mixing those two environments unless absolutely
+necessary. Note that 
+SURF does not provide any support for Conda environment.
+For more information, please refer to our software policy page:
+https://servicedesk.surf.nl/wiki/display/WIKI/Software+policy+Snellius#SoftwarepolicySnellius-UseofAnacondaandMinicondaenvironmentsonSnellius 
+
+Remember that many packages have already been installed on the system and can
+be loaded using 
+the 'module load <package__name>' command. If you are uncertain if a package is
+already available 
+on the system, please use 'module avail' or 'module spider' to search for it.
+============================================================================================== 
+Downloading hf://datasets/manu/project_gutenberg/data/nl-*.parquet...
+Generating train split: 0 examples [00:00, ? examples/s]Generating train split: 710 examples [00:00, 1219.39 examples/s]Generating train split: 1420 examples [00:01, 1163.51 examples/s]Generating train split: 1420 examples [00:01, 1170.64 examples/s]
+  1,420 documents
+Header pattern matched 1,399 / 1,420 documents (non-matches are kept as-is).
+Stripping headers...
+Map:   0%|          | 0/1420 [00:00<?, ? examples/s]Map:  23%|██▎       | 326/1420 [00:00<00:00, 3196.46 examples/s]Map:  53%|█████▎    | 756/1420 [00:00<00:00, 2937.43 examples/s]Map:  88%|████████▊ | 1246/1420 [00:01<00:00, 702.86 examples/s]Map: 100%|██████████| 1420/1420 [00:01<00:00, 838.10 examples/s]
+Saving 1,420 documents to /scratch-shared/sperdijk/storylm_p1_training/data/gutenberg_nl_extracted...
+Saving the dataset (0/2 shards):   0%|          | 0/1420 [00:00<?, ? examples/s]Saving the dataset (0/2 shards):  50%|█████     | 710/1420 [00:00<00:00, 921.13 examples/s]Saving the dataset (1/2 shards):  50%|█████     | 710/1420 [00:00<00:00, 921.13 examples/s]Saving the dataset (1/2 shards): 100%|██████████| 1420/1420 [00:01<00:00, 924.22 examples/s]Saving the dataset (2/2 shards): 100%|██████████| 1420/1420 [00:01<00:00, 924.22 examples/s]Saving the dataset (2/2 shards): 100%|██████████| 1420/1420 [00:01<00:00, 919.85 examples/s]
