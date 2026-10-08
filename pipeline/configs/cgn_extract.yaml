@@ -1,0 +1,11 @@
+# Config for scripts/prepare_cgn.py. Streams Dutch (nl) orthographic transcripts out of a
+# local CGN (Corpus Gesproken Nederlands) .zip archive (never unpacks it to disk) and cleans
+# disfluency/annotation codes while reconstructing each document's plain text. Run this
+# once; category selection and sampling for training happen later, cheaply, via the `local`
+# source type in data_base.yaml/data_continued.yaml.
+#
+# NOTE: archive_path currently points at the local copy on this Mac - if training runs on
+# the HPC cluster, move/copy the .zip (or this script's output) to scratch and update both
+# paths below accordingly.
+archive_path: /Users/sabijn/Documents/PhD/Datasets/CGN_2.0.3.zip
+output_dir: /Users/sabijn/Documents/PhD/code/storylm_p1_training/pipeline/data/cgn_nl_extracted

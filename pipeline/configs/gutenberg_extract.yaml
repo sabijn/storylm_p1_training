@@ -1,0 +1,9 @@
+# Config for scripts/prepare_gutenberg.py. Downloads the Dutch split of
+# manu/project_gutenberg directly via the generic "parquet" loader (bypassing that
+# dataset's own split bookkeeping, which otherwise raises ExpectedMoreSplitsError since
+# en/de/fr/... are registered as sibling splits of the same config) and strips each book's
+# Project Gutenberg boilerplate header. Run this once; category selection and sampling for
+# training happen later, cheaply, via the `local` source type in data_base.yaml /
+# data_continued.yaml. Change the language code in data_files to prepare a different split.
+data_files: "hf://datasets/manu/project_gutenberg/data/nl-*.parquet"
+output_dir: /scratch-shared/sperdijk/storylm_p1_training/data/gutenberg_nl_extracted
